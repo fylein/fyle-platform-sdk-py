@@ -46,8 +46,7 @@ class Network:
         """Create a HTTP GET request.
 
         Parameters:
-            params (dict): HTTP GET parameters for the wanted API.
-            api_url (str): Url for the wanted API.
+            url (str): Url for the wanted API.
 
         Returns:
             A response from the request (dict).
@@ -60,8 +59,7 @@ class Network:
         """Create a HTTP post request.
 
         Parameters:
-            data (dict): HTTP POST body data for the wanted API.
-            api_url (str): Url for the wanted API.
+            url (str): Url for the wanted API.
 
         Returns:
             A response from the request (dict).
