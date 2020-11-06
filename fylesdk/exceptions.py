@@ -15,41 +15,41 @@ class FylePlatformSDKError(Exception):
         return repr(self.message)
 
 
-class NotFoundClientError(FyleSDKError):
+class NotFoundClientError(FylePlatformSDKError):
     """Client not found OAuth2 authorization, 404 error."""
     pass
 
 
-class UnauthorizedClientError(FyleSDKError):
+class UnauthorizedClientError(FylePlatformSDKError):
     """Wrong client secret and/or refresh token, 401 error."""
     pass
 
 
-class ExpiredTokenError(FyleSDKError):
+class ExpiredTokenError(FylePlatformSDKError):
     """Expired (old) access token, 498 error."""
     pass
 
 
-class InvalidTokenError(FyleSDKError):
+class InvalidTokenError(FylePlatformSDKError):
     """Wrong/non-existing access token, 401 error."""
     pass
 
 
-class NoPrivilegeError(FyleSDKError):
+class NoPrivilegeError(FylePlatformSDKError):
     """The user has insufficient privilege, 403 error."""
     pass
 
 
-class WrongParamsError(FyleSDKError):
+class WrongParamsError(FylePlatformSDKError):
     """Some of the parameters (HTTP params or request body) are wrong, 400 error."""
     pass
 
 
-class NotFoundItemError(FyleSDKError):
+class NotFoundItemError(FylePlatformSDKError):
     """Not found the item from URL, 404 error."""
     pass
     
 
-class InternalServerError(FyleSDKError):
+class InternalServerError(FylePlatformSDKError):
     """The rest FyleSDK errors, 500 error."""
     pass
