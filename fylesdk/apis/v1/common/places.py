@@ -17,7 +17,7 @@ class Places(ApiBase):
     def __init__(self):
         super().__init__(version, role)
 
-    def get(self, q, types, location, **kwargs) -> Dict:
+    def get(self, q, types, location=None, **kwargs) -> Dict:
         """
         Get Places
         :param q:
