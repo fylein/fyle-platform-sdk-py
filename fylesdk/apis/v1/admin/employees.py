@@ -29,7 +29,7 @@ class Employees(ApiBase):
         :return: List of Employee Objects
         """
         return self.make_get_request(
-            api_url=self.GET_EMPLOYEES,
+            api_url=Employees.GET_EMPLOYEES,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

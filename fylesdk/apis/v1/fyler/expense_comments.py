@@ -24,6 +24,6 @@ class ExpenseComments(ApiBase):
         :return: Expense Comment Object
         """
         return self.make_post_request(
-            api_url=self.POST_EXPENSE_COMMENT,
+            api_url=ExpenseComments.POST_EXPENSE_COMMENT,
             payload=payload
         )

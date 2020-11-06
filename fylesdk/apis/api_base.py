@@ -12,6 +12,8 @@ class ApiBase(Network):
     """The base class for all API classes."""
 
     def __init__(self, version=None, role=None):
+        super().__init__()
+
         self.version = version
         self.role = role
 
@@ -61,7 +63,7 @@ class ApiBase(Network):
 
                 api_query_params[param] = value
 
-        response = self._get_request(
+        response = self.get_request(
             url=self._format_api_url(api_url),
             headers=api_headers,
             params=api_query_params
@@ -88,7 +90,7 @@ class ApiBase(Network):
 
         api_headers = {'Authorization': 'Bearer {0}'.format(sdk.config['ACCESS_TOKEN'])}
 
-        response = self._post_request(
+        response = self.post_request(
             url='{0}{1}'.format(sdk.config['SERVER_URL'], api_url),
             headers=api_headers,
             json=payload

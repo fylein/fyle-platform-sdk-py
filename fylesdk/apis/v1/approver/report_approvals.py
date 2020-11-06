@@ -24,6 +24,6 @@ class ReportApprovals(ApiBase):
         :return: Report Approval Object
         """
         return self.make_post_request(
-            api_url=self.POST_REPORT_APPROVALS,
+            api_url=ReportApprovals.POST_REPORT_APPROVALS,
             payload=payload
         )

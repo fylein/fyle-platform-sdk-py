@@ -26,7 +26,7 @@ class Places(ApiBase):
         :return: List of Places Objects
         """
         return self.make_get_request(
-            api_url=self.GET_PLACES,
+            api_url=Places.GET_PLACES,
             query_params={
                 'q': q,
                 'types': types,

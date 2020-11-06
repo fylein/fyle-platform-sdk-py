@@ -1,8 +1,6 @@
 import json
 
-from fylePyLibs import assertions, exceptions
-
-
+from . import exceptions
 from .apis import v1
 from .globals.configs import sdk
 from .internals.network import Network
@@ -60,7 +58,7 @@ class FylePlatformSDK(Network):
         }
 
         token_url = FylePlatformSDK.TOKEN_URL.format(self.__base_url)
-        response = self._post_request(url=token_url, data=api_data)
+        response = self.post_request(url=token_url, data=api_data)
 
         if response.status_code == 200:
             access_token = json.loads(response.text)['access_token']
@@ -68,10 +66,10 @@ class FylePlatformSDK(Network):
             sdk.config['ACCESS_TOKEN'] = access_token
             return access_token
         elif response.status_code == 401:
-            assertions.assert_auth(None, 'Wrong client secret or/and refresh token, Response: {}'.format(response.text))
+            raise exceptions.InvalidTokenError('Wrong client secret or/and refresh token', response.text)
         elif response.status_code == 404:
-            assertions.assert_found(False, 'Client ID doesn\'t exist, Response: {}'.format(response.text))
+            raise exceptions.NotFoundItemError('Client ID doesn\'t exist', response.text)
         elif response.status_code == 500:
-            assertions.assert_good(False, 'Internal server error, Response: {}'.format(response.text))
+            raise exceptions.InternalServerError('Internal server error', response.text)
         else:
-            raise exceptions.InvalidUsage(response.text, response.status_code)
+            raise exceptions.FylePlatformSDKError('Error: {0}'.format(response.status_code), response.text)
