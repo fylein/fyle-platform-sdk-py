@@ -33,7 +33,7 @@ class FylePlatformSDK(Network):
         self.set_server_url()
 
     def update_access_token(self):
-        """Update the access token and change it in all API objects."""
+        """Update the access token."""
 
         self.__get_access_token()
     
@@ -45,7 +45,8 @@ class FylePlatformSDK(Network):
 
 
     def __get_access_token(self):
-        """Get the access token using a HTTP post.
+        """
+        Get the access token using a HTTP post.
         
         Returns:
             A new access token.
