@@ -1,0 +1,15 @@
+certifi==2020.6.20
+chardet==3.0.4
+click==7.1.2
+enum34==1.1.10
+Flask==1.1.2
+fyle-python-service-libs @ git+ssh://git@bitbucket.org/fyledev/fyle-python-service-libs.git@4dc325cc3c0ff1cfceca354085be751aab6c80c5
+idna==2.10
+inflection==0.5.1
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+requests==2.24.0
+six==1.15.0
+urllib3==1.25.11
+Werkzeug==1.0.1
