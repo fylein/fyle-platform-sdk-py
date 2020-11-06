@@ -12,7 +12,6 @@ class ApiBase(Network):
     """The base class for all API classes."""
 
     def __init__(self, version=None, role=None):
-        super().__init__()
         self.version = version
         self.role = role
 

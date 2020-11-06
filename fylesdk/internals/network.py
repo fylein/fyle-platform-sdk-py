@@ -7,9 +7,6 @@ from fylePyLibs import assertions, exceptions, http
 class Network:
     """Class for making GET, POST requests"""
 
-    def __init__(self):
-        pass
-
     def _assert_response(self, response):
         if response.status_code == 400:
             assertions.assert_valid(
