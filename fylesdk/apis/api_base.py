@@ -4,7 +4,8 @@
 
 import json
 
-from ..globals.configs import sdk
+from .. import exceptions
+from ..globals.configs import config
 from ..internals.network import Network
 
 
@@ -19,7 +20,7 @@ class ApiBase(Network):
 
     def _format_api_url(self, endpoint):
         return '{base_url}/{version}/{role}{endpoint}'.format(
-            base_url=sdk.config['SERVER_URL'],
+            base_url=config.get('FYLE', 'SERVER_URL'),
             version=self.version,
             role=self.role,
             endpoint=endpoint
@@ -49,7 +50,7 @@ class ApiBase(Network):
             A response from the request (dict).
         """
 
-        api_headers = {'Authorization': 'Bearer {0}'.format(sdk.config['ACCESS_TOKEN'])}
+        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
         api_query_params = {}
 
         for param in query_params:
@@ -88,10 +89,10 @@ class ApiBase(Network):
             A response from the request (dict).
         """
 
-        api_headers = {'Authorization': 'Bearer {0}'.format(sdk.config['ACCESS_TOKEN'])}
+        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
 
         response = self.post_request(
-            url='{0}{1}'.format(sdk.config['SERVER_URL'], api_url),
+            url='{0}{1}'.format(config.get('FYLE', 'SERVER_URL'), api_url),
             headers=api_headers,
             json=payload
         )
@@ -103,3 +104,25 @@ class ApiBase(Network):
         self._assert_response(response)
 
         return None
+
+    def _assert_response(self, response):
+        if response.status_code == 400:
+            raise exceptions.WrongParamsError(
+                'Some of the parameters are wrong', json.loads(response.text))
+        if response.status_code == 401:
+            raise exceptions.InvalidTokenError(
+                'Invalid token, try to refresh it', response.text)
+        if response.status_code == 403:
+            raise exceptions.NoPrivilegeError(
+                'Forbidden, the user has insufficient privilege', response.text)
+        if response.status_code == 404:
+            raise exceptions.NotFoundItemError(
+                'Not found item with ID', response.text)
+        if response.status_code == 498:
+            raise exceptions.ExpiredTokenError(
+                'Expired token, try to refresh it', response.text)
+        if response.status_code == 500:
+            raise exceptions.InternalServerError(
+                'Internal server error', response.text)
+        raise exceptions.FylePlatformSDKError(
+            'Error: {0}'.format(response.status_code), response.text)

@@ -2,7 +2,7 @@ import json
 
 from . import exceptions
 from .apis import v1
-from .globals.configs import sdk
+from .globals.configs import config
 from .internals.network import Network
 
 
@@ -15,11 +15,10 @@ class FylePlatformSDK(Network):
         refresh_token (str): Refresh token for Fyle API.
     """
 
-    TOKEN_URL = '{}/api/oauth/token'
-
-    def __init__(self, base_url, client_id, client_secret, refresh_token):
+    def __init__(self, server_url, token_url, client_id, client_secret, refresh_token):
         # store the credentials
-        self.__base_url = base_url
+        self.__server_url = server_url
+        self.__token_url = token_url
         self.__client_id = client_id
         self.__client_secret = client_secret
         self.__refresh_token = refresh_token
@@ -27,8 +26,11 @@ class FylePlatformSDK(Network):
         self.v1 = v1
         
         # get the access token
-        self.update_access_token()
         self.set_server_url()
+        self.set_token_url()
+        self.set_refresh_token()
+        self.update_access_token()
+        
 
     def update_access_token(self):
         """Update the access token."""
@@ -37,9 +39,21 @@ class FylePlatformSDK(Network):
     
 
     def set_server_url(self):
-        """Set the Base URL in all API objects."""
+        """Set the Server URL in all API objects."""
 
-        sdk.config['SERVER_URL'] = self.__base_url
+        config.set('FYLE', 'SERVER_URL', self.__server_url)
+
+
+    def set_token_url(self):
+        """Set the Token URL in all API objects."""
+
+        config.set('FYLE', 'TOKEN_URL', self.__token_url)        
+
+
+    def set_refresh_token(self):
+        """Set the Refresh token."""
+
+        config.set('AUTH', 'REFRESH_TOKEN', self.__refresh_token)        
 
 
     def __get_access_token(self):
@@ -52,18 +66,18 @@ class FylePlatformSDK(Network):
 
         api_data = {
             'grant_type': 'refresh_token',
-            'refresh_token': self.__refresh_token,
+            'refresh_token': config.get('AUTH', 'REFRESH_TOKEN'),
             'client_id': self.__client_id,
             'client_secret': self.__client_secret
         }
 
-        token_url = FylePlatformSDK.TOKEN_URL.format(self.__base_url)
+        token_url = config.get('FYLE', 'TOKEN_URL')
         response = self.post_request(url=token_url, data=api_data)
 
         if response.status_code == 200:
             access_token = json.loads(response.text)['access_token']
             self.access_token = access_token
-            sdk.config['ACCESS_TOKEN'] = access_token
+            config.set('AUTH', 'ACCESS_TOKEN', access_token)
             return access_token
         elif response.status_code == 401:
             raise exceptions.InvalidTokenError('Wrong client secret or/and refresh token', response.text)

@@ -2,13 +2,29 @@
     Defines Global SDK Configurations
 """
 
-from flask import Flask
+import configparser
 
-class Configurations:
-    """Defines SDK Configurations"""
+configurations = {
+    'FYLE': {
+        'TOKEN_URL': None,
+        'SERVER_URL': None
+    },
+    'AUTH': {
+        'REFRESH_TOKEN': None,
+        'ACCESS_TOKEN': None
+    }
+}
 
-    SERVER_URL = None
-    ACCESS_TOKEN = None
+config = configparser.ConfigParser()
+config.read_dict(configurations)
 
-sdk = Flask('fyleplatformsdk')
-sdk.config.from_object(Configurations)
+# from flask import Flask
+
+# class Configurations:
+#     """Defines SDK Configurations"""
+
+#     SERVER_URL = None
+#     ACCESS_TOKEN = None
+
+# sdk = Flask('fyleplatformsdk')
+# sdk.config.from_object(Configurations)

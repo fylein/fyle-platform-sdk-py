@@ -7,18 +7,15 @@ import os
 import requests
 
 from . import serializers
-from .. import exceptions
 
 class Network:
     """Class for making GET, POST requests"""
     HOSTNAME = None
     HEADERS = serializers.deserialize({
-            'USER_DETAILS': 'X-User-Details',
             'AUTHORIZATION': 'Authorization',
             'CONTENT_TYPE': 'Content-Type',
             'USER_AGENT': 'User-Agent',
-            'FYLE_SIGNATURE': 'X-Fyle-Signature',
-            'S3_SIGNATURE': 'X-Amz-Signature'
+            'FYLE_SIGNATURE': 'X-Fyle-Signature'
         })
 
     def __init__(self):
@@ -36,10 +33,11 @@ class Network:
             A response from the request (dict).
         """
 
-        return self._get(url, **kwargs)
+        kwargs.setdefault('allow_redirects', True)
+        return self._http_request('GET', url, **kwargs)
 
 
-    def post_request(self, url, **kwargs):
+    def post_request(self, url, data=None, headers=None, **kwargs):
         """Create a HTTP post request.
 
         Parameters:
@@ -48,7 +46,9 @@ class Network:
         Returns:
             A response from the request (dict).
         """
-        return self._post(url, **kwargs)
+        
+        data, headers = self._process_data_and_headers(data, headers)
+        return self._http_request('POST', url, headers=headers, data=data, **kwargs)
 
 
     def delete_request(self, url, **kwargs):
@@ -60,44 +60,6 @@ class Network:
         Returns:
             A response from the request (dict).
         """
-        return self._delete(url, **kwargs)
-
-
-    def _assert_response(self, response):
-        if response.status_code == 400:
-            raise exceptions.WrongParamsError(
-                'Some of the parameters are wrong', response.text)
-        if response.status_code == 401:
-            raise exceptions.InvalidTokenError(
-                'Invalid token, try to refresh it', response.text)
-        if response.status_code == 403:
-            raise exceptions.NoPrivilegeError(
-                'Forbidden, the user has insufficient privilege', response.text)
-        if response.status_code == 404:
-            raise exceptions.NotFoundItemError(
-                'Not found item with ID', response.text)
-        if response.status_code == 498:
-            raise exceptions.ExpiredTokenError(
-                'Expired token, try to refresh it', response.text)
-        if response.status_code == 500:
-            raise exceptions.InternalServerError(
-                'Internal server error', response.text)
-        raise exceptions.FylePlatformSDKError(
-            'Error: {0}'.format(response.status_code), response.text)
-
-
-    def _get(self, url, **kwargs):
-        # https://2.python-requests.org/en/master/_modules/requests/api/#get
-        kwargs.setdefault('allow_redirects', True)
-        return self._http_request('GET', url, **kwargs)
-
-
-    def _post(self, url, data=None, headers=None, **kwargs):
-        data, headers = self._process_data_and_headers(data, headers)
-        return self._http_request('POST', url, headers=headers, data=data, **kwargs)
-
-
-    def _delete(self, url, **kwargs):
         return self._http_request('DELETE', url, **kwargs)
 
 

@@ -12,7 +12,7 @@ from ...api_base import ApiBase
 class ExpenseComments(ApiBase):
     """Class for Expense Comments APIs."""
 
-    POST_EXPENSE_COMMENT = '/expense_comment'
+    POST_EXPENSE_COMMENT = '/expense_comments'
 
     def __init__(self):
         super().__init__(version, role)

@@ -12,6 +12,8 @@ class FylePlatformSDKError(Exception):
         self.response = response
 
     def __str__(self):
+        if isinstance(self.response, dict):
+            return repr(self.response)
         return repr(self.message)
 
 
