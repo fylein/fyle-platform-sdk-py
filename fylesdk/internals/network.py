@@ -46,7 +46,7 @@ class Network:
         Returns:
             A response from the request (dict).
         """
-        
+
         data, headers = self._process_data_and_headers(data, headers)
         return self._http_request('POST', url, headers=headers, data=data, **kwargs)
 
