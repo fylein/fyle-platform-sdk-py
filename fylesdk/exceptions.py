@@ -50,7 +50,7 @@ class WrongParamsError(FylePlatformSDKError):
 class NotFoundItemError(FylePlatformSDKError):
     """Not found the item from URL, 404 error."""
     pass
-    
+
 
 class InternalServerError(FylePlatformSDKError):
     """The rest FyleSDK errors, 500 error."""

@@ -8,20 +8,20 @@ import requests
 
 from . import serializers
 
+
 class Network:
     """Class for making GET, POST requests"""
     HOSTNAME = None
     HEADERS = serializers.deserialize({
-            'AUTHORIZATION': 'Authorization',
-            'CONTENT_TYPE': 'Content-Type',
-            'USER_AGENT': 'User-Agent',
-            'FYLE_SIGNATURE': 'X-Fyle-Signature'
-        })
+        'AUTHORIZATION': 'Authorization',
+        'CONTENT_TYPE': 'Content-Type',
+        'USER_AGENT': 'User-Agent',
+        'FYLE_SIGNATURE': 'X-Fyle-Signature'
+    })
 
     def __init__(self):
         self.__root_dir = os.path.split(os.getcwd())[1]
         Network.HOSTNAME = os.environ.get('HOSTNAME', self.__root_dir)
-
 
     def get_request(self, url, **kwargs):
         """Create a HTTP GET request.
@@ -36,7 +36,6 @@ class Network:
         kwargs.setdefault('allow_redirects', True)
         return self._http_request('GET', url, **kwargs)
 
-
     def post_request(self, url, data=None, headers=None, **kwargs):
         """Create a HTTP post request.
 
@@ -50,7 +49,6 @@ class Network:
         data, headers = self._process_data_and_headers(data, headers)
         return self._http_request('POST', url, headers=headers, data=data, **kwargs)
 
-
     def delete_request(self, url, **kwargs):
         """Create a HTTP delete request.
 
@@ -61,7 +59,6 @@ class Network:
             A response from the request (dict).
         """
         return self._http_request('DELETE', url, **kwargs)
-
 
     def _http_request(self, method, url, headers=None, **kwargs):
         headers = requests.structures.CaseInsensitiveDict(headers)
@@ -75,7 +72,6 @@ class Network:
         )
 
         return response
-
 
     def _process_data_and_headers(self, data, headers):
         headers = requests.structures.CaseInsensitiveDict(headers)

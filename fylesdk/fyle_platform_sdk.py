@@ -24,37 +24,32 @@ class FylePlatformSDK(Network):
         self.__refresh_token = refresh_token
 
         self.v1 = v1
-        
+
         # get the access token
         self.set_server_url()
         self.set_token_url()
         self.set_refresh_token()
         self.update_access_token()
-        
 
     def update_access_token(self):
         """Update the access token."""
 
         self.__get_access_token()
-    
 
     def set_server_url(self):
         """Set the Server URL in all API objects."""
 
         config.set('FYLE', 'SERVER_URL', self.__server_url)
 
-
     def set_token_url(self):
         """Set the Token URL in all API objects."""
 
-        config.set('FYLE', 'TOKEN_URL', self.__token_url)        
-
+        config.set('FYLE', 'TOKEN_URL', self.__token_url)
 
     def set_refresh_token(self):
         """Set the Refresh token."""
 
-        config.set('AUTH', 'REFRESH_TOKEN', self.__refresh_token)        
-
+        config.set('AUTH', 'REFRESH_TOKEN', self.__refresh_token)
 
     def __get_access_token(self):
         """

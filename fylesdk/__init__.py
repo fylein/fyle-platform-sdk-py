@@ -2,7 +2,6 @@
 
 from .fyle_platform_sdk import FylePlatformSDK
 
-
 __all__ = [
     FylePlatformSDK,
     # exceptions.FylePlatformSDKError,
