@@ -1,5 +1,5 @@
 """
-V1 Admin Employees
+V1 Admin Cost Center
 """
 
 from typing import Dict
@@ -7,33 +7,33 @@ from typing import Dict
 from ...api_base import ApiBase
 
 
-class Employees(ApiBase):
-    """Class for Employees APIs."""
+class CostCenters(ApiBase):
+    """Class for Cost Center APIs."""
 
-    GET_EMPLOYEES = '/employees'
-    POST_EMPLOYEES = '/employees'
+    GET_COST_CENTERS = '/cost_centers'
+    POST_COST_CENTERS = '/cost_centers'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, email=None, limit=None,
-        offset=None, order=None, **kwargs) -> Dict:
+    def get(self, created_at=None, updated_at=None, only_enabled=None,
+        limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
-        Get Employees
+        Get Cost Center
         :param created_at:
         :param updated_at:
-        :param email:
-        :param limit: No. of employees to be fetched
+        :param only_enabled:
+        :param limit: No. of Cost Centers to be fetched
         :param offset: Pagination offset
         :param order:
-        :return: List of Employee Objects
+        :return: List of Cost Centers Objects
         """
         return self.make_get_request(
-            api_url=Employees.GET_EMPLOYEES,
+            api_url=CostCenters.GET_COST_CENTERS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,
-                'email': email,
+                'only_enabled': only_enabled,
                 'limit': limit,
                 'offset': offset,
                 'order': order,
@@ -43,11 +43,11 @@ class Employees(ApiBase):
 
     def post(self, payload) -> Dict:
         """
-        Creates or updates employee
-        :param payload: Employee object
-        :return: Employee Object
+        Creates or updates cost center
+        :param payload: Cost center object
+        :return: Cost center Object
         """
         return self.make_post_request(
-            api_url=Employees.POST_EMPLOYEES,
+            api_url=CostCenters.POST_COST_CENTERS,
             payload=payload
         )

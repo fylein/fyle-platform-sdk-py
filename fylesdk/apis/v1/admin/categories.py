@@ -1,5 +1,5 @@
 """
-V1 Admin Employees
+V1 Admin Categories
 """
 
 from typing import Dict
@@ -7,29 +7,29 @@ from typing import Dict
 from ...api_base import ApiBase
 
 
-class Employees(ApiBase):
-    """Class for Employees APIs."""
+class Categories(ApiBase):
+    """Class for Categories APIs."""
 
-    GET_EMPLOYEES = '/employees'
-    POST_EMPLOYEES = '/employees'
+    GET_CATEGORIES = '/categories'
+    POST_CATEGORIES = '/categories'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, email=None, limit=None,
-        offset=None, order=None, **kwargs) -> Dict:
+    def get(self, created_at=None, updated_at=None, email=None,
+        limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
-        Get Employees
+        Get Categories
         :param created_at:
         :param updated_at:
         :param email:
-        :param limit: No. of employees to be fetched
+        :param limit: No. of Categories to be fetched
         :param offset: Pagination offset
         :param order:
-        :return: List of Employee Objects
+        :return: List of Categories Objects
         """
         return self.make_get_request(
-            api_url=Employees.GET_EMPLOYEES,
+            api_url=Categories.GET_CATEGORIES,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,
@@ -43,11 +43,11 @@ class Employees(ApiBase):
 
     def post(self, payload) -> Dict:
         """
-        Creates or updates employee
-        :param payload: Employee object
-        :return: Employee Object
+        Creates or updates Categories
+        :param payload: Categories object
+        :return: Categories object
         """
         return self.make_post_request(
-            api_url=Employees.POST_EMPLOYEES,
+            api_url=Categories.POST_CATEGORIES,
             payload=payload
         )

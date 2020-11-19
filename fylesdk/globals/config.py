@@ -6,12 +6,12 @@ import configparser
 
 configurations = {
     'FYLE': {
-        'TOKEN_URL': None,
-        'SERVER_URL': None
+        'TOKEN_URL': '',
+        'SERVER_URL': ''
     },
     'AUTH': {
-        'REFRESH_TOKEN': None,
-        'ACCESS_TOKEN': None
+        'REFRESH_TOKEN': '',
+        'ACCESS_TOKEN': ''
     }
 }
 

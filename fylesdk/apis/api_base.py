@@ -5,7 +5,7 @@
 import json
 
 from .. import exceptions
-from ..globals.configs import config
+from ..globals.config import config
 from ..internals.network import Network
 
 

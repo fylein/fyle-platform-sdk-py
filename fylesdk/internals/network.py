@@ -14,8 +14,7 @@ class Network:
     HEADERS = serializers.deserialize({
             'AUTHORIZATION': 'Authorization',
             'CONTENT_TYPE': 'Content-Type',
-            'USER_AGENT': 'User-Agent',
-            'FYLE_SIGNATURE': 'X-Fyle-Signature'
+            'USER_AGENT': 'User-Agent'
         })
 
     def __init__(self):

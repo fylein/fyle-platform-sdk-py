@@ -4,8 +4,6 @@ V1 Admin Report Approvals
 
 from typing import Dict
 
-from .role import role
-from ..version import version
 from ...api_base import ApiBase
 
 
@@ -14,7 +12,7 @@ class ReportApprovals(ApiBase):
 
     POST_REPORT_APPROVALS = '/report_approvals'
 
-    def __init__(self):
+    def __init__(self, version, role):
         super().__init__(version, role)
 
     def post(self, payload) -> Dict:

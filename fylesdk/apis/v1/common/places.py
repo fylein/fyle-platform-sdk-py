@@ -4,8 +4,6 @@ V1 Admin Places
 
 from typing import Dict
 
-from .role import role
-from ..version import version
 from ...api_base import ApiBase
 
 
@@ -14,7 +12,7 @@ class Places(ApiBase):
 
     GET_PLACES = '/places'
 
-    def __init__(self):
+    def __init__(self, version, role):
         super().__init__(version, role)
 
     def get(self, q, types, location=None, **kwargs) -> Dict:
