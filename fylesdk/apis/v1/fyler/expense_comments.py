@@ -15,7 +15,7 @@ class ExpenseComments(ApiBase):
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def post(self, payload) -> Dict:
+    def list(self, payload) -> Dict:
         """
         Post Expense Comment
         :param payload: Expense Comment Object

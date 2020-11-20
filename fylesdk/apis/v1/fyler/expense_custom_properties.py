@@ -1,5 +1,5 @@
 """
-V1 Admin Expense Custom Properties
+V1 Fyler Expense Custom Properties
 """
 
 from typing import Dict

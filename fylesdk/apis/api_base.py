@@ -39,7 +39,7 @@ class ApiBase(Network):
     #         objects = objects + segment['data']
     #     return objects
 
-    def make_get_request(self, api_url, query_params):
+    def make_get_request(self, api_url, query_params=None):
         """Create a HTTP GET request.
 
         Parameters:
@@ -92,9 +92,34 @@ class ApiBase(Network):
         api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
 
         response = self.post_request(
-            url='{0}{1}'.format(config.get('FYLE', 'SERVER_URL'), api_url),
+            url=self._format_api_url(api_url),
             headers=api_headers,
             json=payload
+        )
+
+        if response.status_code == 200:
+            result = json.loads(response.text)
+            return result
+
+        self._assert_response(response)
+
+        return None
+
+    def make_delete_request(self, api_url):
+        """Create a HTTP delete request.
+
+        Parameters:
+            api_url (str): Url for the wanted API.
+
+        Returns:
+            A response from the request
+        """
+
+        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
+
+        response = self.delete_request(
+            url=self._format_api_url(api_url),
+            headers=api_headers
         )
 
         if response.status_code == 200:

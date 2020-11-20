@@ -10,12 +10,12 @@ from ...api_base import ApiBase
 class Reports(ApiBase):
     """Class for Reports APIs."""
 
-    GET_REPORTS = '/reports'
+    LIST_REPORTS = '/reports'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, approved_at=None, 
+    def list(self, created_at=None, updated_at=None, approved_at=None, 
         settled_at=None, reimbursed_at=None, state=None, limit=None,
         offset=None, order=None, **kwargs) -> Dict:
         """
@@ -32,7 +32,7 @@ class Reports(ApiBase):
         :return: List of Reports Objects
         """
         return self.make_get_request(
-            api_url=Reports.GET_REPORTS,
+            api_url=Reports.LIST_REPORTS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

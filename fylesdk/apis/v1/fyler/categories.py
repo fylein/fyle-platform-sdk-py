@@ -1,5 +1,5 @@
 """
-V1 Admin Categories
+V1 Fyler Categories
 """
 
 from typing import Dict
@@ -11,7 +11,6 @@ class Categories(ApiBase):
     """Class for Categories APIs."""
 
     LIST_CATEGORIES = '/categories'
-    POST_CATEGORIES = '/categories'
 
     def __init__(self, version, role):
         super().__init__(version, role)
@@ -37,15 +36,4 @@ class Categories(ApiBase):
                 'offset': offset,
                 **kwargs
             }
-        )
-
-    def post(self, payload) -> Dict:
-        """
-        Creates or updates Categories
-        :param payload: Categories object
-        :return: Categories object
-        """
-        return self.make_post_request(
-            api_url=Categories.POST_CATEGORIES,
-            payload=payload
         )

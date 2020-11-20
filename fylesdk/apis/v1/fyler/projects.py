@@ -1,5 +1,5 @@
 """
-V1 Admin Categories
+V1 Fyler Projects
 """
 
 from typing import Dict
@@ -7,45 +7,48 @@ from typing import Dict
 from ...api_base import ApiBase
 
 
-class Categories(ApiBase):
-    """Class for Categories APIs."""
+class Projects(ApiBase):
+    """Class for Projects APIs."""
 
-    LIST_CATEGORIES = '/categories'
-    POST_CATEGORIES = '/categories'
+    LIST_PROJECTS = '/projects'
+    GET_PROJECTS = '/projects/{id}'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
     def list(self, created_at=None, updated_at=None, only_enabled=None,
-        limit=None, offset=None, **kwargs) -> Dict:
+        limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
-        Get Categories
+        Get Projects
         :param created_at:
         :param updated_at:
+        :param display_name:
         :param only_enabled:
-        :param limit: No. of Categories to be fetched
+        :param limit: No. of projects to be fetched
         :param offset: Pagination offset
-        :return: List of Categories Objects
+        :param order:
+        :return: List of project objects
         """
         return self.make_get_request(
-            api_url=Categories.LIST_CATEGORIES,
+            api_url=Projects.LIST_PROJECTS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,
+                'display_name': display_name,
                 'only_enabled': only_enabled,
                 'limit': limit,
                 'offset': offset,
+                'order': order,
                 **kwargs
             }
         )
 
-    def post(self, payload) -> Dict:
+    def get(self, id) -> Dict:
         """
-        Creates or updates Categories
-        :param payload: Categories object
-        :return: Categories object
+        Get Single Project by ID
+        :param id: Project ID
+        :return: Project Object
         """
-        return self.make_post_request(
-            api_url=Categories.POST_CATEGORIES,
-            payload=payload
+        return self.make_get_request(
+            api_url=Projects.GET_PROJECTS.format(id)
         )

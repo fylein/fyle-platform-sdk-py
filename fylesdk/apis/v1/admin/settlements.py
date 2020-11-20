@@ -10,12 +10,12 @@ from ...api_base import ApiBase
 class Settlements(ApiBase):
     """Class for Settlements APIs."""
 
-    GET_SETTLEMENTS = '/settlements'
+    LIST_SETTLEMENTS = '/settlements'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, limit=None,
+    def list(self, created_at=None, updated_at=None, limit=None,
         offset=None, order=None, **kwargs) -> Dict:
         """
         Get Settlements
@@ -27,7 +27,7 @@ class Settlements(ApiBase):
         :return: List of Settlements Objects
         """
         return self.make_get_request(
-            api_url=Settlements.GET_SETTLEMENTS,
+            api_url=Settlements.LIST_SETTLEMENTS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

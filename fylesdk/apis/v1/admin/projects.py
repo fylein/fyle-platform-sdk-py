@@ -10,13 +10,13 @@ from ...api_base import ApiBase
 class Projects(ApiBase):
     """Class for Projects APIs."""
 
-    GET_PROJECTS = '/projects'
+    LIST_PROJECTS = '/projects'
     POST_PROJECTS = '/projects'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, display_name=None, only_enabled=None,
+    def list(self, created_at=None, updated_at=None, display_name=None, only_enabled=None,
         limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
         Get Projects
@@ -30,7 +30,7 @@ class Projects(ApiBase):
         :return: List of project objects
         """
         return self.make_get_request(
-            api_url=Projects.GET_PROJECTS,
+            api_url=Projects.LIST_PROJECTS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

@@ -10,13 +10,13 @@ from ...api_base import ApiBase
 class Employees(ApiBase):
     """Class for Employees APIs."""
 
-    GET_EMPLOYEES = '/employees'
+    LIST_EMPLOYEES = '/employees'
     POST_EMPLOYEES = '/employees'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, email=None, limit=None,
+    def list(self, created_at=None, updated_at=None, email=None, limit=None,
         offset=None, order=None, **kwargs) -> Dict:
         """
         Get Employees
@@ -29,7 +29,7 @@ class Employees(ApiBase):
         :return: List of Employee Objects
         """
         return self.make_get_request(
-            api_url=Employees.GET_EMPLOYEES,
+            api_url=Employees.LIST_EMPLOYEES,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

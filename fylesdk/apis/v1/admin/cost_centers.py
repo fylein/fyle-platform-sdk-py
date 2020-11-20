@@ -10,13 +10,13 @@ from ...api_base import ApiBase
 class CostCenters(ApiBase):
     """Class for Cost Center APIs."""
 
-    GET_COST_CENTERS = '/cost_centers'
+    LIST_COST_CENTERS = '/cost_centers'
     POST_COST_CENTERS = '/cost_centers'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, only_enabled=None,
+    def list(self, created_at=None, updated_at=None, only_enabled=None,
         limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
         Get Cost Center
@@ -29,7 +29,7 @@ class CostCenters(ApiBase):
         :return: List of Cost Centers Objects
         """
         return self.make_get_request(
-            api_url=CostCenters.GET_COST_CENTERS,
+            api_url=CostCenters.LIST_COST_CENTERS,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,

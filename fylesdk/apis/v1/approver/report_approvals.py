@@ -1,5 +1,5 @@
 """
-V1 Admin Report Approvals
+V1 Approver Report Approvals
 """
 
 from typing import Dict

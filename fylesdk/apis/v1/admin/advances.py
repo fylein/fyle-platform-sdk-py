@@ -10,12 +10,12 @@ from ...api_base import ApiBase
 class Advances(ApiBase):
     """Class for Advances APIs."""
 
-    GET_ADVANCES = '/advances'
+    LIST_ADVANCES = '/advances'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def get(self, created_at=None, updated_at=None, approved_at=None, settled_at=None,
+    def list(self, created_at=None, updated_at=None, approved_at=None, settled_at=None,
         limit=None, offset=None, order=None, **kwargs) -> Dict:
         """
         Get Advances
@@ -29,7 +29,7 @@ class Advances(ApiBase):
         :return: List of Advances Objects
         """
         return self.make_get_request(
-            api_url=Advances.GET_ADVANCES,
+            api_url=Advances.LIST_ADVANCES,
             query_params={
                 'created_at': created_at,
                 'updated_at': updated_at,
