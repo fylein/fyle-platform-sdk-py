@@ -1,0 +1,263 @@
+{
+  "/common/places": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "It containes a textual identifier that uniquely identifies a place."
+                  },
+                  "formatted_address": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Contains the human-readable name for the returned result.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/common/places/{id}": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "It containes a textual identifier that uniquely identifies a place."
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "formatted_address": {
+                  "type": "string"
+                },
+                "latitude": {
+                  "type": "number"
+                },
+                "longitude": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/common/expense_extract": {
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "client": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "Takes the platform name from where this API is requested.\n"
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Takes the name of the file which contains the receipt.\n"
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "This field takes the base64 encoded representation of the file.\n"
+                    }
+                  }
+                }
+              },
+              "meta": {
+                "type": "object",
+                "description": "Additional optional data.\n",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "spent_at": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "number",
+                  "description": "Extracted expense amount from receipt.\n"
+                },
+                "category_name": {
+                  "type": "string",
+                  "maxLength": 25,
+                  "description": "Extracted category of expense from receipt.\n"
+                },
+                "currency": {
+                  "type": "string",
+                  "maxLength": 3,
+                  "description": "Extracted currency from the given receipt. <br>\nISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\n"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "invoice_dt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant \nExtracted timestamp on which the Expense was made.\n"
+                },
+                "vendor_name": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Extracted string denoting the name of the vendor to which the expense was made\n"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "The name of the client which is extracting the data.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "400": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "row": {
+                    "type": "integer",
+                    "description": "This holds the info of which row contains bad data.\n"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "This helps in identifying the error by unique key.\n"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "This explains what the error is in `human readable` text.\n"
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "enum": [
+                    "Unable to process JSON"
+                  ],
+                  "type": "string",
+                  "description": "This error means that incoming json is not in right format.\n"
+                },
+                "code": {
+                  "type": "integer",
+                  "default": 400
+                }
+              }
+            }
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  }
+}

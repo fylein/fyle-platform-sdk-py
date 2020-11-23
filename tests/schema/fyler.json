@@ -1,0 +1,2557 @@
+{
+  "/fyler/projects/{id}": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 10,
+                  "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                },
+                "org_id": {
+                  "type": "string",
+                  "description": "The unique id of the Organization to which the object is associated.\n"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                },
+                "name": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Represents the name of the project."
+                },
+                "sub_project": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Represents the name of the sub_project."
+                },
+                "display_name": {
+                  "type": "string",
+                  "maxLength": 513,
+                  "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                },
+                "code": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This represents the code of project.\n"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This represents the description of project.\n"
+                },
+                "is_enabled": {
+                  "type": "boolean",
+                  "description": "This indicates if the project is enabled for use within the organisation.\n",
+                  "default": true
+                },
+                "category_ids": {
+                  "type": "array",
+                  "description": "Has the list of all category ids that are applicable for this project.\n",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "categories": {
+                  "type": "array",
+                  "description": "This list of categories that are applicable for this project.\n",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the category."
+                      },
+                      "sub_category": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the sub_category."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
+                      },
+                      "system_category": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the system_category."
+                      }
+                    }
+                  }
+                },
+                "primary_approver_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the primary approver.\n"
+                },
+                "primary_approver": {
+                  "description": "Primary approver who will be added as an approver by default for all the submitted reports and expenses.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                },
+                "secondary_approver_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the secondary approver.\n"
+                },
+                "secondary_approver": {
+                  "description": "A secondary approver who can be added to reports via policies.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/projects": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents the name of the project."
+                  },
+                  "sub_project": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents the name of the sub_project."
+                  },
+                  "display_name": {
+                    "type": "string",
+                    "maxLength": 513,
+                    "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                  },
+                  "code": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the code of project.\n"
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the description of project.\n"
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This indicates if the project is enabled for use within the organisation.\n",
+                    "default": true
+                  },
+                  "category_ids": {
+                    "type": "array",
+                    "description": "Has the list of all category ids that are applicable for this project.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "categories": {
+                    "type": "array",
+                    "description": "This list of categories that are applicable for this project.\n",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 10,
+                          "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                        },
+                        "name": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "Represents the name of the category."
+                        },
+                        "sub_category": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "Represents the name of the sub_category."
+                        },
+                        "display_name": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
+                        },
+                        "system_category": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "Represents the name of the system_category."
+                        }
+                      }
+                    }
+                  },
+                  "primary_approver_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Employee Id of the primary approver.\n"
+                  },
+                  "primary_approver": {
+                    "description": "Primary approver who will be added as an approver by default for all the submitted reports and expenses.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                      }
+                    }
+                  },
+                  "secondary_approver_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Employee Id of the secondary approver.\n"
+                  },
+                  "secondary_approver": {
+                    "description": "A secondary approver who can be added to reports via policies.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/cost_centers/{id}": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This is provided by Fyle to identify a cost center from this organisation.\n"
+                },
+                "name": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This represents the name of the cost center.\n"
+                },
+                "code": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This represents the code of cost center.\n"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This field provides a decription about the cost center.\n"
+                },
+                "is_enabled": {
+                  "type": "boolean",
+                  "description": "This field specifies if the current cost center is enabled or not.\n"
+                },
+                "org_id": {
+                  "type": "string",
+                  "description": "The unique id of the Organization to which the object is associated.\n"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/cost_centers": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This is provided by Fyle to identify a cost center from this organisation.\n"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the name of the cost center.\n"
+                  },
+                  "code": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the code of cost center.\n"
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This field provides a decription about the cost center.\n"
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This field specifies if the current cost center is enabled or not.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expenses/{id}": {
+    "get": {},
+    "delete": {
+      "responses": {
+        "200": {},
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expenses": {
+    "get": {},
+    "post": {}
+  },
+  "/fyler/my_profile": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This id prodvided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                },
+                "user_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "maxLength": 127,
+                  "description": "An immutable field that represents the email address of the employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                },
+                "employee_code": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\nThis field shall be ignored in POST requests.\n"
+                },
+                "full_name": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Represents the full name of the employee. Must be at least 3 characters."
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShows when this employees entry was created.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShows when this employees entry was updated.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "email_verified_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShows when this email was verified in Fyle.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "is_onboarded": {
+                  "type": "boolean",
+                  "description": "This flag indicates whether an employee has completed the onboarding flow or not.\n"
+                },
+                "joining_date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Date string in YYYY-MM-DD format"
+                },
+                "location": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "level_id": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "level": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a level from this organisation.\nIt is always prefixed with the string `lvl`.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Level name of the employees\n"
+                    },
+                    "band": {
+                      "type": "string",
+                      "description": "Band in which this level belongs to, you can group mulitple levels into a single band.\n"
+                    },
+                    "rank": {
+                      "type": "integer",
+                      "description": "Rank in which this level belongs to. We recommend to assign higher rank for senior people in the org trees and\nlower rank for employees in leaf of org tree.\n"
+                    }
+                  }
+                },
+                "business_unit": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "department_id": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "department": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a department from this organisation.\nIt is always prefixed with the string `dept`.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "subDepartment": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 255
+                },
+                "mobile": {
+                  "type": "string",
+                  "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                },
+                "is_mobile_verified": {
+                  "type": "boolean",
+                  "description": "",
+                  "default": false
+                },
+                "mobile_verified_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShows when the employee has verified his/her mobile number in Fyle.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "roles": {
+                  "type": "array",
+                  "description": "These are roles assigned to an employee, Most roles are assigned by Admin.\nFew roles like HOP, HOD, APPROVER are assigned by FYLE.\n",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "FYLER",
+                      "APPROVER",
+                      "TRAVEL_ADMIN",
+                      "VERIFIER",
+                      "PAYMENT_PROCESSOR",
+                      "FINANCE",
+                      "ADMIN",
+                      "TRAVEL_AGENT",
+                      "OWNER",
+                      "AUDITOR",
+                      "HOD",
+                      "HOP"
+                    ]
+                  }
+                },
+                "branch_ifsc": {
+                  "type": "string",
+                  "maxLength": 11,
+                  "description": "IFSC code of the bank account of the employee.\nMust be a 11 digit alphanumeric code. `branch_ifsc` is India specific.\n"
+                },
+                "bank_name": {
+                  "type": "string"
+                },
+                "branch_account": {
+                  "type": "string",
+                  "maxLength": 63,
+                  "description": "The account number of the bank account of the employee. `branch_account` is India specific.\n"
+                },
+                "employee_settings": {
+                  "type": "object",
+                  "properties": {
+                    "auto_fyle_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        },
+                        "is_background_enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if it is enabled in background (Not sure about this setting)\n"
+                        }
+                      }
+                    },
+                    "cost_center_settings": {
+                      "type": "object",
+                      "properties": {
+                        "default_cost_center_id": {
+                          "type": "integer",
+                          "description": "This field indicates the default cost center id of organisation.\n",
+                          "default_cost_center_name": {
+                            "type": "integer",
+                            "description": "This field indicates the default cost center name of organisation.\n",
+                            "example": "Best cost center"
+                          }
+                        }
+                      }
+                    },
+                    "per_diem_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed_per_diem_ids": {
+                          "type": "array",
+                          "description": "This contains the list of all allowed per diems in your organisation\n",
+                          "items": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "access_delegation_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        }
+                      }
+                    },
+                    "insta_fyle_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        },
+                        "is_static_camera_overlay_enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if camera overlay is enabled.\n"
+                        },
+                        "extract_fields": {
+                          "type": "array",
+                          "description": "This indicates which field to extract from receipt.\n",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "bulk_fyle_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "gmail_fmr_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "trip_request_org_user_settings": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "one_click_action_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        },
+                        "module": {
+                          "type": "string",
+                          "description": "This field indicates for which module the setting is enabled/allowed.\n"
+                        }
+                      }
+                    },
+                    "preferences": {
+                      "type": "object",
+                      "properties": {
+                        "default_project_id": {
+                          "type": "integer",
+                          "description": "This field indicates default project assigned to employee.\n"
+                        },
+                        "default_vehicle_type": {
+                          "type": "string",
+                          "description": "This field indicates default vehicle type selected by employee.\n"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "object",
+                      "properties": {
+                        "timezone": {
+                          "type": "string",
+                          "description": "This field indicates the timezone of the employee.\n"
+                        },
+                        "abbreviation": {
+                          "type": "string",
+                          "description": "This field indicates the abbreviation of timezone.\n"
+                        },
+                        "offset": {
+                          "type": "string",
+                          "description": "This field indicates the offset of timezone from UTC.\n"
+                        }
+                      }
+                    },
+                    "whatsapp_fyle_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "sms_fyle_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "cost_center_ids": {
+                      "type": "array",
+                      "description": "This field indicates the cost centers that can accessed by employee.\n",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "currency_settings": {
+                      "type": "object",
+                      "properties": {
+                        "preferred_currency": {
+                          "type": "string",
+                          "description": "This field indicates the preferred currency of employee.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "project_ids": {
+                      "type": "array",
+                      "description": "This field indicates the project assigned to employee.\n",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "in_app_chat_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        },
+                        "restore_id": {
+                          "type": "integer",
+                          "description": "This field indicates the restore id of the in app chat settings.\n"
+                        }
+                      }
+                    },
+                    "hotjar_settings": {
+                      "type": "object",
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is allowed or not.\n"
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "This field indicates if the module is enabled or not.\n"
+                        }
+                      }
+                    },
+                    "notification_settings": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "object",
+                          "properties": {
+                            "allowed": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is allowed or not.\n"
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is enabled or not.\n"
+                            }
+                          }
+                        },
+                        "push_notification": {
+                          "type": "object",
+                          "properties": {
+                            "allowed": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is allowed or not.\n"
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is enabled or not.\n"
+                            },
+                            "unsubscribed_events": {
+                              "type": "array",
+                              "description": "This field indicates which notifications are unsubscribed for this object.\n",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "whatsapp": {
+                          "type": "object",
+                          "properties": {
+                            "allowed": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is allowed or not.\n"
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "This field indicates if the module is allowed or not.\n"
+                            },
+                            "unsubscribed_events": {
+                              "type": "array",
+                              "description": "This field indicates which notifications are unsubscribed for this object.\n",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "notify_only_delegatee": {
+                          "type": "boolean",
+                          "description": "This field indicates if only delegatee should be informed about the notifications.\n"
+                        }
+                      }
+                    }
+                  }
+                },
+                "org": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The unique id of the Organization to which the object is associated.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The Name of the Organization to which the object is associated.\n"
+                    },
+                    "domain": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field specifies the domain with which the organisation is registered.\n"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field specifies the default currency to be used in expenses.\n"
+                    },
+                    "branch_ifsc": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This is the IFSC code of the bank branch with which the organisation is associated.\n"
+                    },
+                    "branch_account": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field specifies the bank branch with which the organisation is associated.\n"
+                    },
+                    "is_verified": {
+                      "type": "boolean",
+                      "description": "This field specifies if the organisation is verified or not.\n"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                    }
+                  }
+                },
+                "primary_approver": {
+                  "description": "Primary approver who will be added as an approver by default for all the submitted reports and expenses.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                },
+                "primary_approver_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the primary approver.\n"
+                },
+                "secondary_approver": {
+                  "description": "A secondary approver who can be added to reports via policies.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                },
+                "secondary_approver_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the secondary approver.\n"
+                },
+                "tertiary_approver": {
+                  "description": "A tertiary approver who can be added to reports via policies.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                },
+                "tertiary_approver_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the tertiary approver.\n"
+                },
+                "delegatee": {
+                  "description": "An employee who will be able to login on-behalf-of this employee.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address of the Employee.\nMust be compliant with <a href='https://www.ietf.org/rfc/rfc822.txt'>RFC 822.</a>\n"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the Employee. Must be at least 3 characters.\n"
+                    }
+                  }
+                },
+                "delegatee_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Employee Id of the delegatee.\n"
+                },
+                "delegation_end_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShow when the employee has verified his/her mobile number in Fyle.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "delegation_start_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nShows when the employee was verified his/her mobile number in Fyle.\nThis field shall be ignored in POST calls to create/update employees.\n"
+                },
+                "mileage_rate_labels": {
+                  "type": "array",
+                  "description": "The list of mileage labels that are applicable for this employee.\n",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "TWO_WHEELER",
+                      "FOUR_WHEELER",
+                      "FOUR_WHEELER1",
+                      "FOUR_WHEELER3",
+                      "FOUR_WHEELER4",
+                      "BICYCLE",
+                      "ELECTRIC_CAR"
+                    ]
+                  }
+                },
+                "cost_centers": {
+                  "type": "array",
+                  "description": "This list of cost centers that are applicable for this employee.\n",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "code": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "per_diem_rates": {
+                  "type": "array",
+                  "description": "This list of per diem rates that are applicable for this employee.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "currency": {
+                        "type": "string",
+                        "maxLength": 3
+                      },
+                      "rate": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "custom_properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "city": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "display_name": {
+                            "type": "string"
+                          },
+                          "country": {
+                            "type": "string"
+                          },
+                          "formatted_address": {
+                            "type": "string"
+                          },
+                          "latitude": {
+                            "type": "number"
+                          },
+                          "longitude": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                  }
+                },
+                "is_enabled": {
+                  "type": "boolean",
+                  "description": "Indicates whether an employee is enabled or not in Fyle.\n",
+                  "default": true
+                },
+                "special_email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "This is an auto-generated email to which an employee can forward a receipt from any of their email inboxes.\nA corresponding expense will be created in their Fyle app.\n"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "PENDING_DETAILS",
+                    "ACTIVE",
+                    "DISABLED"
+                  ]
+                },
+                "is_primary_account": {
+                  "type": "boolean",
+                  "description": "This flag indicates whether this is primary account of this employee or not.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/vendors": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "This id provided by Fyle to identify a vendor from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "display_name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents the name of the vendor."
+                  },
+                  "other_names": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents other name of the vendor."
+                  },
+                  "creator_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the creator of vendor.\n"
+                  },
+                  "is_verified": {
+                    "type": "boolean",
+                    "description": "This indicates if the vendor is verified.\n",
+                    "default": true
+                  },
+                  "default_category": {
+                    "type": "string",
+                    "description": "This represents the default category associated with the current vendor.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/categories": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents the name of the project."
+                  },
+                  "fyle_category": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Represents the name of the fyle category."
+                  },
+                  "sub_category": {
+                    "type": "string",
+                    "maxLength": 513,
+                    "description": "Represents the sub category of a given category.\n"
+                  },
+                  "code": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This represents the code of project.\n"
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This indicates if the project is enabled for use within the organisation.\n",
+                    "default": true
+                  },
+                  "creator_id": {
+                    "type": "string",
+                    "description": "This represents the id of user who created the category.\n"
+                  },
+                  "last_updater": {
+                    "type": "string",
+                    "description": "This represents the id of user who updated the category.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/currencies": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "description": "Contains (Currency code, Currency name) pairs.\n",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/exchange_rate": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "exchange_rate": {
+                  "type": "number",
+                  "description": "This represents the exchange rate between the given currencies.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expense_stats": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "total_amount": {
+                  "type": "number",
+                  "description": "This field indicates the total amount of user expenses.\n"
+                },
+                "total_count": {
+                  "type": "integer",
+                  "description": "This field indicates the total count of user expenses.\n"
+                },
+                "total_reimbursable": {
+                  "type": "number",
+                  "description": "This field indicates the total of reimbursible expenses.\n"
+                },
+                "total_non_reimbursible": {
+                  "type": "number",
+                  "description": "This field indicates the total of non reimbursible expenses.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/trip_requests_stats": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "total_count": {
+                  "type": "integer",
+                  "description": "This field indicates the total count of trip requests.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/advance_requests_stats": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "total_amount": {
+                  "type": "number",
+                  "description": "This field indicates the total amount of advance requests.\n"
+                },
+                "total_count": {
+                  "type": "integer",
+                  "description": "This field indicates the total count of advance requests.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/reports_stats": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "total_amount": {
+                  "type": "number",
+                  "description": "This field indicates the total amount of report.\n"
+                },
+                "total_count": {
+                  "type": "integer",
+                  "description": "This field indicates the total amount of report.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expense_comments": {
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "expense_id",
+              "comment"
+            ],
+            "properties": {
+              "expense_id": {
+                "type": "string",
+                "description": "The expense id for which comment has to be created.\n"
+              },
+              "notify": {
+                "type": "boolean",
+                "description": "This indicates whether it should be notified or not.\n"
+              },
+              "comment": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "Comment made on the expense."
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique string to identify the Expense Comment. Ignore this field when used as part of a POST request to create an Expense."
+                  },
+                  "comment": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Comment made on the expense."
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "employee_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  },
+                  "report_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id prodvided by Fyle to uniquely identify a report.\nThis id is always prefixed with `rp`.\n"
+                  },
+                  "expense_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id prodvided by Fyle to uniquely identify an expense.\nThis id is always prefixed with `tx`.\n"
+                  },
+                  "trip_request_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Trip request id if any.\n"
+                  },
+                  "advance_request_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Advance request id if any.\n"
+                  },
+                  "state": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "State of the comment."
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "400": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "row": {
+                    "type": "integer",
+                    "description": "This holds the info of which row contains bad data.\n"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "This helps in identifying the error by unique key.\n"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "This explains what the error is in `human readable` text.\n"
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "enum": [
+                    "Unable to process JSON"
+                  ],
+                  "type": "string",
+                  "description": "This error means that incoming json is not in right format.\n"
+                },
+                "code": {
+                  "type": "integer",
+                  "default": 400
+                }
+              }
+            }
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expense_custom_properties": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "description": "This id is provided by Fyle to identify a particular custom property.\n"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "This field specifies the name of the custom property.\n"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "This field specifies the type of the custom property.\n"
+                  },
+                  "options": {
+                    "type": "array",
+                    "description": "This field specifies the option values of the custom property in case on SELECT or MULTI_SELECT custom property type.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "placeholder": {
+                    "type": "string",
+                    "description": "This field specifies the placeholder of the custom property.\n"
+                  },
+                  "org_category_ids": {
+                    "type": "array",
+                    "description": "This field specifies the org category ids associated with the custom property.\n",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "This field indicates if the module is enabled or not.\n"
+                  },
+                  "mandatory": {
+                    "type": "boolean",
+                    "description": "This field specifies if the custom property is mandatory or not.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/policy_test": {
+    "post": {}
+  },
+  "/fyler/reports": {
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "report_type",
+                "source",
+                "purpose"
+              ],
+              "properties": {
+                "trip_request_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Takes the id given by the fyler itself. In case of report type is `TRIP` this field is mandatory.\n"
+                },
+                "location1": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "location2": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "location3": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "location4": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "location5": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "purpose": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This is an auto-generated field by `/fyler/purpose`.\n"
+                },
+                "source": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "The name of the client app which is creating the expense.\nIf its a thrid party app, its prefixed with TPA_.\n"
+                },
+                "report_type": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Indicates what's the type of report that the fyler is submitting.\n",
+                  "enum": [
+                    "BASIC",
+                    "TRIP"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                  },
+                  "employee_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  },
+                  "employee": {
+                    "type": "object",
+                    "description": "Details of the employee to whom this object belongs to.",
+                    "properties": {
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "submitted_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was submitted to the Approvers.\nIf the Report is not yet submitted, this could be null. <br>\n"
+                  },
+                  "purpose": {
+                    "type": "string"
+                  },
+                  "claim_number": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "currency": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "description": "Amount value of the object.\n"
+                  },
+                  "tax": {
+                    "type": "number"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "approved_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was approved. This field could be null if the Report was not yet approved.\n"
+                  },
+                  "is_verified": {
+                    "type": "boolean",
+                    "description": "Indicates whether the Report is verified or not.\n"
+                  },
+                  "verified_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was verified. If the Report is not verified yet, this could be null.\n"
+                  },
+                  "reimbursed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was Reimbursed. If the Report is not reimbursed or submitted yet, this could be null.\n"
+                  },
+                  "settlement_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique ID, generated by Fyle, for identifying the Settlement. Once a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                  },
+                  "settled_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the report was settled. <br>\n"
+                  },
+                  "num_expenses": {
+                    "type": "integer"
+                  },
+                  "expense_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "verification_state": {
+                    "type": "string"
+                  },
+                  "creator_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique ID, generated by Fyle, for identifying the Employee who created the object. Once an object is created, the value of this field cannot be changed and is immutable.<br>\n"
+                  },
+                  "creator": {
+                    "description": "Details of employee who created this report.\n",
+                    "type": "object",
+                    "properties": {
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "trip_request_id": {
+                    "type": "string"
+                  },
+                  "is_physical_bill_received": {
+                    "type": "boolean"
+                  },
+                  "physical_bill_at": {
+                    "type": "string"
+                  },
+                  "is_manual_flagged": {
+                    "type": "boolean"
+                  },
+                  "is_policy_flagged": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "started_at": {
+                    "type": "string"
+                  },
+                  "ended_at": {
+                    "type": "string"
+                  },
+                  "locations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "city": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "display_name": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "formatted_address": {
+                          "type": "string"
+                        },
+                        "latitude": {
+                          "type": "number"
+                        },
+                        "longitude": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "report_approvals": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "siginifies all the approvals of a particular object.\n",
+                      "properties": {
+                        "approver_id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "APPROVED",
+                            "APPROVAL_PENDING",
+                            "APPROVAL_DISABLED"
+                          ]
+                        },
+                        "rank": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  }
+}

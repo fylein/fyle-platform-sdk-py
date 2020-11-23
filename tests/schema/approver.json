@@ -1,0 +1,382 @@
+{
+  "/approver/report_approvals": {
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Id of a report which is to be approved.   \n"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "count": {
+                    "description": "The total number of objects that can be requested.\n",
+                    "type": "integer"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                        },
+                        "employee_id": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "This id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        },
+                        "employee": {
+                          "type": "object",
+                          "description": "Details of the employee to whom this object belongs to.",
+                          "properties": {
+                            "user_id": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "maxLength": 127,
+                              "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                            },
+                            "code": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                            },
+                            "location": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "level_id": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "department_id": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "business_unit": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the business unit of the organization to which of the employee belongs."
+                            },
+                            "title": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the title/desgination of the employee."
+                            },
+                            "mobile": {
+                              "type": "string",
+                              "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                            },
+                            "joined_at": {
+                              "type": "string",
+                              "format": "date",
+                              "description": "Date string in YYYY-MM-DD format"
+                            },
+                            "full_name": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the full name of the employee. Must be at least 3 characters."
+                            }
+                          }
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                        },
+                        "submitted_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was submitted to the Approvers.\nIf the Report is not yet submitted, this could be null. <br>\n"
+                        },
+                        "purpose": {
+                          "type": "string"
+                        },
+                        "claim_number": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "currency": {
+                          "type": "string",
+                          "maxLength": 10,
+                          "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
+                        },
+                        "amount": {
+                          "type": "integer",
+                          "description": "Amount value of the object.\n"
+                        },
+                        "tax": {
+                          "type": "number"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "source": {
+                          "type": "string"
+                        },
+                        "approved_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was approved. This field could be null if the Report was not yet approved.\n"
+                        },
+                        "verified": {
+                          "type": "boolean",
+                          "description": "Indicates whether the Report is verified or not.\n"
+                        },
+                        "verified_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was verified. If the Report is not verified yet, this could be null.\n"
+                        },
+                        "reimbursed_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was Reimbursed. If the Report is not reimbursed or submitted yet, this could be null.\n"
+                        },
+                        "settlement_id": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "An unique ID, generated by Fyle, for identifying the Settlement. Once a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                        },
+                        "settled_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the report was settled. <br>\n"
+                        },
+                        "num_expenses": {
+                          "type": "integer"
+                        },
+                        "expense_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "verification_state": {
+                          "type": "string"
+                        },
+                        "creator_id": {
+                          "type": "string",
+                          "maxLength": 255,
+                          "description": "An unique ID, generated by Fyle, for identifying the Employee who created the object. Once an object is created, the value of this field cannot be changed and is immutable.<br>\n"
+                        },
+                        "creator": {
+                          "description": "Details of employee who created this report.\n",
+                          "type": "object",
+                          "properties": {
+                            "user_id": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "maxLength": 127,
+                              "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                            },
+                            "code": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                            },
+                            "location": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "level_id": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "department_id": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "business_unit": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the business unit of the organization to which of the employee belongs."
+                            },
+                            "title": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the title/desgination of the employee."
+                            },
+                            "mobile": {
+                              "type": "string",
+                              "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                            },
+                            "joined_at": {
+                              "type": "string",
+                              "format": "date",
+                              "description": "Date string in YYYY-MM-DD format"
+                            },
+                            "full_name": {
+                              "type": "string",
+                              "maxLength": 255,
+                              "description": "Represents the full name of the employee. Must be at least 3 characters."
+                            }
+                          }
+                        },
+                        "trip_request_id": {
+                          "type": "string"
+                        },
+                        "physical_bill": {
+                          "type": "boolean"
+                        },
+                        "physical_bill_at": {
+                          "type": "string"
+                        },
+                        "manual_flag": {
+                          "type": "boolean"
+                        },
+                        "policy_flag": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "started_at": {
+                          "type": "string"
+                        },
+                        "ended_at": {
+                          "type": "string"
+                        },
+                        "locations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "city": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "display_name": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "formatted_address": {
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        },
+                        "report_approvals": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "description": "siginifies all the approvals of a particular object.\n",
+                            "properties": {
+                              "approver_id": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string",
+                                "enum": [
+                                  "APPROVED",
+                                  "APPROVAL_PENDING",
+                                  "APPROVAL_DISABLED"
+                                ]
+                              },
+                              "rank": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "org_id": {
+                          "type": "string",
+                          "description": "The unique id of the Organization to which the object is associated.\n"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  }
+}

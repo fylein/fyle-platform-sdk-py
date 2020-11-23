@@ -19,7 +19,7 @@ class ApiBase(Network):
         self.role = role
 
     def _format_api_url(self, endpoint):
-        return '{base_url}/{version}/{role}{endpoint}'.format(
+        return '{base_url}{role}{endpoint}'.format(
             base_url=config.get('FYLE', 'SERVER_URL'),
             version=self.version,
             role=self.role,
@@ -92,10 +92,11 @@ class ApiBase(Network):
         api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
 
         response = self.post_request(
-            url='{0}{1}'.format(config.get('FYLE', 'SERVER_URL'), api_url),
+            url=self._format_api_url(api_url),
             headers=api_headers,
             json=payload
         )
+        print(response.text)
 
         if response.status_code == 200:
             result = json.loads(response.text)
