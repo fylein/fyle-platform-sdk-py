@@ -1,5 +1,5 @@
 """
-V1 Admin Employees
+V1 Admin Expenses
 """
 
 from typing import Dict
@@ -7,33 +7,40 @@ from typing import Dict
 from ...api_base import ApiBase
 
 
-class Employees(ApiBase):
-    """Class for Employees APIs."""
+class Expenses(ApiBase):
+    """Class for Expenses APIs."""
 
-    LIST_EMPLOYEES = '/employees'
-    POST_EMPLOYEES = '/employees'
+    LIST_EXPENSES = '/expenses'
+    POST_EXPENSES = '/expenses'
 
     def __init__(self, version, role):
         super().__init__(version, role)
 
-    def list(self, created_at=None, updated_at=None, email=None, limit=None,
+    def list(self, approved_at=None, created_at=None, updated_at=None,
+             employee_email=None, state=None, verified=None, limit=None,
              offset=None, order=None, **kwargs) -> Dict:
         """
-        Get Employees
+        Get Expenses
+        :param approved_at:
         :param created_at:
         :param updated_at:
-        :param email:
+        :param employee_email:
+        :param state:
+        :param verified:
         :param limit: No. of employees to be fetched
         :param offset: Pagination offset
         :param order:
-        :return: List of Employee Objects
+        :return: List of Expense Objects
         """
         return self.make_get_request(
-            api_url=Employees.LIST_EMPLOYEES,
+            api_url=Expenses.LIST_EXPENSES,
             query_params={
+                'approved_at': approved_at,
                 'created_at': created_at,
                 'updated_at': updated_at,
-                'email': email,
+                'employee.email': employee_email,
+                'state': state,
+                'verified': verified,
                 'limit': limit,
                 'offset': offset,
                 'order': order,
@@ -43,11 +50,11 @@ class Employees(ApiBase):
 
     def post(self, payload) -> Dict:
         """
-        Creates or updates employee
-        :param payload: Employee object
-        :return: Employee Object
+        Creates or updates expense
+        :param payload: Expense object
+        :return: expenses Object
         """
         return self.make_post_request(
-            api_url=Employees.POST_EMPLOYEES,
+            api_url=Expenses.POST_EXPENSES,
             payload=payload
         )

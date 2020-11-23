@@ -1,3 +1,11 @@
+"""
+	Initializing Approver API's
+"""
+
 from .report_approvals import ReportApprovals
 
-report_approvals = ReportApprovals()
+from ..version import version
+
+role = 'approver'
+
+report_approvals = ReportApprovals(version, role)

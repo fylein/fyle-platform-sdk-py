@@ -6,5 +6,4 @@ __all__ = [
     approver,
     common
 ]
-
 version = 'v1'

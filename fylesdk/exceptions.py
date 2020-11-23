@@ -1,3 +1,8 @@
+"""
+    Contains SDK exceptions
+"""
+
+
 class FylePlatformSDKError(Exception):
     """The base exception class for FyleSDK.
 
