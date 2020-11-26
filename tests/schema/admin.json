@@ -25,7 +25,7 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to identify an employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    "description": "This id provided by Fyle to identify an employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
                   },
                   "user_id": {
                     "type": "string",
@@ -93,7 +93,7 @@
                       },
                       "band": {
                         "type": "string",
-                        "description": "Band in which this level belongs to, you can group mulitple levels into a single band.\n"
+                        "description": "Band in which this level belongs to, you can group multiple levels into a single band.\n"
                       },
                       "rank": {
                         "type": "integer",
@@ -544,7 +544,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -951,7 +951,7 @@
                 "id": {
                   "type": "string",
                   "maxLength": 255,
-                  "description": "This id prodvided by Fyle to identify an employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                  "description": "This id provided by Fyle to identify an employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
                 },
                 "user_id": {
                   "type": "string",
@@ -1019,7 +1019,7 @@
                     },
                     "band": {
                       "type": "string",
-                      "description": "Band in which this level belongs to, you can group mulitple levels into a single band.\n"
+                      "description": "Band in which this level belongs to, you can group multiple levels into a single band.\n"
                     },
                     "rank": {
                       "type": "integer",
@@ -1470,7 +1470,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -1616,7 +1616,7 @@
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
@@ -1625,7 +1625,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -1735,7 +1735,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -1946,7 +1946,7 @@
                   },
                   "exchange_rate": {
                     "type": "number",
-                    "description": "This field determines at which rate the expenses from foriegn currency was converted to home curreny\n"
+                    "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
                   },
                   "report_id": {
                     "type": "string",
@@ -1963,7 +1963,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                        "description": "This id provided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
                       },
                       "purpose": {
                         "type": "string"
@@ -2000,12 +2000,12 @@
                   },
                   "physical_bill": {
                     "type": "boolean",
-                    "description": "This field indicated whether physicall bill was received or not.\n"
+                    "description": "This field indicated whether physical bill was received or not.\n"
                   },
                   "physical_bill_at": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physicall bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
                   },
                   "verified": {
                     "type": "boolean",
@@ -2348,7 +2348,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -2590,7 +2590,7 @@
               },
               "exchange_rate": {
                 "type": "number",
-                "description": "This field determines at which rate the expenses from foriegn currency was converted to home curreny\n"
+                "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
               },
               "report_id": {
                 "type": "string",
@@ -2603,12 +2603,12 @@
               },
               "physical_bill": {
                 "type": "boolean",
-                "description": "This field indicated whether physicall bill was received or not.\n"
+                "description": "This field indicated whether physical bill was received or not.\n"
               },
               "physical_bill_at": {
                 "type": "string",
                 "format": "date-time",
-                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physicall bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
               },
               "vendor": {
                 "type": "string",
@@ -2939,7 +2939,7 @@
                 "employee_id": {
                   "type": "string",
                   "maxLength": 255,
-                  "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                 },
                 "employee": {
                   "type": "object",
@@ -2948,7 +2948,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -3058,7 +3058,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -3269,7 +3269,7 @@
                 },
                 "exchange_rate": {
                   "type": "number",
-                  "description": "This field determines at which rate the expenses from foriegn currency was converted to home curreny\n"
+                  "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
                 },
                 "report_id": {
                   "type": "string",
@@ -3286,7 +3286,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                      "description": "This id provided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
                     },
                     "purpose": {
                       "type": "string"
@@ -3323,12 +3323,12 @@
                 },
                 "physical_bill": {
                   "type": "boolean",
-                  "description": "This field indicated whether physicall bill was received or not.\n"
+                  "description": "This field indicated whether physical bill was received or not.\n"
                 },
                 "physical_bill_at": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physicall bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
                 },
                 "verified": {
                   "type": "boolean",
@@ -3671,7 +3671,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -3910,7 +3910,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4014,12 +4014,12 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
                   },
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
@@ -4028,7 +4028,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4177,7 +4177,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4324,7 +4324,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4403,10 +4403,824 @@
     }
   },
   "/admin/advance_requests": {
-    "get": {}
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify an advance request from this organisation.\nThis id is always prefixed with `areq`.\n"
+                  },
+                  "employee_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  },
+                  "employee": {
+                    "type": "object",
+                    "description": "Details of the employee to whom this object belongs to.",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "description": "Amount value of the object.\n"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
+                  },
+                  "advance_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify an advance from this organisation.\nThis id is always prefixed with `adv`.\n"
+                  },
+                  "advance": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id is provided by Fyle to identify an advance from this organisation.\nThis id is always prefixed with `adv`.\n"
+                      },
+                      "advance_number": {
+                        "type": "string",
+                        "description": "An non-unique human readable id to identify an advance within an organisation.\n",
+                        "maxLength": 255
+                      },
+                      "issued_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the advance was issued. <br>\n"
+                      },
+                      "settlement_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "An unique ID, generated by Fyle, for identifying the Settlement.\nOnce a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                      },
+                      "settled_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the advance was settled. <br>\n"
+                      },
+                      "issuer_id": {
+                        "description": "Employee id of person who issued the advance.\n",
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    }
+                  },
+                  "advance_request_number": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This value is provided by Fyle to facilitate easy identification of an advance request\n"
+                  },
+                  "trip_request_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify a trip request from this organisation.\nThis id is always prefixed with `tr`.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "approved_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href=\"https://tools.ietf.org/html/rfc3339#section-5.6\">RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was approved.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "Optional descriptive notes which can be added to an advance request.\n"
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "description": "Descriptive purpose which is added to an advance request.\n"
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "DRAFT",
+                      "APPROVAL_PENDING",
+                      "APPROVED",
+                      "REJECTED",
+                      "PAID"
+                    ],
+                    "description": "State of the advance request.\n"
+                  },
+                  "project_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify a project from this organisation.\nThis id is unique within the organisation.\n"
+                  },
+                  "project": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is unique within the organisation.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the project."
+                      },
+                      "sub_project": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the sub_project."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "maxLength": 513,
+                        "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This represents the code of project.\n"
+                      }
+                    }
+                  },
+                  "custom_properties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "custom properties\n",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "type": "string"
+                                },
+                                "state": {
+                                  "type": "string"
+                                },
+                                "display_name": {
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "type": "string"
+                                },
+                                "formatted_address": {
+                                  "type": "string"
+                                },
+                                "latitude": {
+                                  "type": "number"
+                                },
+                                "longitude": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "policy_amount": {
+                    "description": "Amount set by policy\n",
+                    "type": "integer"
+                  },
+                  "policy_state": {
+                    "type": "string",
+                    "enum": [
+                      "SUCCESS",
+                      "FAILED"
+                    ],
+                    "description": "Enum value signifying the action of policy on this object.\n"
+                  },
+                  "is_policy_flagged": {
+                    "type": "boolean",
+                    "description": "Flag to indicate if this object has been processed by policy.\n"
+                  },
+                  "is_sent_back": {
+                    "type": "boolean",
+                    "description": "Flag which indicates if this object was sent back for clarification.\n"
+                  },
+                  "is_pulled_back": {
+                    "type": "boolean",
+                    "description": "Flag which indicates if this object was pulled back by the requestor.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "WEBAPP",
+                      "MOBILE"
+                    ],
+                    "description": "Enum value signifying the client method from which this advance_request was initiated.\n"
+                  },
+                  "advance_request_approvals": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "siginifies all the approvals of a particular object.\n",
+                      "properties": {
+                        "approver_id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "APPROVED",
+                            "APPROVAL_PENDING",
+                            "APPROVAL_DISABLED"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "last_updater_id": {
+                    "type": "string",
+                    "description": "This represents the id of employee who updated this advance request.\n"
+                  },
+                  "last_updater": {
+                    "description": "Details of employee who updated this advance request.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
   },
   "/admin/advances": {
-    "get": {}
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer",
+              "default": 200
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify an advance from this organisation.\nThis id is always prefixed with `adv`.\n"
+                  },
+                  "assingee_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  },
+                  "assignee": {
+                    "type": "object",
+                    "description": "Details of the employee to whom this object belongs to.",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "issuer_id": {
+                    "description": "Employee id of person who issued the advance.\n",
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "issuer": {
+                    "description": "Details for the person who issued the advance.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "description": "Amount value of the object.\n"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
+                  },
+                  "foreign_currency": {
+                    "type": "string",
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+                  },
+                  "foreign_amount": {
+                    "type": "number",
+                    "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+                  },
+                  "advance_request_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify an advance request from this organisation.\nThis id is always prefixed with `areq`.\n"
+                  },
+                  "advance_number": {
+                    "type": "string",
+                    "description": "An non-unique human readable id to identify an advance within an organisation.\n"
+                  },
+                  "trip_request_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify a trip request from this organisation.\nThis id is always prefixed with `tr`.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "approved_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href=\"https://tools.ietf.org/html/rfc3339#section-5.6\">RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was approved.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "description": "Descriptive purpose which is added to an advance request.\n"
+                  },
+                  "project_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id is provided by Fyle to identify a project from this organisation.\nThis id is unique within the organisation.\n"
+                  },
+                  "project": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is unique within the organisation.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the project."
+                      },
+                      "sub_project": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the sub_project."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "maxLength": 513,
+                        "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This represents the code of project.\n"
+                      }
+                    }
+                  },
+                  "custom_properties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "custom properties\n",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "type": "string"
+                                },
+                                "state": {
+                                  "type": "string"
+                                },
+                                "display_name": {
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "type": "string"
+                                },
+                                "formatted_address": {
+                                  "type": "string"
+                                },
+                                "latitude": {
+                                  "type": "number"
+                                },
+                                "longitude": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "WEBAPP",
+                      "MOBILE"
+                    ],
+                    "description": "Enum value signifying the client method from which this advance_request was initiated.\n"
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "CASH",
+                      "BANK_TRANSFER",
+                      "FOREX",
+                      "CHEQUE_DD"
+                    ]
+                  },
+                  "card_number": {
+                    "type": "string"
+                  },
+                  "reference_code": {
+                    "type": "string",
+                    "description": "This is used to store external system's unique identifier.\n"
+                  },
+                  "settlement_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique ID, generated by Fyle, for identifying the Settlement.\nOnce a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                  },
+                  "settled_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the advance was settled.<br>\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
   },
   "/admin/reimbursements": {
     "get": {
@@ -4434,12 +5248,12 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a reimbursement.\nThis id is always prefixed with `reim`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a reimbursement.\nThis id is always prefixed with `reim`.\n"
                   },
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
@@ -4448,7 +5262,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4556,7 +5370,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4691,12 +5505,12 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a refund.\nThis id is always prefixed with `ref`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a refund.\nThis id is always prefixed with `ref`.\n"
                   },
                   "collector_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "Employee ID of collector of the refund.\nThis ID prodvided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
+                    "description": "Employee ID of collector of the refund.\nThis ID provided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
                   },
                   "collector": {
                     "description": "Details of employee who is the collector of this refund.\n",
@@ -4705,7 +5519,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4764,7 +5578,7 @@
                   "returnee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "Employee ID of returnee of the refund.\nThis ID prodvided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
+                    "description": "Employee ID of returnee of the refund.\nThis ID provided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
                   },
                   "returnee": {
                     "description": "Details of employee who is the returnee of this refund.\n",
@@ -4773,7 +5587,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -4962,7 +5776,7 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a settlement.\nThis id is always prefixed with `set`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a settlement.\nThis id is always prefixed with `set`.\n"
                   },
                   "created_at": {
                     "type": "string",
@@ -4987,7 +5801,7 @@
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
@@ -4996,7 +5810,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -5069,7 +5883,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -5202,12 +6016,12 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a balance transfer.\nThis id is always prefixed with `bt`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a balance transfer.\nThis id is always prefixed with `bt`.\n"
                   },
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
@@ -5216,7 +6030,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -5275,7 +6089,7 @@
                   "issuer_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "Employee ID of issuer of the balance transfer.\nThis ID prodvided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
+                    "description": "Employee ID of issuer of the balance transfer.\nThis ID provided by Fyle to uniquely identify an employee within an organization.\nThis ID is always prefixed with `ou`.\n"
                   },
                   "issuer": {
                     "description": "Details of employee who issued this balance transfer.\n",
@@ -5284,7 +6098,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -6013,7 +6827,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -6080,7 +6894,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -6274,7 +7088,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -6341,7 +7155,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
@@ -6528,7 +7342,7 @@
                       "id": {
                         "type": "string",
                         "maxLength": 255,
-                        "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                        "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                       },
                       "user_id": {
                         "type": "string",
@@ -6706,7 +7520,7 @@
                     "id": {
                       "type": "string",
                       "maxLength": 255,
-                      "description": "This is an id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                      "description": "This is an id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                     },
                     "user_id": {
                       "type": "string",
