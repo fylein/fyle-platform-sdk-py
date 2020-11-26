@@ -1,4 +1,8 @@
+"""
+    Defines Auth Class.
+"""
 
+import json
 
 from .network import Network
 from .. import exceptions
@@ -6,10 +10,11 @@ from ..globals.config import config
 
 
 class Auth(Network):
+    """Auth Class"""
 
     def __init__(self):
         self.__access_token = None
-    
+
     def __get_access_token(self):
         """
         Get the access token using a HTTP post.

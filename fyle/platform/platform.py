@@ -2,8 +2,6 @@
     Fyle Platform SDK Class
 """
 
-import json
-
 from . import exceptions
 from .apis import v1
 from .globals.config import config

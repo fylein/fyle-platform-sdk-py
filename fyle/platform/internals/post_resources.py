@@ -8,6 +8,7 @@ from .api_base import ApiBase
 
 
 class PostResources(ApiBase):
+    """Post Resource Class"""
 
     def __init__(self, version, role, endpoint):
         self.version = version

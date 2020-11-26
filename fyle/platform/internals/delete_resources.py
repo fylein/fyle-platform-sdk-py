@@ -2,12 +2,11 @@
     Defines Delete resource class.
 """
 
-from typing import Dict
-
 from .api_base import ApiBase
 
 
 class DeleteResources(ApiBase):
+    """Delete Resource Class"""
 
     def __init__(self, version, role, endpoint):
         self.version = version

@@ -1,4 +1,8 @@
+"""
+    Defines Decorators.
+"""
 
+import time
 
 from .auth import Auth
 from .. import exceptions as exc
@@ -24,6 +28,6 @@ def retry(n, backoff, exceptions):
                         Auth().update_access_token()
                     time.sleep(backoff)
                     attempt += 1
-            raise RetryException('failed to execute %s despite retrying' % (func))
+            raise exc.RetryException('failed to execute %s despite retrying' % (func))
         return newfn
     return decorator
