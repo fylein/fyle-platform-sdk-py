@@ -131,3 +131,4 @@ dmypy.json
 .idea
 *.iml
 setup.sh
+.DS_Store
