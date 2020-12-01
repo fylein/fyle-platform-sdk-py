@@ -1,6 +1,8 @@
 import json
 import os
 
+from fyle.platform import Platform
+
 
 def get_admin_schema():
     with open('tests/schema/admin.json') as f:

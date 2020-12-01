@@ -15,7 +15,6 @@ def test_post_report_approvals(fyle, approver_schema):
 
     report_approvals = fyle.v1.approver.report_approvals.post(payload=payload)
     url = report_approvals.get('url')
-    print(url)
 
     report_approvals_schema = approver_schema.get(url).get('post').get('responses').get('200')
     jsonschema.validate(instance=report_approvals, schema=report_approvals_schema)

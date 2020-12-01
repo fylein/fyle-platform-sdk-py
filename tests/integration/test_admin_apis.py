@@ -12,7 +12,6 @@ def test_get_employees(fyle, admin_schema):
     Parameters:
         fyle (obj): Fyle SDK instance
     """
-    print(fyle.v1.admin.employees)
     employees = fyle.v1.admin.employees.list()
     url = employees.get('url')
 
@@ -43,7 +42,6 @@ def test_get_expenses(fyle, admin_schema):
     """
     expenses = fyle.v1.admin.expenses.list()
     url = expenses.get('url')
-    print(expenses)
 
     expenses_schema = admin_schema[url]['get']['responses']['200']
     jsonschema.validate(instance=expenses, schema=expenses_schema)
@@ -57,7 +55,6 @@ def test_get_reports(fyle, admin_schema):
     """
     reports = fyle.v1.admin.reports.list()
     url = reports.get('url')
-    print(reports)
 
     reports_schema = admin_schema[url]['get']['responses']['200']
     jsonschema.validate(instance=reports, schema=reports_schema)
