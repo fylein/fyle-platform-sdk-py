@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,4 +26,4 @@ jobs:
       run: pip install -r requirements.txt && pip install pylint
 
     - name: pylint check
-      run: pylint --rcfile=.pylintrc fylesdk/**/**.py
+      run: pylint --rcfile=.pylintrc fyle/**/**.py
