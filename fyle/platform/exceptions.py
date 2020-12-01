@@ -61,5 +61,6 @@ class InternalServerError(PlatformError):
     """The rest FyleSDK errors, 500 error."""
     pass
 
+
 class RetryException(Exception):
     pass

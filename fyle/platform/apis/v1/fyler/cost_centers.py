@@ -2,10 +2,8 @@
 V1 Fyler Cost Center
 """
 
-from typing import Dict
-
-from ....internals.list_resources import ListResources
 from ....internals.get_resources import GetResources
+from ....internals.list_resources import ListResources
 
 
 class CostCenters(ListResources, GetResources):

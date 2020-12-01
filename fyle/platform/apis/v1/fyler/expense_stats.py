@@ -2,8 +2,6 @@
 V1 Fyler Expense Stats
 """
 
-from typing import Dict
-
 from ....internals.get_resources import GetResources
 
 

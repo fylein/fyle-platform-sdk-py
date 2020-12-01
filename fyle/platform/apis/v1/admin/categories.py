@@ -2,8 +2,6 @@
 V1 Admin Categories
 """
 
-from typing import Dict
-
 from ....internals.list_resources import ListResources
 from ....internals.post_resources import PostResources
 

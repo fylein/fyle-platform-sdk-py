@@ -2,8 +2,6 @@
 V1 Fyler Reports
 """
 
-from typing import Dict
-
 from ....internals.post_resources import PostResources
 
 

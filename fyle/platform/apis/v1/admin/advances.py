@@ -2,8 +2,6 @@
 V1 Admin Advances
 """
 
-from typing import Dict
-
 from ....internals.list_resources import ListResources
 
 

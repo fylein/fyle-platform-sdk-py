@@ -2,12 +2,10 @@
 V1 Fyler Expenses
 """
 
-from typing import Dict
-
-from ....internals.list_resources import ListResources
-from ....internals.get_resources import GetResources
-from ....internals.post_resources import PostResources
 from ....internals.delete_resources import DeleteResources
+from ....internals.get_resources import GetResources
+from ....internals.list_resources import ListResources
+from ....internals.post_resources import PostResources
 
 
 class Expenses(ListResources, GetResources, PostResources, DeleteResources):

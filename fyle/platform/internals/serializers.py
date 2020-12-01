@@ -4,7 +4,6 @@
 
 import enum
 import json
-
 from datetime import date, datetime
 
 from requests import Response
@@ -12,6 +11,7 @@ from requests import Response
 
 class GeneralObject:
     """Class for General Object"""
+
     def __init__(self, object_as_dict):
         self.__dict__ = object_as_dict
 
@@ -50,6 +50,7 @@ def deserialize(dictionary):
 
 class ComplexEncoder(json.JSONEncoder):
     """Class for Custom JSON Encoder"""
+
     def default(self, obj):
         encoded_obj = None
         if isinstance(obj, Response):
@@ -79,6 +80,7 @@ class ComplexEncoder(json.JSONEncoder):
             encoded_obj = json.JSONEncoder.default(self, obj)
 
         return encoded_obj
+
 
 def serialize(instance, **kwargs):
     """JSON serializer method"""

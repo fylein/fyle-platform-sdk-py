@@ -7,6 +7,7 @@ import time
 from .auth import Auth
 from .. import exceptions as exc
 
+
 def retry(n, backoff, exceptions):
     """
     Retry Decorator
@@ -17,6 +18,7 @@ def retry(n, backoff, exceptions):
     :param Exceptions: Lists of exceptions that trigger a retry attempt
     :type Exceptions: Tuple of Exceptions
     """
+
     def decorator(func):
         def newfn(*args, **kwargs):
             attempt = 0
@@ -29,5 +31,7 @@ def retry(n, backoff, exceptions):
                     time.sleep(backoff)
                     attempt += 1
             raise exc.RetryException('failed to execute %s despite retrying' % (func))
+
         return newfn
+
     return decorator

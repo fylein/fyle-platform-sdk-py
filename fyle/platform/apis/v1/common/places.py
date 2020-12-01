@@ -2,10 +2,8 @@
 V1 Common Places
 """
 
-from typing import Dict
-
-from ....internals.list_resources import ListResources
 from ....internals.get_resources import GetResources
+from ....internals.list_resources import ListResources
 
 
 class Places(ListResources, GetResources):

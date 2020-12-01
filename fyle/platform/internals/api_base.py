@@ -4,8 +4,8 @@
 
 import json
 
-from .network import Network
 from .decorators import retry
+from .network import Network
 from .. import exceptions
 from ..globals.config import config
 

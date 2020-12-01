@@ -2,7 +2,6 @@
     Fyle Platform SDK Class
 """
 
-from . import exceptions
 from .apis import v1
 from .globals.config import config
 from .internals.auth import Auth

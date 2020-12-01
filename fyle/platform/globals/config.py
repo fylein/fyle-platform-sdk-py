@@ -10,8 +10,8 @@ configurations = {
         'SERVER_URL': ''
     },
     'AUTH': {
-    	'CLIENT_ID': '',
-    	'CLIENT_SECRET': '',
+        'CLIENT_ID': '',
+        'CLIENT_SECRET': '',
         'REFRESH_TOKEN': '',
         'ACCESS_TOKEN': ''
     }
