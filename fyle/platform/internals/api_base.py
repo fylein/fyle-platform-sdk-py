@@ -4,8 +4,8 @@
 
 import json
 
-from .network import Network
 from .decorators import retry
+from .network import Network
 from .. import exceptions
 from ..globals.config import config
 
@@ -20,7 +20,7 @@ class ApiBase(Network):
         self.role = role
 
     def _format_api_url(self, endpoint):
-        return '{base_url}{role}{endpoint}'.format(
+        return '{base_url}/{version}/{role}{endpoint}'.format(
             base_url=config.get('FYLE', 'SERVER_URL'),
             version=self.version,
             role=self.role,
@@ -84,7 +84,6 @@ class ApiBase(Network):
             headers=api_headers,
             json=payload
         )
-        print(response.text)
 
         if response.status_code == 200:
             result = json.loads(response.text)

@@ -2,12 +2,10 @@
 V1 Admin Advance Requests
 """
 
-from typing import Dict
-
-from ....internals.get_resources import GetResources
+from ....internals.list_resources import ListResources
 
 
-class AdvanceRequests(GetResources):
+class AdvanceRequests(ListResources):
     """Class for Advance Requests APIs."""
 
     ADVANCE_REQUESTS = '/advance_requests'
