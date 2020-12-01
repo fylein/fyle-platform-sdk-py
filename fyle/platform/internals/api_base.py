@@ -3,6 +3,7 @@
 """
 
 import json
+import os
 
 from .decorators import retry
 from .network import Network
@@ -20,12 +21,22 @@ class ApiBase(Network):
         self.role = role
 
     def _format_api_url(self, endpoint):
-        return '{base_url}/{version}/{role}{endpoint}'.format(
-            base_url=config.get('FYLE', 'SERVER_URL'),
-            version=self.version,
-            role=self.role,
-            endpoint=endpoint
-        )
+        is_mock_server = os.getenv('IS_MOCK_SERVER', 'F')
+        if is_mock_server == 'F':
+            url = '{base_url}/{version}/{role}{endpoint}'.format(
+                base_url=config.get('FYLE', 'SERVER_URL'),
+                version=self.version,
+                role=self.role,
+                endpoint=endpoint
+            )
+        else:
+            url = '{base_url}{role}{endpoint}'.format(
+                base_url=config.get('FYLE', 'SERVER_URL'),
+                version=self.version,
+                role=self.role,
+                endpoint=endpoint
+            )
+        return url
 
     @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
     def make_get_request(self, api_url, query_params=None):
