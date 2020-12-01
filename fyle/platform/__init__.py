@@ -3,8 +3,6 @@
 """
 
 from . import exceptions
-from . import exceptions
-from .platform import Platform
 from .platform import Platform
 
 __all__ = [

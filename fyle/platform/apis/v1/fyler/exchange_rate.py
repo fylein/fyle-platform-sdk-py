@@ -22,6 +22,6 @@ class ExchangeRate(GetResources):
         :return: Resource Object
         """
         return self.make_get_request(
-            api_url=ExpenseStats.EXPENSE_STATS,
+            api_url=ExchangeRate.EXCHANGE_RATE,
             query_params=query_params
         )
