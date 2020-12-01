@@ -2,8 +2,6 @@
 V1 Admin Reports
 """
 
-from typing import Dict
-
 from ....internals.list_resources import ListResources
 
 

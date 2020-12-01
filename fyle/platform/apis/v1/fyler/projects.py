@@ -2,10 +2,8 @@
 V1 Fyler Projects
 """
 
-from typing import Dict
-
-from ....internals.list_resources import ListResources
 from ....internals.get_resources import GetResources
+from ....internals.list_resources import ListResources
 
 
 class Projects(ListResources, GetResources):

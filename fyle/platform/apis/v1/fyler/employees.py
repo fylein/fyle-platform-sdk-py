@@ -2,8 +2,6 @@
 V1 Admin Employees
 """
 
-from typing import Dict
-
 from ....internals.get_resources import GetResources
 
 

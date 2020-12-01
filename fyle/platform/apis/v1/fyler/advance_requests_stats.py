@@ -2,8 +2,6 @@
 V1 Fyler Advance Requests Stats
 """
 
-from typing import Dict
-
 from ....internals.get_resources import GetResources
 
 

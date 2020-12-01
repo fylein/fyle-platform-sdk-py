@@ -2,9 +2,8 @@
 	Initializing Common API's
 """
 
-from .places import Places
 from .data_extraction import DataExtraction
-
+from .places import Places
 from ..version import version
 
 role = 'common'

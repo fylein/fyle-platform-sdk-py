@@ -18,12 +18,13 @@ class GetResources():
         api = ApiBase(self.version, self.role)
         self.make_get_request = api.make_get_request
 
-    def get(self, id: str = None, query_params: dict = {}) -> Dict:
+    def get(self, id: str = None, query_params=None) -> Dict:
         """
         Get Single Resource object by ID
         :param id: Resource object ID
         :return: Resource Object
         """
+        query_params = {} if query_params is None else query_params
         if id:
             api_url = '{endpoint}/{id}'.format(endpoint=self.endpoint, id=id)
         else:

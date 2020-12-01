@@ -2,8 +2,6 @@
 V1 Approver Report Approvals
 """
 
-from typing import Dict
-
 from ....internals.post_resources import PostResources
 
 
