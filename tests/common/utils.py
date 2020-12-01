@@ -1,8 +1,6 @@
 import json
 import os
 
-from fylesdk import FylePlatformSDK
-
 
 def get_admin_schema():
     with open('tests/schema/admin.json') as f:
@@ -40,7 +38,7 @@ def fyle_connect():
     assert os.getenv('CLIENT_SECRET') is not None, 'CLIENT_SECRET is not set'
     assert os.getenv('REFRESH_TOKEN') is not None, 'REFRESH_TOKEN is not set'
 
-    connection = FylePlatformSDK(
+    connection = Platform(
         server_url=os.environ['SERVER_URL'],
         token_url=os.environ['TOKEN_URL'],
         client_id=os.environ['CLIENT_ID'],

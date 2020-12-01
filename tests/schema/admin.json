@@ -11,8 +11,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -1597,8 +1596,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -1684,7 +1682,7 @@
                   "spent_at": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
                   },
                   "source": {
                     "type": "string",
@@ -1697,19 +1695,19 @@
                   },
                   "amount": {
                     "type": "number",
-                    "description": "The transaction amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                    "description": "The amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
                   },
                   "user_amount": {
                     "type": "number",
-                    "description": "The transaction amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                    "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
                   },
                   "policy_amount": {
                     "type": "number",
-                    "description": "The transaction amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                    "description": "The expense amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
                   },
                   "admin_amount": {
                     "type": "number",
-                    "description": "The transaction amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                    "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
                   },
                   "tax": {
                     "type": "number",
@@ -1851,7 +1849,7 @@
                   },
                   "category_id": {
                     "type": "string",
-                    "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /api/tpa/v1/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                    "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /admin/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
                   },
                   "category": {
                     "type": "object",
@@ -2064,70 +2062,55 @@
                     "description": "This field is only relevant for travel related categories. This represents the return date.\n",
                     "type": "string"
                   },
-                  "mileage": {
-                    "type": "object",
-                    "properties": {
-                      "distance": {
-                        "type": "number",
-                        "description": "Actual distance travelled by employee in mileage expenses."
-                      },
-                      "calculated_distance": {
-                        "type": "number",
-                        "description": "Distance compluted by Fyle in mileage expenses."
-                      },
-                      "distance_unit": {
-                        "type": "string",
-                        "enum": [
-                          "KM",
-                          "MILES"
-                        ]
-                      },
-                      "calculated_amount": {
-                        "type": "number",
-                        "description": "Amount compluted by Fyle in mileage expenses."
-                      },
-                      "vehicle_type": {
-                        "type": "string",
-                        "description": "Type of vehicle used for travel."
-                      },
-                      "rate": {
-                        "type": "number",
-                        "description": "Rate per km as provided in the Fyle system"
-                      },
-                      "is_round_trip": {
-                        "type": "boolean",
-                        "description": "Flag stating whether this was a round trip or not."
-                      }
-                    }
+                  "mileage_distance": {
+                    "type": "number",
+                    "description": "Actual distance travelled by employee in mileage expenses."
                   },
-                  "travel": {
-                    "type": "object",
-                    "properties": {
-                      "bus_travel_class": {
-                        "description": "This field is applicable only for bus category.\n",
-                        "type": "string"
-                      },
-                      "train_travel_class": {
-                        "description": "This field is applicable for only Train category.\n",
-                        "type": "string"
-                      },
-                      "flight_journey_travel_class": {
-                        "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                        "type": "string"
-                      },
-                      "flight_return_travel_class": {
-                        "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                        "type": "string"
-                      }
-                    }
+                  "mileage_calculated_distance": {
+                    "type": "number",
+                    "description": "Distance compluted by Fyle in mileage expenses."
                   },
-                  "hotel": {
-                    "type": "object",
-                    "properties": {
-                      "is_breakfast_provided": {
-                        "type": "boolean"
-                      }
-                    }
+                  "mileage_distance_unit": {
+                    "type": "string",
+                    "enum": [
+                      "KM",
+                      "MILES"
+                    ]
+                  },
+                  "mileage_calculated_amount": {
+                    "type": "number",
+                    "description": "Amount compluted by Fyle in mileage expenses."
+                  },
+                  "mileage_vehicle_type": {
+                    "type": "string",
+                    "description": "Type of vehicle used for travel."
+                  },
+                  "mileage_rate": {
+                    "type": "number",
+                    "description": "Rate per km as provided in the Fyle system"
+                  },
+                  "mileage_is_round_trip": {
+                    "type": "boolean",
+                    "description": "Flag stating whether this was a round trip or not."
+                  },
+                  "bus_travel_class": {
+                    "description": "This field is applicable only for bus category.\n",
+                    "type": "string"
+                  },
+                  "train_travel_class": {
+                    "description": "This field is applicable for only Train category.\n",
+                    "type": "string"
+                  },
+                  "flight_journey_travel_class": {
+                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                    "type": "string"
+                  },
+                  "flight_return_travel_class": {
+                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                    "type": "string"
+                  },
+                  "hotel_is_breakfast_provided": {
+                    "type": "boolean"
                   },
                   "per_diem_rate_id": {
                     "type": "string"
@@ -2148,24 +2131,17 @@
                       },
                       "rate": {
                         "type": "integer"
-                      },
-                      "num_days": {
-                        "type": "integer"
                       }
                     }
                   },
-                  "activity_details": {
-                    "type": "string"
-                  },
-                  "activity_policy_pending": {
-                    "type": "boolean"
+                  "num_days": {
+                    "type": "integer"
                   },
                   "has_attachments": {
                     "type": "boolean",
                     "description": "Returns if there are file attachments that the Expense has. Usually the image of the receipts are added as attachments to the Expenses.\n"
                   },
                   "attachments": {
-                    "description": "This field will not be present in the response for the GET method on the `/api/tpa/v1/expenses` call.\n",
                     "type": "array",
                     "items": {
                       "type": "object",
@@ -2317,7 +2293,7 @@
                     "type": "object",
                     "description": "This key contains details about corporate card transaction linked to this expense.\n"
                   },
-                  "transaction_approvals": {
+                  "expense_approvals": {
                     "type": "array",
                     "items": {
                       "type": "object",
@@ -2439,7 +2415,7 @@
               "spent_at": {
                 "type": "string",
                 "format": "date-time",
-                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
               },
               "source": {
                 "type": "string",
@@ -2452,19 +2428,11 @@
               },
               "amount": {
                 "type": "number",
-                "description": "The transaction amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
-              },
-              "user_amount": {
-                "type": "number",
-                "description": "The transaction amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
-              },
-              "policy_amount": {
-                "type": "number",
-                "description": "The transaction amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                "description": "The amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
               },
               "admin_amount": {
                 "type": "number",
-                "description": "The transaction amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
               },
               "tax": {
                 "type": "number",
@@ -2487,95 +2455,16 @@
                 "type": "string",
                 "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
               },
-              "project": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Represents the name of the project."
-                  },
-                  "sub_project": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Represents the name of the sub_project."
-                  },
-                  "display_name": {
-                    "type": "string",
-                    "maxLength": 513,
-                    "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
-                  },
-                  "code": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "This represents the code of project.\n"
-                  }
-                }
-              },
               "cost_center_id": {
                 "type": "string",
                 "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
               },
               "category_id": {
                 "type": "string",
-                "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /api/tpa/v1/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
-              },
-              "category": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "maxLength": 10,
-                    "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is unique within the organisation.\n"
-                  },
-                  "name": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Represents the name of the category."
-                  },
-                  "sub_category": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Represents the name of the sub_category."
-                  },
-                  "display_name": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
-                  },
-                  "system_category": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Represents the name of the system_category."
-                  }
-                }
+                "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /admin/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
               },
               "source_account_id": {
                 "type": "string"
-              },
-              "source_account": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "PERSONAL_ACCOUNT",
-                      "PERSONAL_ADVANCE_ACCOUNT",
-                      "PERSONAL_CORPORATE_CREDIT_CARD_ACCOUNT",
-                      "COMPANY_EXPENSE_ACCOUNT",
-                      "COMPANY_ADVANCE_ACCOUNT",
-                      "COMPANY_CORPORATE_CREDIT_CARD_ACCOUNT",
-                      "COMPANY_CATEGORY_ACCOUNT"
-                    ]
-                  }
-                }
-              },
-              "invoice_number": {
-                "type": "string",
-                "description": "invoice number from the receipt.\n"
               },
               "billable": {
                 "type": "boolean",
@@ -2584,10 +2473,6 @@
               "reimbursable": {
                 "type": "boolean"
               },
-              "expense_number": {
-                "type": "string",
-                "description": "This is user visible identifier for an expense.\nThis field can be used as reference in UI.\n"
-              },
               "exchange_rate": {
                 "type": "number",
                 "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
@@ -2595,11 +2480,6 @@
               "report_id": {
                 "type": "string",
                 "description": "Unique id given by Fyle to identify an Expense Report.\n"
-              },
-              "reported_at": {
-                "type": "string",
-                "format": "date-time",
-                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was submitted via a Report to the Approvers.\nIf the Expense is not added to a Report yet or if the Report is not yet submitted, this could be null.\n"
               },
               "physical_bill": {
                 "type": "boolean",
@@ -2658,82 +2538,63 @@
                 "description": "This field is only relevant for travel related categories. This represents the return date.\n",
                 "type": "string"
               },
-              "mileage": {
-                "type": "object",
-                "properties": {
-                  "distance": {
-                    "type": "number",
-                    "description": "Actual distance travelled by employee in mileage expenses."
-                  },
-                  "calculated_distance": {
-                    "type": "number",
-                    "description": "Distance compluted by Fyle in mileage expenses."
-                  },
-                  "distance_unit": {
-                    "type": "string",
-                    "enum": [
-                      "KM",
-                      "MILES"
-                    ]
-                  },
-                  "calculated_amount": {
-                    "type": "number",
-                    "description": "Amount compluted by Fyle in mileage expenses."
-                  },
-                  "vehicle_type": {
-                    "type": "string",
-                    "description": "Type of vehicle used for travel."
-                  },
-                  "rate": {
-                    "type": "number",
-                    "description": "Rate per km as provided in the Fyle system"
-                  },
-                  "is_round_trip": {
-                    "type": "boolean",
-                    "description": "Flag stating whether this was a round trip or not."
-                  }
-                }
+              "mileage_distance": {
+                "type": "number",
+                "description": "Actual distance travelled by employee in mileage expenses."
               },
-              "travel": {
-                "type": "object",
-                "properties": {
-                  "bus_travel_class": {
-                    "description": "This field is applicable only for bus category.\n",
-                    "type": "string"
-                  },
-                  "train_travel_class": {
-                    "description": "This field is applicable for only Train category.\n",
-                    "type": "string"
-                  },
-                  "flight_journey_travel_class": {
-                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                    "type": "string"
-                  },
-                  "flight_return_travel_class": {
-                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                    "type": "string"
-                  }
-                }
+              "mileage_calculated_distance": {
+                "type": "number",
+                "description": "Distance compluted by Fyle in mileage expenses."
               },
-              "hotel": {
-                "type": "object",
-                "properties": {
-                  "is_breakfast_provided": {
-                    "type": "boolean"
-                  }
-                }
+              "mileage_distance_unit": {
+                "type": "string",
+                "enum": [
+                  "KM",
+                  "MILES"
+                ]
+              },
+              "mileage_calculated_amount": {
+                "type": "number",
+                "description": "Amount compluted by Fyle in mileage expenses."
+              },
+              "mileage_vehicle_type": {
+                "type": "string",
+                "description": "Type of vehicle used for travel."
+              },
+              "mileage_rate": {
+                "type": "number",
+                "description": "Rate per km as provided in the Fyle system"
+              },
+              "mileage_is_round_trip": {
+                "type": "boolean",
+                "description": "Flag stating whether this was a round trip or not."
+              },
+              "bus_travel_class": {
+                "description": "This field is applicable only for bus category.\n",
+                "type": "string"
+              },
+              "train_travel_class": {
+                "description": "This field is applicable for only Train category.\n",
+                "type": "string"
+              },
+              "flight_journey_travel_class": {
+                "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                "type": "string"
+              },
+              "flight_return_travel_class": {
+                "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                "type": "string"
+              },
+              "hotel_is_breakfast_provided": {
+                "type": "boolean"
               },
               "per_diem_rate_id": {
                 "type": "string"
               },
-              "activity_details": {
-                "type": "string"
-              },
-              "activity_policy_pending": {
-                "type": "boolean"
+              "num_days": {
+                "type": "integer"
               },
               "attachments": {
-                "description": "This field will not be present in the response for the GET method on the `/api/tpa/v1/expenses` call.\n",
                 "type": "array",
                 "items": {
                   "type": "object",
@@ -2824,48 +2685,9 @@
                   }
                 }
               },
-              "is_policy_flagged": {
-                "type": "boolean",
-                "description": "This field indicates whether policy execution has flagged this expenses or not."
-              },
               "is_manual_flagged": {
                 "type": "boolean",
                 "description": "This field indicates whether this expenses was manually flagged by approver or finance or admin.\n"
-              },
-              "policy_state": {
-                "type": "string",
-                "enum": [
-                  "FAILED",
-                  "SUCCESS",
-                  "RUNNING"
-                ],
-                "description": "This fields shows policy execution state for this expenses.\nIf this field is null then its policy has not yet run on this expenses.\n"
-              },
-              "extracted_data": {
-                "type": "object"
-              },
-              "transcribed_data": {
-                "type": "object"
-              },
-              "is_user_review_needed": {
-                "type": "boolean"
-              },
-              "is_mandatory_fields_present": {
-                "type": "boolean"
-              },
-              "is_receipt_required": {
-                "type": "boolean"
-              },
-              "is_holiday_expense": {
-                "type": "boolean"
-              },
-              "risk_state": {
-                "type": "string",
-                "enum": [
-                  "HIGH_RISK",
-                  "MODERATE_RISK",
-                  "NO_RISK"
-                ]
               },
               "external_id": {
                 "type": "string",
@@ -2876,42 +2698,6 @@
               },
               "split_group_user_amount": {
                 "type": "number"
-              },
-              "personal_card_transaction": {
-                "type": "object",
-                "description": "This key contains details about personal card transaction linked to this expense.\n"
-              },
-              "corporate_credit_card_transaction": {
-                "type": "object",
-                "description": "This key contains details about corporate card transaction linked to this expense.\n"
-              },
-              "transaction_approvals": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "description": "siginifies all the approvals of a particular object.\n",
-                  "properties": {
-                    "approver_id": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string",
-                      "enum": [
-                        "APPROVED",
-                        "APPROVAL_PENDING",
-                        "APPROVAL_DISABLED"
-                      ]
-                    }
-                  }
-                }
-              },
-              "last_updater_id": {
-                "type": "string",
-                "description": "This represents the id of employee who updated this expense.\n"
-              },
-              "org_id": {
-                "type": "string",
-                "description": "The unique id of the Organization to which the object is associated.\n"
               }
             }
           }
@@ -3007,7 +2793,7 @@
                 "spent_at": {
                   "type": "string",
                   "format": "date-time",
-                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
                 },
                 "source": {
                   "type": "string",
@@ -3020,19 +2806,19 @@
                 },
                 "amount": {
                   "type": "number",
-                  "description": "The transaction amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                  "description": "The amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
                 },
                 "user_amount": {
                   "type": "number",
-                  "description": "The transaction amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                  "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
                 },
                 "policy_amount": {
                   "type": "number",
-                  "description": "The transaction amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                  "description": "The expense amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
                 },
                 "admin_amount": {
                   "type": "number",
-                  "description": "The transaction amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                  "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
                 },
                 "tax": {
                   "type": "number",
@@ -3174,7 +2960,7 @@
                 },
                 "category_id": {
                   "type": "string",
-                  "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /api/tpa/v1/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                  "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /admin/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
                 },
                 "category": {
                   "type": "object",
@@ -3387,70 +3173,55 @@
                   "description": "This field is only relevant for travel related categories. This represents the return date.\n",
                   "type": "string"
                 },
-                "mileage": {
-                  "type": "object",
-                  "properties": {
-                    "distance": {
-                      "type": "number",
-                      "description": "Actual distance travelled by employee in mileage expenses."
-                    },
-                    "calculated_distance": {
-                      "type": "number",
-                      "description": "Distance compluted by Fyle in mileage expenses."
-                    },
-                    "distance_unit": {
-                      "type": "string",
-                      "enum": [
-                        "KM",
-                        "MILES"
-                      ]
-                    },
-                    "calculated_amount": {
-                      "type": "number",
-                      "description": "Amount compluted by Fyle in mileage expenses."
-                    },
-                    "vehicle_type": {
-                      "type": "string",
-                      "description": "Type of vehicle used for travel."
-                    },
-                    "rate": {
-                      "type": "number",
-                      "description": "Rate per km as provided in the Fyle system"
-                    },
-                    "is_round_trip": {
-                      "type": "boolean",
-                      "description": "Flag stating whether this was a round trip or not."
-                    }
-                  }
+                "mileage_distance": {
+                  "type": "number",
+                  "description": "Actual distance travelled by employee in mileage expenses."
                 },
-                "travel": {
-                  "type": "object",
-                  "properties": {
-                    "bus_travel_class": {
-                      "description": "This field is applicable only for bus category.\n",
-                      "type": "string"
-                    },
-                    "train_travel_class": {
-                      "description": "This field is applicable for only Train category.\n",
-                      "type": "string"
-                    },
-                    "flight_journey_travel_class": {
-                      "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                      "type": "string"
-                    },
-                    "flight_return_travel_class": {
-                      "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
-                      "type": "string"
-                    }
-                  }
+                "mileage_calculated_distance": {
+                  "type": "number",
+                  "description": "Distance compluted by Fyle in mileage expenses."
                 },
-                "hotel": {
-                  "type": "object",
-                  "properties": {
-                    "is_breakfast_provided": {
-                      "type": "boolean"
-                    }
-                  }
+                "mileage_distance_unit": {
+                  "type": "string",
+                  "enum": [
+                    "KM",
+                    "MILES"
+                  ]
+                },
+                "mileage_calculated_amount": {
+                  "type": "number",
+                  "description": "Amount compluted by Fyle in mileage expenses."
+                },
+                "mileage_vehicle_type": {
+                  "type": "string",
+                  "description": "Type of vehicle used for travel."
+                },
+                "mileage_rate": {
+                  "type": "number",
+                  "description": "Rate per km as provided in the Fyle system"
+                },
+                "mileage_is_round_trip": {
+                  "type": "boolean",
+                  "description": "Flag stating whether this was a round trip or not."
+                },
+                "bus_travel_class": {
+                  "description": "This field is applicable only for bus category.\n",
+                  "type": "string"
+                },
+                "train_travel_class": {
+                  "description": "This field is applicable for only Train category.\n",
+                  "type": "string"
+                },
+                "flight_journey_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "flight_return_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "hotel_is_breakfast_provided": {
+                  "type": "boolean"
                 },
                 "per_diem_rate_id": {
                   "type": "string"
@@ -3471,24 +3242,17 @@
                     },
                     "rate": {
                       "type": "integer"
-                    },
-                    "num_days": {
-                      "type": "integer"
                     }
                   }
                 },
-                "activity_details": {
-                  "type": "string"
-                },
-                "activity_policy_pending": {
-                  "type": "boolean"
+                "num_days": {
+                  "type": "integer"
                 },
                 "has_attachments": {
                   "type": "boolean",
                   "description": "Returns if there are file attachments that the Expense has. Usually the image of the receipts are added as attachments to the Expenses.\n"
                 },
                 "attachments": {
-                  "description": "This field will not be present in the response for the GET method on the `/api/tpa/v1/expenses` call.\n",
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -3640,7 +3404,7 @@
                   "type": "object",
                   "description": "This key contains details about corporate card transaction linked to this expense.\n"
                 },
-                "transaction_approvals": {
+                "expense_approvals": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -3802,8 +3566,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -3988,6 +3751,282 @@
       }
     }
   },
+  "/admin/expense_fields": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer"
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "This id is provided by Fyle to identify a particular expense field.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "seq": {
+                    "type": "integer"
+                  },
+                  "field_name": {
+                    "type": "string",
+                    "description": "This specifies the name of the expense field.\n"
+                  },
+                  "column_name": {
+                    "type": "string",
+                    "description": "This specifies the name of column to which this expense field mapped to.\n"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "This specifies the title of the expense field.\n"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "This field specifies the type of the expense field.\n"
+                  },
+                  "options": {
+                    "type": "array",
+                    "description": "This specifies the option values of the expense field in case on SELECT or MULTI_SELECT type.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "default_value": {
+                    "type": "string",
+                    "description": "This specifies the default value of the expense fields.\n"
+                  },
+                  "placeholder": {
+                    "type": "string",
+                    "description": "This specifies the placeholder of the expense field.\n"
+                  },
+                  "category_ids": {
+                    "type": "array",
+                    "description": "This field specifies the org category ids associated with the custom property.\n",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This field specifies if the object is enabled or not.\n"
+                  },
+                  "mandatory": {
+                    "type": "boolean",
+                    "description": "This specifies if the expense field is mandatory or not.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    },
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "This id is provided by Fyle to identify a particular expense field.\n"
+              },
+              "seq": {
+                "type": "integer"
+              },
+              "field_name": {
+                "type": "string",
+                "description": "This specifies the name of the expense field.\n"
+              },
+              "title": {
+                "type": "string",
+                "description": "This specifies the title of the expense field.\n"
+              },
+              "type": {
+                "type": "string",
+                "description": "This field specifies the type of the expense field.\n"
+              },
+              "options": {
+                "type": "array",
+                "description": "This specifies the option values of the expense field in case on SELECT or MULTI_SELECT type.\n",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "default_value": {
+                "type": "string",
+                "description": "This specifies the default value of the expense fields.\n"
+              },
+              "placeholder": {
+                "type": "string",
+                "description": "This specifies the placeholder of the expense field.\n"
+              },
+              "category_ids": {
+                "type": "array",
+                "description": "This field specifies the org category ids associated with the custom property.\n",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "is_enabled": {
+                "type": "boolean",
+                "description": "This field specifies if the object is enabled or not.\n"
+              },
+              "mandatory": {
+                "type": "boolean",
+                "description": "This specifies if the expense field is mandatory or not.\n"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "This id is provided by Fyle to identify a particular expense field.\n"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                },
+                "seq": {
+                  "type": "integer"
+                },
+                "field_name": {
+                  "type": "string",
+                  "description": "This specifies the name of the expense field.\n"
+                },
+                "column_name": {
+                  "type": "string",
+                  "description": "This specifies the name of column to which this expense field mapped to.\n"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "This specifies the title of the expense field.\n"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "This field specifies the type of the expense field.\n"
+                },
+                "options": {
+                  "type": "array",
+                  "description": "This specifies the option values of the expense field in case on SELECT or MULTI_SELECT type.\n",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "default_value": {
+                  "type": "string",
+                  "description": "This specifies the default value of the expense fields.\n"
+                },
+                "placeholder": {
+                  "type": "string",
+                  "description": "This specifies the placeholder of the expense field.\n"
+                },
+                "category_ids": {
+                  "type": "array",
+                  "description": "This field specifies the org category ids associated with the custom property.\n",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "is_enabled": {
+                  "type": "boolean",
+                  "description": "This field specifies if the object is enabled or not.\n"
+                },
+                "mandatory": {
+                  "type": "boolean",
+                  "description": "This specifies if the expense field is mandatory or not.\n"
+                },
+                "org_id": {
+                  "type": "string",
+                  "description": "The unique id of the Organization to which the object is associated.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
   "/admin/reports": {
     "get": {
       "responses": {
@@ -4000,8 +4039,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -4414,8 +4452,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -4854,8 +4891,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -5234,8 +5270,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -5491,8 +5526,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -5762,8 +5796,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -6002,8 +6035,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -6256,8 +6288,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -6439,10 +6470,6 @@
           "data": {
             "type": "object",
             "properties": {
-              "org_id": {
-                "type": "string",
-                "description": "The unique id of the Organization to which the object is associated.\n"
-              },
               "name": {
                 "type": "string",
                 "maxLength": 255,
@@ -6757,8 +6784,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "limit": {
               "description": "The actual number of objects that are returned in the response.\n",
@@ -6978,10 +7004,6 @@
           "data": {
             "type": "object",
             "properties": {
-              "org_id": {
-                "type": "string",
-                "description": "The unique id of the Organization to which the object is associated.\n"
-              },
               "name": {
                 "type": "string",
                 "maxLength": 255,
@@ -7282,8 +7304,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "url": {
               "type": "string"
@@ -7444,10 +7465,6 @@
               "is_enabled": {
                 "type": "boolean",
                 "description": "This field specifies if the current cost center is enabled or not.\n"
-              },
-              "org_id": {
-                "type": "string",
-                "description": "The unique id of the Organization to which the object is associated.\n"
               },
               "last_updater_id": {
                 "type": "string",

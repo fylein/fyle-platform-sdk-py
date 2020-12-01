@@ -188,8 +188,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "limit": {
               "description": "The actual number of objects that are returned in the response.\n",
@@ -386,6 +385,16 @@
                   "maxLength": 255,
                   "description": "This is provided by Fyle to identify a cost center from this organisation.\n"
                 },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                },
                 "name": {
                   "type": "string",
                   "maxLength": 255,
@@ -408,16 +417,6 @@
                 "org_id": {
                   "type": "string",
                   "description": "The unique id of the Organization to which the object is associated.\n"
-                },
-                "created_at": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
-                },
-                "updated_at": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
                 }
               }
             }
@@ -452,8 +451,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "limit": {
               "description": "The actual number of objects that are returned in the response.\n",
@@ -471,6 +469,16 @@
                     "type": "string",
                     "maxLength": 255,
                     "description": "This is provided by Fyle to identify a cost center from this organisation.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
                   },
                   "name": {
                     "type": "string",
@@ -494,16 +502,6 @@
                   "org_id": {
                     "type": "string",
                     "description": "The unique id of the Organization to which the object is associated.\n"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
-                  },
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
                   }
                 }
               }
@@ -528,7 +526,834 @@
     }
   },
   "/fyler/expenses/{id}": {
-    "get": {},
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "An unique string to identify the Expense. Ignore this field when used as part of a POST request to create an Expense."
+                },
+                "employee_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                },
+                "employee": {
+                  "type": "object",
+                  "description": "Details of the employee to whom this object belongs to.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "spent_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "The name of the client app which is creating the expense.\nif its a thrid party app, it prefixed with TPA_.\nEx - If you pass SLACK_APP, it will be saved as TPA_SLACK_APP. If not passed, source is saved as TPA.\n"
+                },
+                "currency": {
+                  "type": "string",
+                  "maxLength": 3,
+                  "description": "ISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\nIf this field is ignored during a POST call to create/update an Expense, the default currency of the organization will be used.\nTo use other currency than default currency use `foreign_currency` field.\n"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The expense amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                },
+                "user_amount": {
+                  "type": "number",
+                  "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                },
+                "policy_amount": {
+                  "type": "number",
+                  "description": "The expense amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                },
+                "admin_amount": {
+                  "type": "number",
+                  "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                },
+                "tax": {
+                  "type": "number",
+                  "description": "Tax amount as setup by your organisation."
+                },
+                "foreign_currency": {
+                  "type": "string",
+                  "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+                },
+                "foreign_amount": {
+                  "type": "number",
+                  "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+                },
+                "creator_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "An unique ID, generated by Fyle, for identifying the Employee who created the object. Once an object is created, the value of this field cannot be changed and is immutable.<br>\n"
+                },
+                "creator": {
+                  "description": "Details of employee who created this expense.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "purpose": {
+                  "type": "string",
+                  "maxLength": 1024,
+                  "description": "Justification for the expense."
+                },
+                "project_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the project."
+                    },
+                    "sub_project": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the sub_project."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "maxLength": 513,
+                      "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This represents the code of project.\n"
+                    }
+                  }
+                },
+                "cost_center_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
+                },
+                "cost_center": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "category_id": {
+                  "type": "string",
+                  "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /v1/fyler/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                },
+                "category": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the category."
+                    },
+                    "sub_category": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the sub_category."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
+                    },
+                    "system_category": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the system_category."
+                    }
+                  }
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "COMPLETE",
+                    "DRAFT",
+                    "PAID",
+                    "PAYMENT_PROCESSING",
+                    "APPROVER_PENDING",
+                    "PAYMENT_PENDING",
+                    "APPROVED"
+                  ],
+                  "description": "The state of the Expense."
+                },
+                "source_account_id": {
+                  "type": "string"
+                },
+                "source_account": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "PERSONAL_ACCOUNT",
+                        "PERSONAL_ADVANCE_ACCOUNT",
+                        "PERSONAL_CORPORATE_CREDIT_CARD_ACCOUNT",
+                        "COMPANY_EXPENSE_ACCOUNT",
+                        "COMPANY_ADVANCE_ACCOUNT",
+                        "COMPANY_CORPORATE_CREDIT_CARD_ACCOUNT",
+                        "COMPANY_CATEGORY_ACCOUNT"
+                      ]
+                    }
+                  }
+                },
+                "invoice_number": {
+                  "type": "string",
+                  "description": "invoice number from the receipt.\n"
+                },
+                "billable": {
+                  "type": "boolean",
+                  "description": "This fields marks whether a given expense is billable a not."
+                },
+                "reimbursable": {
+                  "type": "boolean"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                },
+                "expense_number": {
+                  "type": "string",
+                  "description": "This is user visible identifier for an expense.\nThis field can be used as reference in UI.\n"
+                },
+                "exchange_rate": {
+                  "type": "number",
+                  "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
+                },
+                "report_id": {
+                  "type": "string",
+                  "description": "Unique id given by Fyle to identify an Expense Report.\n"
+                },
+                "reported_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was submitted via a Report to the Approvers.\nIf the Expense is not added to a Report yet or if the Report is not yet submitted, this could be null.\n"
+                },
+                "report": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify reports in an organisations.\nIt is always prefixed with the string `rp`.\nIt is unique per report.\n"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "approved_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was approved.\nThis field could be null if the Report was not yet approved.\n"
+                    },
+                    "reimbursed_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was Reimbursed.\nIf the Expense is not reimbursed yet, this could be null. <br>\n"
+                    },
+                    "claim_number": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "settlement_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "An unique ID, generated by Fyle, for identifying the Settlement.\nOnce a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                    },
+                    "settled_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the report approved was settled. <br>\n"
+                    },
+                    "trip_request_id": {
+                      "type": "string",
+                      "description": "An ID of the TripRequest associated with it"
+                    }
+                  }
+                },
+                "physical_bill": {
+                  "type": "boolean",
+                  "description": "This field indicated whether physical bill was received or not.\n"
+                },
+                "physical_bill_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Indicates whether the Expense is verified or not\n"
+                },
+                "verified_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was verified.\nIf the Expense is not verified yet, this could be null. <br>\n"
+                },
+                "vendor": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the name of the vendor to which the Expense was made\n"
+                },
+                "vendor_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the id of the vendor to which the Expense was made\n"
+                },
+                "locations": {
+                  "description": "This field will be present for travel related categories. To add to and from location to you travel category related expenses add two locations in schema given below.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "display_name": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "formatted_address": {
+                        "type": "string"
+                      },
+                      "latitude": {
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "started_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the onward date.\n",
+                  "type": "string"
+                },
+                "ended_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the return date.\n",
+                  "type": "string"
+                },
+                "mileage_distance": {
+                  "type": "number",
+                  "description": "Actual distance travelled by employee in mileage expenses."
+                },
+                "mileage_calculated_distance": {
+                  "type": "number",
+                  "description": "Distance compluted by Fyle in mileage expenses."
+                },
+                "mileage_distance_unit": {
+                  "type": "string",
+                  "enum": [
+                    "KM",
+                    "MILES"
+                  ]
+                },
+                "mileage_calculated_amount": {
+                  "type": "number",
+                  "description": "Amount compluted by Fyle in mileage expenses."
+                },
+                "mileage_vehicle_type": {
+                  "type": "string",
+                  "description": "Type of vehicle used for travel."
+                },
+                "mileage_rate": {
+                  "type": "number",
+                  "description": "Rate per km as provided in the Fyle system"
+                },
+                "mileage_is_round_trip": {
+                  "type": "boolean",
+                  "description": "Flag stating whether this was a round trip or not."
+                },
+                "bus_travel_class": {
+                  "description": "This field is applicable only for bus category.\n",
+                  "type": "string"
+                },
+                "train_travel_class": {
+                  "description": "This field is applicable for only Train category.\n",
+                  "type": "string"
+                },
+                "flight_journey_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "flight_return_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "hotel_is_breakfast_provided": {
+                  "type": "boolean",
+                  "description": "In case of `Hotel` related expenses, this field indicates whether a breakfast was provided by the hotel or not.\n"
+                },
+                "per_diem_rate_id": {
+                  "type": "string"
+                },
+                "per_diem_rate": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "currency": {
+                      "type": "string",
+                      "maxLength": 3
+                    },
+                    "rate": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "num_days": {
+                  "type": "integer"
+                },
+                "has_attachments": {
+                  "type": "boolean",
+                  "description": "Returns if there are file attachments that the Expense has. Usually the image of the receipts are added as attachments to the Expenses.\n"
+                },
+                "attachments": {
+                  "description": "returns reference to files API.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Id of the file object. Always starts with `fi`.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the uploaded file.\n"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "THUMBNAILx200x200",
+                          "ORIGINAL",
+                          "ENCRYPTED"
+                        ],
+                        "description": "Indicates whether this file original size or encrypted or its thumbnail image.\n"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "Password which required to unlock the file.\n"
+                      },
+                      "download_path": {
+                        "type": "string",
+                        "description": "Link to download this file.\nchange this to right url later.\n"
+                      }
+                    }
+                  }
+                },
+                "custom_properties": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the custom property.\n"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "city": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "display_name": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "formatted_address": {
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ],
+                        "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                      }
+                    }
+                  }
+                },
+                "is_policy_flagged": {
+                  "type": "boolean",
+                  "description": "This field indicates whether policy execution has flagged this expenses or not."
+                },
+                "is_manual_flagged": {
+                  "type": "boolean",
+                  "description": "This field indicates whether this expenses was manually flagged by approver or finance or admin.\n"
+                },
+                "policy_state": {
+                  "type": "string",
+                  "enum": [
+                    "FAILED",
+                    "SUCCESS",
+                    "RUNNING"
+                  ],
+                  "description": "This fields shows policy execution state for this expenses.\nIf this field is null then its policy has not yet run on this expenses.\n"
+                },
+                "extracted_data": {
+                  "type": "object"
+                },
+                "transcribed_data": {
+                  "type": "object"
+                },
+                "is_user_review_needed": {
+                  "type": "boolean"
+                },
+                "is_mandatory_fields_present": {
+                  "type": "boolean"
+                },
+                "is_receipt_required": {
+                  "type": "boolean"
+                },
+                "is_holiday_expense": {
+                  "type": "boolean"
+                },
+                "risk_state": {
+                  "type": "string",
+                  "enum": [
+                    "HIGH_RISK",
+                    "MODERATE_RISK",
+                    "NO_RISK"
+                  ]
+                },
+                "external_id": {
+                  "type": "string",
+                  "description": "Id given by external systems like Gmail. To identify whether that entity has been already added to Fyle or not.\n"
+                },
+                "split_group_id": {
+                  "type": "string"
+                },
+                "split_group_user_amount": {
+                  "type": "number"
+                },
+                "personal_card_transaction": {
+                  "type": "object",
+                  "description": "This key contains details about personal card transaction linked to this expense.\n"
+                },
+                "corporate_credit_card_transaction": {
+                  "type": "object",
+                  "description": "This key contains details about corporate card transaction linked to this expense.\n"
+                },
+                "expense_approvals": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "description": "siginifies all the approvals of a particular object.\n",
+                    "properties": {
+                      "approver_id": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "APPROVED",
+                          "APPROVAL_PENDING",
+                          "APPROVAL_DISABLED"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "last_updater_id": {
+                  "type": "string",
+                  "description": "This represents the id of employee who updated this expense.\n"
+                },
+                "last_updater": {
+                  "description": "Details of employee who updated this expense.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "org_id": {
+                  "type": "string",
+                  "description": "The unique id of the Organization to which the object is associated.\n"
+                },
+                "actions": {
+                  "type": "object",
+                  "properties": {
+                    "can_delete": {
+                      "type": "boolean"
+                    },
+                    "can_edit": {
+                      "type": "boolean"
+                    },
+                    "can_edit_physical_bill": {
+                      "type": "boolean"
+                    },
+                    "can_remove_from_report": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    },
     "delete": {
       "responses": {
         "200": {},
@@ -549,8 +1374,2021 @@
     }
   },
   "/fyler/expenses": {
-    "get": {},
-    "post": {}
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer"
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique string to identify the Expense. Ignore this field when used as part of a POST request to create an Expense."
+                  },
+                  "employee_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "This id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                  },
+                  "employee": {
+                    "type": "object",
+                    "description": "Details of the employee to whom this object belongs to.",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "spent_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "The name of the client app which is creating the expense.\nif its a thrid party app, it prefixed with TPA_.\nEx - If you pass SLACK_APP, it will be saved as TPA_SLACK_APP. If not passed, source is saved as TPA.\n"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "maxLength": 3,
+                    "description": "ISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\nIf this field is ignored during a POST call to create/update an Expense, the default currency of the organization will be used.\nTo use other currency than default currency use `foreign_currency` field.\n"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "The expense amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                  },
+                  "user_amount": {
+                    "type": "number",
+                    "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                  },
+                  "policy_amount": {
+                    "type": "number",
+                    "description": "The expense amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                  },
+                  "admin_amount": {
+                    "type": "number",
+                    "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                  },
+                  "tax": {
+                    "type": "number",
+                    "description": "Tax amount as setup by your organisation."
+                  },
+                  "foreign_currency": {
+                    "type": "string",
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+                  },
+                  "foreign_amount": {
+                    "type": "number",
+                    "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+                  },
+                  "creator_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "An unique ID, generated by Fyle, for identifying the Employee who created the object. Once an object is created, the value of this field cannot be changed and is immutable.<br>\n"
+                  },
+                  "creator": {
+                    "description": "Details of employee who created this expense.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "maxLength": 1024,
+                    "description": "Justification for the expense."
+                  },
+                  "project_id": {
+                    "type": "string",
+                    "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
+                  },
+                  "project": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the project."
+                      },
+                      "sub_project": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the sub_project."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "maxLength": 513,
+                        "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This represents the code of project.\n"
+                      }
+                    }
+                  },
+                  "cost_center_id": {
+                    "type": "string",
+                    "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
+                  },
+                  "cost_center": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "code": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "category_id": {
+                    "type": "string",
+                    "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /v1/fyler/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                  },
+                  "category": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the category."
+                      },
+                      "sub_category": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the sub_category."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
+                      },
+                      "system_category": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the name of the system_category."
+                      }
+                    }
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "COMPLETE",
+                      "DRAFT",
+                      "PAID",
+                      "PAYMENT_PROCESSING",
+                      "APPROVER_PENDING",
+                      "PAYMENT_PENDING",
+                      "APPROVED"
+                    ],
+                    "description": "The state of the Expense."
+                  },
+                  "source_account_id": {
+                    "type": "string"
+                  },
+                  "source_account": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "PERSONAL_ACCOUNT",
+                          "PERSONAL_ADVANCE_ACCOUNT",
+                          "PERSONAL_CORPORATE_CREDIT_CARD_ACCOUNT",
+                          "COMPANY_EXPENSE_ACCOUNT",
+                          "COMPANY_ADVANCE_ACCOUNT",
+                          "COMPANY_CORPORATE_CREDIT_CARD_ACCOUNT",
+                          "COMPANY_CATEGORY_ACCOUNT"
+                        ]
+                      }
+                    }
+                  },
+                  "invoice_number": {
+                    "type": "string",
+                    "description": "invoice number from the receipt.\n"
+                  },
+                  "billable": {
+                    "type": "boolean",
+                    "description": "This fields marks whether a given expense is billable a not."
+                  },
+                  "reimbursable": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "expense_number": {
+                    "type": "string",
+                    "description": "This is user visible identifier for an expense.\nThis field can be used as reference in UI.\n"
+                  },
+                  "exchange_rate": {
+                    "type": "number",
+                    "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
+                  },
+                  "report_id": {
+                    "type": "string",
+                    "description": "Unique id given by Fyle to identify an Expense Report.\n"
+                  },
+                  "reported_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was submitted via a Report to the Approvers.\nIf the Expense is not added to a Report yet or if the Report is not yet submitted, this could be null.\n"
+                  },
+                  "report": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify reports in an organisations.\nIt is always prefixed with the string `rp`.\nIt is unique per report.\n"
+                      },
+                      "purpose": {
+                        "type": "string"
+                      },
+                      "approved_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was approved.\nThis field could be null if the Report was not yet approved.\n"
+                      },
+                      "reimbursed_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was Reimbursed.\nIf the Expense is not reimbursed yet, this could be null. <br>\n"
+                      },
+                      "claim_number": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "settlement_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "An unique ID, generated by Fyle, for identifying the Settlement.\nOnce a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                      },
+                      "settled_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the report approved was settled. <br>\n"
+                      },
+                      "trip_request_id": {
+                        "type": "string",
+                        "description": "An ID of the TripRequest associated with it"
+                      }
+                    }
+                  },
+                  "physical_bill": {
+                    "type": "boolean",
+                    "description": "This field indicated whether physical bill was received or not.\n"
+                  },
+                  "physical_bill_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                  },
+                  "verified": {
+                    "type": "boolean",
+                    "description": "Indicates whether the Expense is verified or not\n"
+                  },
+                  "verified_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was verified.\nIf the Expense is not verified yet, this could be null. <br>\n"
+                  },
+                  "vendor": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "String denoting the name of the vendor to which the Expense was made\n"
+                  },
+                  "vendor_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "String denoting the id of the vendor to which the Expense was made\n"
+                  },
+                  "locations": {
+                    "description": "This field will be present for travel related categories. To add to and from location to you travel category related expenses add two locations in schema given below.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "city": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "display_name": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "formatted_address": {
+                          "type": "string"
+                        },
+                        "latitude": {
+                          "type": "number"
+                        },
+                        "longitude": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "started_at": {
+                    "description": "This field is only relevant for travel related categories. This represents the onward date.\n",
+                    "type": "string"
+                  },
+                  "ended_at": {
+                    "description": "This field is only relevant for travel related categories. This represents the return date.\n",
+                    "type": "string"
+                  },
+                  "mileage_distance": {
+                    "type": "number",
+                    "description": "Actual distance travelled by employee in mileage expenses."
+                  },
+                  "mileage_calculated_distance": {
+                    "type": "number",
+                    "description": "Distance compluted by Fyle in mileage expenses."
+                  },
+                  "mileage_distance_unit": {
+                    "type": "string",
+                    "enum": [
+                      "KM",
+                      "MILES"
+                    ]
+                  },
+                  "mileage_calculated_amount": {
+                    "type": "number",
+                    "description": "Amount compluted by Fyle in mileage expenses."
+                  },
+                  "mileage_vehicle_type": {
+                    "type": "string",
+                    "description": "Type of vehicle used for travel."
+                  },
+                  "mileage_rate": {
+                    "type": "number",
+                    "description": "Rate per km as provided in the Fyle system"
+                  },
+                  "mileage_is_round_trip": {
+                    "type": "boolean",
+                    "description": "Flag stating whether this was a round trip or not."
+                  },
+                  "bus_travel_class": {
+                    "description": "This field is applicable only for bus category.\n",
+                    "type": "string"
+                  },
+                  "train_travel_class": {
+                    "description": "This field is applicable for only Train category.\n",
+                    "type": "string"
+                  },
+                  "flight_journey_travel_class": {
+                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                    "type": "string"
+                  },
+                  "flight_return_travel_class": {
+                    "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                    "type": "string"
+                  },
+                  "hotel_is_breakfast_provided": {
+                    "type": "boolean",
+                    "description": "In case of `Hotel` related expenses, this field indicates whether a breakfast was provided by the hotel or not.\n"
+                  },
+                  "per_diem_rate_id": {
+                    "type": "string"
+                  },
+                  "per_diem_rate": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "currency": {
+                        "type": "string",
+                        "maxLength": 3
+                      },
+                      "rate": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "num_days": {
+                    "type": "integer"
+                  },
+                  "has_attachments": {
+                    "type": "boolean",
+                    "description": "Returns if there are file attachments that the Expense has. Usually the image of the receipts are added as attachments to the Expenses.\n"
+                  },
+                  "attachments": {
+                    "description": "returns reference to files API.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "Id of the file object. Always starts with `fi`.\n"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the uploaded file.\n"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "THUMBNAILx200x200",
+                            "ORIGINAL",
+                            "ENCRYPTED"
+                          ],
+                          "description": "Indicates whether this file original size or encrypted or its thumbnail image.\n"
+                        },
+                        "password": {
+                          "type": "string",
+                          "description": "Password which required to unlock the file.\n"
+                        },
+                        "download_path": {
+                          "type": "string",
+                          "description": "Link to download this file.\nchange this to right url later.\n"
+                        }
+                      }
+                    }
+                  },
+                  "custom_properties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the custom property.\n"
+                        },
+                        "value": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "city": {
+                                  "type": "string"
+                                },
+                                "state": {
+                                  "type": "string"
+                                },
+                                "display_name": {
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "type": "string"
+                                },
+                                "formatted_address": {
+                                  "type": "string"
+                                },
+                                "latitude": {
+                                  "type": "number"
+                                },
+                                "longitude": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ],
+                          "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                        }
+                      }
+                    }
+                  },
+                  "is_policy_flagged": {
+                    "type": "boolean",
+                    "description": "This field indicates whether policy execution has flagged this expenses or not."
+                  },
+                  "is_manual_flagged": {
+                    "type": "boolean",
+                    "description": "This field indicates whether this expenses was manually flagged by approver or finance or admin.\n"
+                  },
+                  "policy_state": {
+                    "type": "string",
+                    "enum": [
+                      "FAILED",
+                      "SUCCESS",
+                      "RUNNING"
+                    ],
+                    "description": "This fields shows policy execution state for this expenses.\nIf this field is null then its policy has not yet run on this expenses.\n"
+                  },
+                  "extracted_data": {
+                    "type": "object"
+                  },
+                  "transcribed_data": {
+                    "type": "object"
+                  },
+                  "is_user_review_needed": {
+                    "type": "boolean"
+                  },
+                  "is_mandatory_fields_present": {
+                    "type": "boolean"
+                  },
+                  "is_receipt_required": {
+                    "type": "boolean"
+                  },
+                  "is_holiday_expense": {
+                    "type": "boolean"
+                  },
+                  "risk_state": {
+                    "type": "string",
+                    "enum": [
+                      "HIGH_RISK",
+                      "MODERATE_RISK",
+                      "NO_RISK"
+                    ]
+                  },
+                  "external_id": {
+                    "type": "string",
+                    "description": "Id given by external systems like Gmail. To identify whether that entity has been already added to Fyle or not.\n"
+                  },
+                  "split_group_id": {
+                    "type": "string"
+                  },
+                  "split_group_user_amount": {
+                    "type": "number"
+                  },
+                  "personal_card_transaction": {
+                    "type": "object",
+                    "description": "This key contains details about personal card transaction linked to this expense.\n"
+                  },
+                  "corporate_credit_card_transaction": {
+                    "type": "object",
+                    "description": "This key contains details about corporate card transaction linked to this expense.\n"
+                  },
+                  "expense_approvals": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "siginifies all the approvals of a particular object.\n",
+                      "properties": {
+                        "approver_id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "APPROVED",
+                            "APPROVAL_PENDING",
+                            "APPROVAL_DISABLED"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "last_updater_id": {
+                    "type": "string",
+                    "description": "This represents the id of employee who updated this expense.\n"
+                  },
+                  "last_updater": {
+                    "description": "Details of employee who updated this expense.\n",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                      },
+                      "user_id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 127,
+                        "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                      },
+                      "code": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "level_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "department_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "business_unit": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the business unit of the organization to which of the employee belongs."
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the title/desgination of the employee."
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                      },
+                      "joined_at": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date string in YYYY-MM-DD format"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "Represents the full name of the employee. Must be at least 3 characters."
+                      }
+                    }
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  },
+                  "actions": {
+                    "type": "object",
+                    "properties": {
+                      "can_delete": {
+                        "type": "boolean"
+                      },
+                      "can_edit": {
+                        "type": "boolean"
+                      },
+                      "can_edit_physical_bill": {
+                        "type": "boolean"
+                      },
+                      "can_remove_from_report": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    },
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "spent_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+              },
+              "source": {
+                "type": "string",
+                "description": "The name of the client app which is creating the expense.\nif its a thrid party app, it prefixed with TPA_.\nEx - If you pass SLACK_APP, it will be saved as TPA_SLACK_APP. If not passed, source is saved as TPA.\n"
+              },
+              "currency": {
+                "type": "string",
+                "maxLength": 3,
+                "description": "ISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\nIf this field is ignored during a POST call to create/update an Expense, the default currency of the organization will be used.\nTo use other currency than default currency use `foreign_currency` field.\n"
+              },
+              "amount": {
+                "type": "number",
+                "description": "The expense amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+              },
+              "user_amount": {
+                "type": "number",
+                "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+              },
+              "tax": {
+                "type": "number",
+                "description": "Tax amount as setup by your organisation."
+              },
+              "foreign_currency": {
+                "type": "string",
+                "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+              },
+              "foreign_amount": {
+                "type": "number",
+                "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+              },
+              "purpose": {
+                "type": "string",
+                "maxLength": 1024,
+                "description": "Justification for the expense."
+              },
+              "project_id": {
+                "type": "string",
+                "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
+              },
+              "cost_center_id": {
+                "type": "string",
+                "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
+              },
+              "category_id": {
+                "type": "string",
+                "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /v1/fyler/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+              },
+              "source_account_id": {
+                "type": "string"
+              },
+              "billable": {
+                "type": "boolean",
+                "description": "This fields marks whether a given expense is billable a not."
+              },
+              "reimbursable": {
+                "type": "boolean"
+              },
+              "exchange_rate": {
+                "type": "number",
+                "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
+              },
+              "report_id": {
+                "type": "string",
+                "description": "Unique id given by Fyle to identify an Expense Report.\n"
+              },
+              "vendor": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "String denoting the name of the vendor to which the Expense was made\n"
+              },
+              "vendor_id": {
+                "type": "string",
+                "maxLength": 255,
+                "description": "String denoting the id of the vendor to which the Expense was made\n"
+              },
+              "locations": {
+                "description": "This field will be present for travel related categories. To add to and from location to you travel category related expenses add two locations in schema given below.\n",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "formatted_address": {
+                      "type": "string"
+                    },
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "started_at": {
+                "description": "This field is only relevant for travel related categories. This represents the onward date.\n",
+                "type": "string"
+              },
+              "ended_at": {
+                "description": "This field is only relevant for travel related categories. This represents the return date.\n",
+                "type": "string"
+              },
+              "mileage_distance": {
+                "type": "number",
+                "description": "Actual distance travelled by employee in mileage expenses."
+              },
+              "mileage_calculated_distance": {
+                "type": "number",
+                "description": "Distance compluted by Fyle in mileage expenses."
+              },
+              "mileage_distance_unit": {
+                "type": "string",
+                "enum": [
+                  "KM",
+                  "MILES"
+                ]
+              },
+              "mileage_calculated_amount": {
+                "type": "number",
+                "description": "Amount compluted by Fyle in mileage expenses."
+              },
+              "mileage_vehicle_type": {
+                "type": "string",
+                "description": "Type of vehicle used for travel."
+              },
+              "mileage_rate": {
+                "type": "number",
+                "description": "Rate per km as provided in the Fyle system"
+              },
+              "mileage_is_round_trip": {
+                "type": "boolean",
+                "description": "Flag stating whether this was a round trip or not."
+              },
+              "bus_travel_class": {
+                "description": "This field is applicable only for bus category.\n",
+                "type": "string"
+              },
+              "train_travel_class": {
+                "description": "This field is applicable for only Train category.\n",
+                "type": "string"
+              },
+              "flight_journey_travel_class": {
+                "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                "type": "string"
+              },
+              "flight_return_travel_class": {
+                "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                "type": "string"
+              },
+              "hotel_is_breakfast_provided": {
+                "type": "boolean",
+                "description": "In case of `Hotel` related expenses, this field indicates whether a breakfast was provided by the hotel or not.\n"
+              },
+              "per_diem_rate_id": {
+                "type": "string"
+              },
+              "num_days": {
+                "type": "integer"
+              },
+              "attachments": {
+                "description": "returns reference to files API.\n",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Id of the file object. Always starts with `fi`.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the uploaded file.\n"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "THUMBNAILx200x200",
+                        "ORIGINAL",
+                        "ENCRYPTED"
+                      ],
+                      "description": "Indicates whether this file original size or encrypted or its thumbnail image.\n"
+                    },
+                    "password": {
+                      "type": "string",
+                      "description": "Password which required to unlock the file.\n"
+                    },
+                    "download_path": {
+                      "type": "string",
+                      "description": "Link to download this file.\nchange this to right url later.\n"
+                    }
+                  }
+                }
+              },
+              "custom_properties": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the custom property.\n"
+                    },
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "city": {
+                              "type": "string"
+                            },
+                            "state": {
+                              "type": "string"
+                            },
+                            "display_name": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "formatted_address": {
+                              "type": "string"
+                            },
+                            "latitude": {
+                              "type": "number"
+                            },
+                            "longitude": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
+                      "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                    }
+                  }
+                }
+              },
+              "external_id": {
+                "type": "string",
+                "description": "Id given by external systems like Gmail. To identify whether that entity has been already added to Fyle or not.\n"
+              },
+              "split_group_id": {
+                "type": "string"
+              },
+              "split_group_user_amount": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "An unique string to identify the Expense. Ignore this field when used as part of a POST request to create an Expense."
+                },
+                "employee_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                },
+                "employee": {
+                  "type": "object",
+                  "description": "Details of the employee to whom this object belongs to.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "spent_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "The name of the client app which is creating the expense.\nif its a thrid party app, it prefixed with TPA_.\nEx - If you pass SLACK_APP, it will be saved as TPA_SLACK_APP. If not passed, source is saved as TPA.\n"
+                },
+                "currency": {
+                  "type": "string",
+                  "maxLength": 3,
+                  "description": "ISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\nIf this field is ignored during a POST call to create/update an Expense, the default currency of the organization will be used.\nTo use other currency than default currency use `foreign_currency` field.\n"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The expense amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                },
+                "user_amount": {
+                  "type": "number",
+                  "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                },
+                "policy_amount": {
+                  "type": "number",
+                  "description": "The expense amount which is modified by policy.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                },
+                "admin_amount": {
+                  "type": "number",
+                  "description": "The expense amount which is modified by admin or approver.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nThis could be null if admin or approver has not edited your expense.\n"
+                },
+                "tax": {
+                  "type": "number",
+                  "description": "Tax amount as setup by your organisation."
+                },
+                "foreign_currency": {
+                  "type": "string",
+                  "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+                },
+                "foreign_amount": {
+                  "type": "number",
+                  "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+                },
+                "creator_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "An unique ID, generated by Fyle, for identifying the Employee who created the object. Once an object is created, the value of this field cannot be changed and is immutable.<br>\n"
+                },
+                "creator": {
+                  "description": "Details of employee who created this expense.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "purpose": {
+                  "type": "string",
+                  "maxLength": 1024,
+                  "description": "Justification for the expense."
+                },
+                "project_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a project from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the project."
+                    },
+                    "sub_project": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the sub_project."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "maxLength": 513,
+                      "description": "This is a combination of name and sub_project separated by a / and spaces.\nIn case if no sub_project is present it is same as name of the project.\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This represents the code of project.\n"
+                    }
+                  }
+                },
+                "cost_center_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
+                },
+                "cost_center": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "category_id": {
+                  "type": "string",
+                  "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /v1/fyler/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                },
+                "category": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 10,
+                      "description": "This id provided by Fyle to identify a category from this organisation.\nThis id is a numeric string.\nThis id is unique within the organisation.\n"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the category."
+                    },
+                    "sub_category": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the sub_category."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This is a combination of name and sub_category separated by a / and spaces.\nIn case if no sub_category is present it is same as name of the category.\n"
+                    },
+                    "system_category": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the name of the system_category."
+                    }
+                  }
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "COMPLETE",
+                    "DRAFT",
+                    "PAID",
+                    "PAYMENT_PROCESSING",
+                    "APPROVER_PENDING",
+                    "PAYMENT_PENDING",
+                    "APPROVED"
+                  ],
+                  "description": "The state of the Expense."
+                },
+                "source_account_id": {
+                  "type": "string"
+                },
+                "source_account": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "PERSONAL_ACCOUNT",
+                        "PERSONAL_ADVANCE_ACCOUNT",
+                        "PERSONAL_CORPORATE_CREDIT_CARD_ACCOUNT",
+                        "COMPANY_EXPENSE_ACCOUNT",
+                        "COMPANY_ADVANCE_ACCOUNT",
+                        "COMPANY_CORPORATE_CREDIT_CARD_ACCOUNT",
+                        "COMPANY_CATEGORY_ACCOUNT"
+                      ]
+                    }
+                  }
+                },
+                "invoice_number": {
+                  "type": "string",
+                  "description": "invoice number from the receipt.\n"
+                },
+                "billable": {
+                  "type": "boolean",
+                  "description": "This fields marks whether a given expense is billable a not."
+                },
+                "reimbursable": {
+                  "type": "boolean"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                },
+                "expense_number": {
+                  "type": "string",
+                  "description": "This is user visible identifier for an expense.\nThis field can be used as reference in UI.\n"
+                },
+                "exchange_rate": {
+                  "type": "number",
+                  "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
+                },
+                "report_id": {
+                  "type": "string",
+                  "description": "Unique id given by Fyle to identify an Expense Report.\n"
+                },
+                "reported_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was submitted via a Report to the Approvers.\nIf the Expense is not added to a Report yet or if the Report is not yet submitted, this could be null.\n"
+                },
+                "report": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify reports in an organisations.\nIt is always prefixed with the string `rp`.\nIt is unique per report.\n"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "approved_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Report was approved.\nThis field could be null if the Report was not yet approved.\n"
+                    },
+                    "reimbursed_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was Reimbursed.\nIf the Expense is not reimbursed yet, this could be null. <br>\n"
+                    },
+                    "claim_number": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "settlement_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "An unique ID, generated by Fyle, for identifying the Settlement.\nOnce a Report is paid, the value of this field cannot be changed and is immutable. <br>\n"
+                    },
+                    "settled_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the report approved was settled. <br>\n"
+                    },
+                    "trip_request_id": {
+                      "type": "string",
+                      "description": "An ID of the TripRequest associated with it"
+                    }
+                  }
+                },
+                "physical_bill": {
+                  "type": "boolean",
+                  "description": "This field indicated whether physical bill was received or not.\n"
+                },
+                "physical_bill_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp indicating when the Expense's physical bill was submitted.\nIf the Expense's bill is not required to be submitted, then this could be null.\n"
+                },
+                "verified": {
+                  "type": "boolean",
+                  "description": "Indicates whether the Expense is verified or not\n"
+                },
+                "verified_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the Expense was verified.\nIf the Expense is not verified yet, this could be null. <br>\n"
+                },
+                "vendor": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the name of the vendor to which the Expense was made\n"
+                },
+                "vendor_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the id of the vendor to which the Expense was made\n"
+                },
+                "locations": {
+                  "description": "This field will be present for travel related categories. To add to and from location to you travel category related expenses add two locations in schema given below.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "display_name": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "formatted_address": {
+                        "type": "string"
+                      },
+                      "latitude": {
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "started_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the onward date.\n",
+                  "type": "string"
+                },
+                "ended_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the return date.\n",
+                  "type": "string"
+                },
+                "mileage_distance": {
+                  "type": "number",
+                  "description": "Actual distance travelled by employee in mileage expenses."
+                },
+                "mileage_calculated_distance": {
+                  "type": "number",
+                  "description": "Distance compluted by Fyle in mileage expenses."
+                },
+                "mileage_distance_unit": {
+                  "type": "string",
+                  "enum": [
+                    "KM",
+                    "MILES"
+                  ]
+                },
+                "mileage_calculated_amount": {
+                  "type": "number",
+                  "description": "Amount compluted by Fyle in mileage expenses."
+                },
+                "mileage_vehicle_type": {
+                  "type": "string",
+                  "description": "Type of vehicle used for travel."
+                },
+                "mileage_rate": {
+                  "type": "number",
+                  "description": "Rate per km as provided in the Fyle system"
+                },
+                "mileage_is_round_trip": {
+                  "type": "boolean",
+                  "description": "Flag stating whether this was a round trip or not."
+                },
+                "bus_travel_class": {
+                  "description": "This field is applicable only for bus category.\n",
+                  "type": "string"
+                },
+                "train_travel_class": {
+                  "description": "This field is applicable for only Train category.\n",
+                  "type": "string"
+                },
+                "flight_journey_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "flight_return_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "hotel_is_breakfast_provided": {
+                  "type": "boolean",
+                  "description": "In case of `Hotel` related expenses, this field indicates whether a breakfast was provided by the hotel or not.\n"
+                },
+                "per_diem_rate_id": {
+                  "type": "string"
+                },
+                "per_diem_rate": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "currency": {
+                      "type": "string",
+                      "maxLength": 3
+                    },
+                    "rate": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "num_days": {
+                  "type": "integer"
+                },
+                "has_attachments": {
+                  "type": "boolean",
+                  "description": "Returns if there are file attachments that the Expense has. Usually the image of the receipts are added as attachments to the Expenses.\n"
+                },
+                "attachments": {
+                  "description": "returns reference to files API.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Id of the file object. Always starts with `fi`.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the uploaded file.\n"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "THUMBNAILx200x200",
+                          "ORIGINAL",
+                          "ENCRYPTED"
+                        ],
+                        "description": "Indicates whether this file original size or encrypted or its thumbnail image.\n"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "Password which required to unlock the file.\n"
+                      },
+                      "download_path": {
+                        "type": "string",
+                        "description": "Link to download this file.\nchange this to right url later.\n"
+                      }
+                    }
+                  }
+                },
+                "custom_properties": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the custom property.\n"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "city": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "display_name": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "formatted_address": {
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ],
+                        "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                      }
+                    }
+                  }
+                },
+                "is_policy_flagged": {
+                  "type": "boolean",
+                  "description": "This field indicates whether policy execution has flagged this expenses or not."
+                },
+                "is_manual_flagged": {
+                  "type": "boolean",
+                  "description": "This field indicates whether this expenses was manually flagged by approver or finance or admin.\n"
+                },
+                "policy_state": {
+                  "type": "string",
+                  "enum": [
+                    "FAILED",
+                    "SUCCESS",
+                    "RUNNING"
+                  ],
+                  "description": "This fields shows policy execution state for this expenses.\nIf this field is null then its policy has not yet run on this expenses.\n"
+                },
+                "extracted_data": {
+                  "type": "object"
+                },
+                "transcribed_data": {
+                  "type": "object"
+                },
+                "is_user_review_needed": {
+                  "type": "boolean"
+                },
+                "is_mandatory_fields_present": {
+                  "type": "boolean"
+                },
+                "is_receipt_required": {
+                  "type": "boolean"
+                },
+                "is_holiday_expense": {
+                  "type": "boolean"
+                },
+                "risk_state": {
+                  "type": "string",
+                  "enum": [
+                    "HIGH_RISK",
+                    "MODERATE_RISK",
+                    "NO_RISK"
+                  ]
+                },
+                "external_id": {
+                  "type": "string",
+                  "description": "Id given by external systems like Gmail. To identify whether that entity has been already added to Fyle or not.\n"
+                },
+                "split_group_id": {
+                  "type": "string"
+                },
+                "split_group_user_amount": {
+                  "type": "number"
+                },
+                "personal_card_transaction": {
+                  "type": "object",
+                  "description": "This key contains details about personal card transaction linked to this expense.\n"
+                },
+                "corporate_credit_card_transaction": {
+                  "type": "object",
+                  "description": "This key contains details about corporate card transaction linked to this expense.\n"
+                },
+                "expense_approvals": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "description": "siginifies all the approvals of a particular object.\n",
+                    "properties": {
+                      "approver_id": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "APPROVED",
+                          "APPROVAL_PENDING",
+                          "APPROVAL_DISABLED"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "last_updater_id": {
+                  "type": "string",
+                  "description": "This represents the id of employee who updated this expense.\n"
+                },
+                "last_updater": {
+                  "description": "Details of employee who updated this expense.\n",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This id helps to identify employees in other organisations.\nIt is always prefixed with the string `us`.\nIt is unique per email.\n"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 127,
+                      "description": "An immutable field that represents the email address.\nMust be compliant with <a href=\"https://www.ietf.org/rfc/rfc822.txt\">RFC 822.</a>\n"
+                    },
+                    "code": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "This field refers to any string that the client programs can use to refer to an employee's unique id.\nThis could be any field such as an UUID from an Active Directory server or employee id in a HRMS system.\n"
+                    },
+                    "location": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "level_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "department_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "business_unit": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the business unit of the organization to which of the employee belongs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the title/desgination of the employee."
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "Mobile number of the employee.\n`Given example is a fake number. We don't know who might answer your call.`\n"
+                    },
+                    "joined_at": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date string in YYYY-MM-DD format"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "description": "Represents the full name of the employee. Must be at least 3 characters."
+                    }
+                  }
+                },
+                "org_id": {
+                  "type": "string",
+                  "description": "The unique id of the Organization to which the object is associated.\n"
+                },
+                "actions": {
+                  "type": "object",
+                  "properties": {
+                    "can_delete": {
+                      "type": "boolean"
+                    },
+                    "can_edit": {
+                      "type": "boolean"
+                    },
+                    "can_edit_physical_bill": {
+                      "type": "boolean"
+                    },
+                    "can_remove_from_report": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "400": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "row": {
+                    "type": "integer",
+                    "description": "This holds the info of which row contains bad data.\n"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "This helps in identifying the error by unique key.\n"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "This explains what the error is in `human readable` text.\n"
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "enum": [
+                    "Unable to process JSON"
+                  ],
+                  "type": "string",
+                  "description": "This error means that incoming json is not in right format.\n"
+                },
+                "code": {
+                  "type": "integer",
+                  "default": 400
+                }
+              }
+            }
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
   },
   "/fyler/my_profile": {
     "get": {
@@ -567,7 +3405,7 @@
                 "id": {
                   "type": "string",
                   "maxLength": 255,
-                  "description": "This id prodvided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                  "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
                 },
                 "user_id": {
                   "type": "string",
@@ -627,7 +3465,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "maxLength": 10,
+                      "maxLength": 13,
                       "description": "This id provided by Fyle to identify a level from this organisation.\nIt is always prefixed with the string `lvl`.\nThis id is unique within the organisation.\n"
                     },
                     "name": {
@@ -657,7 +3495,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "maxLength": 10,
+                      "maxLength": 14,
                       "description": "This id provided by Fyle to identify a department from this organisation.\nIt is always prefixed with the string `dept`.\nThis id is unique within the organisation.\n"
                     },
                     "name": {
@@ -737,20 +3575,6 @@
                         "is_background_enabled": {
                           "type": "boolean",
                           "description": "This field indicates if it is enabled in background (Not sure about this setting)\n"
-                        }
-                      }
-                    },
-                    "cost_center_settings": {
-                      "type": "object",
-                      "properties": {
-                        "default_cost_center_id": {
-                          "type": "integer",
-                          "description": "This field indicates the default cost center id of organisation.\n",
-                          "default_cost_center_name": {
-                            "type": "integer",
-                            "description": "This field indicates the default cost center name of organisation.\n",
-                            "example": "Best cost center"
-                          }
                         }
                       }
                     },
@@ -1253,51 +4077,57 @@
                 },
                 "custom_properties": {
                   "type": "object",
-                  "additionalProperties": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "boolean"
-                      },
-                      {
-                        "type": "integer"
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "city": {
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the custom property.\n"
+                    },
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "city": {
+                              "type": "string"
+                            },
+                            "state": {
+                              "type": "string"
+                            },
+                            "display_name": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "formatted_address": {
+                              "type": "string"
+                            },
+                            "latitude": {
+                              "type": "number"
+                            },
+                            "longitude": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        {
+                          "type": "array",
+                          "items": {
                             "type": "string"
-                          },
-                          "state": {
-                            "type": "string"
-                          },
-                          "display_name": {
-                            "type": "string"
-                          },
-                          "country": {
-                            "type": "string"
-                          },
-                          "formatted_address": {
-                            "type": "string"
-                          },
-                          "latitude": {
-                            "type": "number"
-                          },
-                          "longitude": {
-                            "type": "number"
                           }
                         }
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                      ],
+                      "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                    }
                   }
                 },
                 "is_enabled": {
@@ -1355,8 +4185,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "limit": {
               "description": "The actual number of objects that are returned in the response.\n",
@@ -1443,8 +4272,7 @@
             },
             "offset": {
               "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
+              "type": "integer"
             },
             "limit": {
               "description": "The actual number of objects that are returned in the response.\n",
@@ -1482,7 +4310,7 @@
                     "maxLength": 255,
                     "description": "Represents the name of the project."
                   },
-                  "fyle_category": {
+                  "system_category": {
                     "type": "string",
                     "maxLength": 255,
                     "description": "Represents the name of the fyle category."
@@ -1790,12 +4618,586 @@
               },
               "notify": {
                 "type": "boolean",
-                "description": "This indicates whether it should be notified or not.\n"
+                "description": "This indicates whether users should be notified or not.\n"
               },
               "comment": {
                 "type": "string",
                 "maxLength": 255,
                 "description": "Comment made on the expense."
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "An unique string to identify the Expense Comment. Ignore this field when used as part of a POST request to create an Expense."
+                },
+                "comment": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Comment made on the expense."
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                },
+                "expense_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "This id provided by Fyle to uniquely identify an expense.\nThis id is always prefixed with `tx`.\n"
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "403": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "Forbidden"
+              ],
+              "type": "string",
+              "description": "This error means current user does not have enough permissions to perform this operation.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expense_custom_properties": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer"
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "description": "This id is provided by Fyle to identify a particular custom property.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "This field specifies the name of the custom property.\n"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "This field specifies the type of the custom property.\n"
+                  },
+                  "options": {
+                    "type": "array",
+                    "description": "This field specifies the option values of the custom property in case on SELECT or MULTI_SELECT custom property type.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "placeholder": {
+                    "type": "string",
+                    "description": "This field specifies the placeholder of the custom property.\n"
+                  },
+                  "category_ids": {
+                    "type": "array",
+                    "description": "This field specifies the category ids associated with the custom property.\n",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This field indicates if the module is enabled or not.\n"
+                  },
+                  "mandatory": {
+                    "type": "boolean",
+                    "description": "This field specifies if the custom property is mandatory or not.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/expense_fields": {
+    "get": {
+      "responses": {
+        "200": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The total number of objects that can be requested.\n",
+              "type": "integer"
+            },
+            "offset": {
+              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
+              "type": "integer"
+            },
+            "limit": {
+              "description": "The actual number of objects that are returned in the response.\n",
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "This id is provided by Fyle to identify a particular expense field.\n"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
+                  },
+                  "seq": {
+                    "type": "integer"
+                  },
+                  "field_name": {
+                    "type": "string",
+                    "description": "This specifies the name of the expense field.\n"
+                  },
+                  "column_name": {
+                    "type": "string",
+                    "description": "This specifies the name of column to which this expense field mapped to.\n"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "This specifies the title of the expense field.\n"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "This field specifies the type of the expense field.\n"
+                  },
+                  "options": {
+                    "type": "array",
+                    "description": "This specifies the option values of the expense field in case on SELECT or MULTI_SELECT type.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "default_value": {
+                    "type": "string",
+                    "description": "This specifies the default value of the expense fields.\n"
+                  },
+                  "placeholder": {
+                    "type": "string",
+                    "description": "This specifies the placeholder of the expense field.\n"
+                  },
+                  "category_ids": {
+                    "type": "array",
+                    "description": "This field specifies the category ids associated with the custom property.\n",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "is_enabled": {
+                    "type": "boolean",
+                    "description": "This field indicates if the module is enabled or not.\n"
+                  },
+                  "mandatory": {
+                    "type": "boolean",
+                    "description": "This specifies if the expense field is mandatory or not.\n"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "description": "The unique id of the Organization to which the object is associated.\n"
+                  }
+                }
+              }
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        },
+        "401": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "enum": [
+                "invalid token"
+              ],
+              "type": "string",
+              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
+            }
+          },
+          "$schema": "http://json-schema.org/draft-04/schema#"
+        }
+      }
+    }
+  },
+  "/fyler/policy_test": {
+    "post": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "spent_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "RFC 3339, section 5.6 \"https://tools.ietf.org/html/rfc3339#section-5.6\" compliant timestamp on which the transaction for which the expense [being] fyled was made. <br>\nThis date cannot be in future.\n"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "The name of the client app which is creating the expense.\nif its a thrid party app, it prefixed with TPA_.\nEx - If you pass SLACK_APP, it will be saved as TPA_SLACK_APP. If not passed, source is saved as TPA.\n"
+                },
+                "currency": {
+                  "type": "string",
+                  "maxLength": 3,
+                  "description": "ISO 4217 currency codes that are usually of three upper case letters.\nSee \"https://www.iban.com/currency-codes\" for examples.\nIf this field is ignored during a POST call to create/update an Expense, the default currency of the organization will be used.\nTo use other currency than default currency use `foreign_currency` field.\n"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The expense amount for which the expense was/will-be fyled.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\nNote that, when used as part of creating an Expense via POST, the actual amount in the Expense, in a subsequent GET call, may get changed either because of policies or admin/approvers changing the amount.\n"
+                },
+                "user_amount": {
+                  "type": "number",
+                  "description": "The expense amount as claimed by user.\nThe amount will be in the currency that the organization is setup with in case of GET requests. <br>\n"
+                },
+                "tax": {
+                  "type": "number",
+                  "description": "Tax amount as setup by your organisation."
+                },
+                "foreign_currency": {
+                  "type": "string",
+                  "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>.\nOriginal currency signifies the currency in which the object (expense/advance/refund/etc.) was originally created.\n"
+                },
+                "foreign_amount": {
+                  "type": "number",
+                  "description": "Amount value of the object, in original currency i.e the currency in which the object was initially created.\n"
+                },
+                "purpose": {
+                  "type": "string",
+                  "maxLength": 1024,
+                  "description": "Justification for the expense."
+                },
+                "project_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the Project, to which the Expense belongs. <br>\n"
+                },
+                "cost_center_id": {
+                  "type": "string",
+                  "description": "The ID generated by Fyle to uniquely identify the CostCenter, to which the Expense belongs. <br>\n"
+                },
+                "category_id": {
+                  "type": "string",
+                  "description": "The unique ID of a Category to which the Expense belongs. <br>\nUse `GET /v1/fyler/categories` to get the list of valid ID and Name of the Categories for the organization.\n"
+                },
+                "source_account_id": {
+                  "type": "string"
+                },
+                "billable": {
+                  "type": "boolean",
+                  "description": "This fields marks whether a given expense is billable a not."
+                },
+                "reimbursable": {
+                  "type": "boolean"
+                },
+                "exchange_rate": {
+                  "type": "number",
+                  "description": "This field determines at which rate the expenses from foriegn currency was converted to home currency.\n"
+                },
+                "report_id": {
+                  "type": "string",
+                  "description": "Unique id given by Fyle to identify an Expense Report.\n"
+                },
+                "vendor": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the name of the vendor to which the Expense was made\n"
+                },
+                "vendor_id": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "String denoting the id of the vendor to which the Expense was made\n"
+                },
+                "locations": {
+                  "description": "This field will be present for travel related categories. To add to and from location to you travel category related expenses add two locations in schema given below.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "display_name": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "formatted_address": {
+                        "type": "string"
+                      },
+                      "latitude": {
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "started_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the onward date.\n",
+                  "type": "string"
+                },
+                "ended_at": {
+                  "description": "This field is only relevant for travel related categories. This represents the return date.\n",
+                  "type": "string"
+                },
+                "mileage_distance": {
+                  "type": "number",
+                  "description": "Actual distance travelled by employee in mileage expenses."
+                },
+                "mileage_calculated_distance": {
+                  "type": "number",
+                  "description": "Distance compluted by Fyle in mileage expenses."
+                },
+                "mileage_distance_unit": {
+                  "type": "string",
+                  "enum": [
+                    "KM",
+                    "MILES"
+                  ]
+                },
+                "mileage_calculated_amount": {
+                  "type": "number",
+                  "description": "Amount compluted by Fyle in mileage expenses."
+                },
+                "mileage_vehicle_type": {
+                  "type": "string",
+                  "description": "Type of vehicle used for travel."
+                },
+                "mileage_rate": {
+                  "type": "number",
+                  "description": "Rate per km as provided in the Fyle system"
+                },
+                "mileage_is_round_trip": {
+                  "type": "boolean",
+                  "description": "Flag stating whether this was a round trip or not."
+                },
+                "bus_travel_class": {
+                  "description": "This field is applicable only for bus category.\n",
+                  "type": "string"
+                },
+                "train_travel_class": {
+                  "description": "This field is applicable for only Train category.\n",
+                  "type": "string"
+                },
+                "flight_journey_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "flight_return_travel_class": {
+                  "description": "This field is applicable only for flight category. Can be `BUSINESS`, `ECONOMY`, `FIRST_CLASS`\n",
+                  "type": "string"
+                },
+                "hotel_is_breakfast_provided": {
+                  "type": "boolean",
+                  "description": "In case of `Hotel` related expenses, this field indicates whether a breakfast was provided by the hotel or not.\n"
+                },
+                "per_diem_rate_id": {
+                  "type": "string"
+                },
+                "num_days": {
+                  "type": "integer"
+                },
+                "attachments": {
+                  "description": "returns reference to files API.\n",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Id of the file object. Always starts with `fi`.\n"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the uploaded file.\n"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "THUMBNAILx200x200",
+                          "ORIGINAL",
+                          "ENCRYPTED"
+                        ],
+                        "description": "Indicates whether this file original size or encrypted or its thumbnail image.\n"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "Password which required to unlock the file.\n"
+                      },
+                      "download_path": {
+                        "type": "string",
+                        "description": "Link to download this file.\nchange this to right url later.\n"
+                      }
+                    }
+                  }
+                },
+                "custom_properties": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the custom property.\n"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "city": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "display_name": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "formatted_address": {
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ],
+                        "description": "The value for the custom properties. This could be a String, Boolean, Integer or an Array of Strings. <br>\n"
+                      }
+                    }
+                  }
+                },
+                "external_id": {
+                  "type": "string",
+                  "description": "Id given by external systems like Gmail. To identify whether that entity has been already added to Fyle or not.\n"
+                },
+                "split_group_id": {
+                  "type": "string"
+                },
+                "split_group_user_amount": {
+                  "type": "number"
+                }
               }
             }
           }
@@ -1821,50 +5223,123 @@
               "items": {
                 "type": "object",
                 "properties": {
-                  "id": {
+                  "action_description": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "An unique string to identify the Expense Comment. Ignore this field when used as part of a POST request to create an Expense."
+                    "description": "Describes the what action will taken on the expense.\n"
                   },
-                  "comment": {
+                  "currency": {
                     "type": "string",
-                    "maxLength": 255,
-                    "description": "Comment made on the expense."
+                    "maxLength": 3,
+                    "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
                   },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
+                  "disable_system_approvers": {
+                    "type": "boolean",
+                    "default": false
                   },
-                  "employee_id": {
+                  "failure_reason": {
                     "type": "string",
-                    "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "Contains the failure reasons.\n"
                   },
-                  "report_id": {
+                  "is_flagged": {
+                    "type": "boolean",
+                    "description": "Indicates whether expense is flagged or not.\n",
+                    "default": false
+                  },
+                  "policy_amount": {
+                    "type": "number"
+                  },
+                  "policy_approver_ids": {
+                    "type": "array",
+                    "description": "Contains list of approver ids.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "policy_rule_descriptions": {
+                    "type": "array",
+                    "description": "Contains the list of policy rules description.\n",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "policy_run_status": {
                     "type": "string",
-                    "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a report.\nThis id is always prefixed with `rp`.\n"
+                    "description": "Indicates the status of policy execution, whether it got executed or not.\n"
+                  },
+                  "is_receipt_required": {
+                    "type": "boolean",
+                    "description": "Indicates whether receipt is mandatory or not in this policy.\n"
                   },
                   "expense_id": {
                     "type": "string",
-                    "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify an expense.\nThis id is always prefixed with `tx`.\n"
+                    "description": "Expense Id on which this policy executed.\n"
                   },
-                  "trip_request_id": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Trip request id if any.\n"
+                  "expense_policy_rule_desired_states": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "currency": {
+                          "type": "string",
+                          "maxLength": 3,
+                          "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Description of this policy rule.\n"
+                        },
+                        "disable_system_approvers": {
+                          "type": "boolean",
+                          "description": "Indicates whether to disable system approvers or not.\n"
+                        },
+                        "flag": {
+                          "type": "boolean",
+                          "description": "Indicates whether expense is flagged or not.\n"
+                        },
+                        "missing_approvers": {
+                          "type": "array",
+                          "description": "Contains the missing ids of Approver set for this Fyler.\n",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "policy_amount": {
+                          "type": "number",
+                          "description": "Amount capping set in the policy.\n"
+                        },
+                        "policy_approver_ids": {
+                          "type": "array",
+                          "description": "Contains the ids of Approver set for this Fyler.\n",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "popup": {
+                          "type": "boolean",
+                          "description": "Indicates whether the message is shown in popup window or not.\n"
+                        },
+                        "receipt_required": {
+                          "type": "boolean",
+                          "description": "Indicates whether receipt is mandatory or not in this policy rule.\n"
+                        },
+                        "expense_id": {
+                          "type": "string",
+                          "description": "Expense Id on which this policy executed.\n"
+                        },
+                        "expense_policy_rule_id": {
+                          "type": "string",
+                          "description": "Expense policy rule id.\n"
+                        }
+                      }
+                    }
                   },
-                  "advance_request_id": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "Advance request id if any.\n"
-                  },
-                  "state": {
-                    "type": "string",
-                    "maxLength": 255,
-                    "description": "State of the comment."
+                  "expense_query_params": {
+                    "type": "array",
+                    "description": "Query params present in expense\n",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -1941,110 +5416,6 @@
         }
       }
     }
-  },
-  "/fyler/expense_custom_properties": {
-    "get": {
-      "responses": {
-        "200": {
-          "type": "object",
-          "properties": {
-            "count": {
-              "description": "The total number of objects that can be requested.\n",
-              "type": "integer"
-            },
-            "offset": {
-              "description": "offset is used to skip that many number of objects before counting. <br>\nFor example, if there are 2000 objects, <br>\nThe first request will have offset as 0 and limit as 1000 to return first 1000 objects. <br>\nThe second request will have offset as 1000 and limit as 1000 to return next 1000 objects. <br>\n",
-              "type": "integer",
-              "default": 200
-            },
-            "limit": {
-              "description": "The actual number of objects that are returned in the response.\n",
-              "type": "integer"
-            },
-            "url": {
-              "type": "string"
-            },
-            "data": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number",
-                    "description": "This id is provided by Fyle to identify a particular custom property.\n"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "This field specifies the name of the custom property.\n"
-                  },
-                  "type": {
-                    "type": "string",
-                    "description": "This field specifies the type of the custom property.\n"
-                  },
-                  "options": {
-                    "type": "array",
-                    "description": "This field specifies the option values of the custom property in case on SELECT or MULTI_SELECT custom property type.\n",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "placeholder": {
-                    "type": "string",
-                    "description": "This field specifies the placeholder of the custom property.\n"
-                  },
-                  "org_category_ids": {
-                    "type": "array",
-                    "description": "This field specifies the org category ids associated with the custom property.\n",
-                    "items": {
-                      "type": "integer"
-                    }
-                  },
-                  "enabled": {
-                    "type": "boolean",
-                    "description": "This field indicates if the module is enabled or not.\n"
-                  },
-                  "mandatory": {
-                    "type": "boolean",
-                    "description": "This field specifies if the custom property is mandatory or not.\n"
-                  },
-                  "org_id": {
-                    "type": "string",
-                    "description": "The unique id of the Organization to which the object is associated.\n"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was created.\n"
-                  },
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "<a href='https://tools.ietf.org/html/rfc3339#section-5.6'>RFC 3339, section 5.6 compliant timestamp.</a>\nSignifies when this object was updated.\n"
-                  }
-                }
-              }
-            }
-          },
-          "$schema": "http://json-schema.org/draft-04/schema#"
-        },
-        "401": {
-          "type": "object",
-          "properties": {
-            "message": {
-              "enum": [
-                "invalid token"
-              ],
-              "type": "string",
-              "description": "This error means that the input access token is either not issued by Fyle or has expired.\nYou need to generate a new access token.\n"
-            }
-          },
-          "$schema": "http://json-schema.org/draft-04/schema#"
-        }
-      }
-    }
-  },
-  "/fyler/policy_test": {
-    "post": {}
   },
   "/fyler/reports": {
     "post": {
@@ -2243,17 +5614,22 @@
                   "id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
+                    "description": "This id provided by Fyle to uniquely identify a Expense report.\nThis id is always prefixed with `rp`.\n"
                   },
                   "employee_id": {
                     "type": "string",
                     "maxLength": 255,
-                    "description": "This id prodvided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
+                    "description": "This id provided by Fyle to uniquely identify an employee within an organization.\nThis id is always prefixed with `ou`.\n"
                   },
                   "employee": {
                     "type": "object",
                     "description": "Details of the employee to whom this object belongs to.",
                     "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                      },
                       "user_id": {
                         "type": "string",
                         "maxLength": 255,
@@ -2332,7 +5708,7 @@
                   },
                   "currency": {
                     "type": "string",
-                    "maxLength": 10,
+                    "maxLength": 3,
                     "description": "The three-letter currency code following ISO standard <a href='https://www.iso.org/iso-4217-currency-codes.html'>ISO 4217</a>\n"
                   },
                   "amount": {
@@ -2398,6 +5774,11 @@
                     "description": "Details of employee who created this report.\n",
                     "type": "object",
                     "properties": {
+                      "id": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "This id provided by Fyle to identify a employee from this organisation.\nThis id is always prefixed with `ou`.\nThis id is unique per organisation per email.\n"
+                      },
                       "user_id": {
                         "type": "string",
                         "maxLength": 255,
