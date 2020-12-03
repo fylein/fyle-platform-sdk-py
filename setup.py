@@ -14,7 +14,11 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     keywords=['fyle', 'api', 'python', 'sdk'],
     url='https://github.com/fylein/fyle-platform-sdk-py',
+    include_package_data=True,
     packages=setuptools.find_packages(),
+    package_data={
+        'fyle': ['*']
+    },
     install_requires=[
         'enum34==1.1.10',
         'requests==2.25.0'
