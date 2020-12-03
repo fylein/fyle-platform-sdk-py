@@ -8,7 +8,7 @@ from .balance_transfers import BalanceTransfers
 from .categories import Categories
 from .cost_centers import CostCenters
 from .employees import Employees
-from .expense_custom_properties import ExpenseCustomProperties
+from .expense_fields import ExpenseFields
 from .expenses import Expenses
 from .projects import Projects
 from .refunds import Refunds
@@ -26,7 +26,7 @@ balance_transfers = BalanceTransfers(version, role)
 categories = Categories(version, role)
 cost_centers = CostCenters(version, role)
 employees = Employees(version, role)
-expense_custom_properties = ExpenseCustomProperties(version, role)
+expense_fields = ExpenseFields(version, role)
 expenses = Expenses(version, role)
 projects = Projects(version, role)
 refunds = Refunds(version, role)
