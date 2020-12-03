@@ -35,7 +35,7 @@ class Platform(Auth):
         self.set_client_id()
         self.set_client_secret()
         self.set_refresh_token()
-        # self.update_access_token()
+        self.update_access_token()
 
     def set_server_url(self):
         """Set the Server URL in all API objects."""
