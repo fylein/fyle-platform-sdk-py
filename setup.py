@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='fyle',
-    version='0.0.2-beta',
+    version='0.0.3-beta',
     author='Siva Narayanan',
     author_email='siva@fyle.in',
     description='Python SDK for accessing Fyle Platform APIs',
