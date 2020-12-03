@@ -2,7 +2,7 @@
     Initializing Fyle SDK
 """
 
-from .fyle import platform
+import platform
 
 __all__ = [
     platform
