@@ -4,8 +4,8 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 setuptools.setup(
-    name='fyle-platform-sdk-py',
-    version='0.0.4-beta',
+    name='fyle',
+    version='0.0.6-beta',
     author='Siva Narayanan',
     author_email='siva@fyle.in',
     description='Python SDK for accessing Fyle Platform APIs',
@@ -14,10 +14,9 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     keywords=['fyle', 'api', 'python', 'sdk'],
     url='https://github.com/fylein/fyle-platform-sdk-py',
-    include_package_data=True,
     packages=setuptools.find_packages(),
-    package_data={
-        'fyle': ['*']
+    package_dir={
+        '': 'fyle',
     },
     install_requires=[
         'enum34==1.1.10',
