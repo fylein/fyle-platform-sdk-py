@@ -50,12 +50,12 @@ class Platform(Auth):
     def set_client_id(self):
         """Set the Client ID."""
 
-        config.set('FYLE', 'CLIENT_ID', self.__token_url)
+        config.set('FYLE', 'CLIENT_ID', self.__client_id)
 
     def set_client_secret(self):
         """Set the Client Secret."""
 
-        config.set('FYLE', 'CLIENT_SECRET', self.__token_url)
+        config.set('FYLE', 'CLIENT_SECRET', self.__client_secret)
 
     def set_refresh_token(self):
         """Set the Refresh token."""
