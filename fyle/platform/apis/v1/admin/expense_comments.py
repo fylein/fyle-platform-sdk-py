@@ -1,5 +1,5 @@
 """
-V1 Fyler Expense Comments
+V1 Admin Expense Comments
 """
 
 from ....internals.post_resources import PostResources
