@@ -1,5 +1,5 @@
 """
-V1 Approver Report Approvals
+V1 Admin Report Approvals
 """
 
 from ....internals.post_resources import PostResources

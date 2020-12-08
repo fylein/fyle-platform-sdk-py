@@ -1,5 +1,5 @@
 """
-V1 Admin Reports
+V1 Approver Reports
 """
 
 from ....internals.list_resources import ListResources
