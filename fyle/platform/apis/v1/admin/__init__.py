@@ -19,6 +19,7 @@ from .refunds import Refunds
 from .reimbursements import Reimbursements
 from .report_stats import ReportStats
 from .reports import Reports
+from .report_approvals import ReportApprovals
 from .settlements import Settlements
 from .trip_requests_stats import TripRequestsStats
 
@@ -43,5 +44,6 @@ refunds = Refunds(version, role)
 reimbursements = Reimbursements(version, role)
 report_stats = ReportStats(version, role)
 reports = Reports(version, role)
+report_approvals = ReportApprovals(version, role)
 settlements = Settlements(version, role)
 trip_requests_stats = TripRequestsStats(version, role)
