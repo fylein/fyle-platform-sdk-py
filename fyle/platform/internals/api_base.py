@@ -20,7 +20,7 @@ class ApiBase(Network):
         self.role = role
 
     def _format_api_url(self, endpoint):
-        return '{base_url}/{version}/{role}{endpoint}'.format(
+        return '{base_url}/{role}{endpoint}'.format(
             base_url=config.get('FYLE', 'SERVER_URL'),
             version=self.version,
             role=self.role,
