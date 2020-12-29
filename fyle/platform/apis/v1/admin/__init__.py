@@ -11,8 +11,11 @@ from .cost_centers import CostCenters
 from .employees import Employees
 from .expense_comments import ExpenseComments
 from .expense_fields import ExpenseFields
+from .expense_files import ExpenseFiles
 from .expense_stats import ExpenseStats
 from .expenses import Expenses
+from .files import Files
+from .orgs import Orgs
 from .policy import Policy
 from .projects import Projects
 from .refunds import Refunds
@@ -36,8 +39,11 @@ cost_centers = CostCenters(version, role)
 employees = Employees(version, role)
 expense_comments = ExpenseComments(version, role)
 expense_fields = ExpenseFields(version, role)
+expense_files = ExpenseFiles(version, role)
 expense_stats = ExpenseStats(version, role)
 expenses = Expenses(version, role)
+files = Files(version, role)
+orgs = Orgs(version, role)
 policy = Policy(version, role)
 projects = Projects(version, role)
 refunds = Refunds(version, role)
