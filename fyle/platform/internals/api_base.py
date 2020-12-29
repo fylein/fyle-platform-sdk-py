@@ -111,9 +111,8 @@ class ApiBase(Network):
             headers=api_headers
         )
 
-        if response.status_code == 200:
-            result = json.loads(response.text)
-            return result
+        if response.status_code == 204:
+            return None
 
         self._assert_response(response)
 
