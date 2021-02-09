@@ -8,7 +8,7 @@ from ....internals.list_resources import ListResources
 class ExpenseFields(ListResources):
     """Class for Expense Custom Properties APIs."""
 
-    Expense_Fields = '/expense_fields'
+    EXPENSE_FIELDS = '/expense_fields'
 
     def __init__(self, version, role):
-        super().__init__(version, role, ExpenseFields.Expense_Fields)
+        super().__init__(version, role, ExpenseFields.EXPENSE_FIELDS)

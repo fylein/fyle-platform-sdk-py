@@ -1,12 +1,12 @@
 """
-V1 Admin Reports
+V1 Approver Reports
 """
 
 from ....internals.list_resources import ListResources
 from ....internals.get_resources import GetResources
-from ....internals.post_resources import PostResources
 
-class Reports(ListResources, GetResources, PostResources):
+
+class Reports(ListResources, GetResources):
     """Class for Reports APIs."""
 
     REPORTS = '/reports'
