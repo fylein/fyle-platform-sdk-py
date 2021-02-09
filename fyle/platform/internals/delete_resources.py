@@ -13,15 +13,15 @@ class DeleteResources(ApiBase):
         self.role = role
         self.endpoint = endpoint
 
-        api = ApiBase(self.version, self.role)
+        api = super().__init__(self.version, self.role)
         self.make_get_request = api.make_get_request
 
-    def delete(self, id: str):
+    def delete(self, id_: str):
         """
         Deletes the resource object
-        :param id: resource object id
+        :param id_: resource object id
         :return: Status
         """
         return self.make_delete_request(
-            api_url='{endpoint}/{id}'.format(endpoint=self.endpoint, id=id)
+            api_url='{endpoint}/{id}'.format(endpoint=self.endpoint, id=id_)
         )

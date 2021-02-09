@@ -3,7 +3,6 @@
 """
 
 import json
-import os
 
 from .decorators import retry
 from .network import Network
@@ -21,24 +20,14 @@ class ApiBase(Network):
         self.role = role
 
     def _format_api_url(self, endpoint):
-        is_mock_server = os.getenv('IS_MOCK_SERVER', 'F')
-        if is_mock_server == 'F':
-            url = '{base_url}/{version}/{role}{endpoint}'.format(
-                base_url=config.get('FYLE', 'SERVER_URL'),
-                version=self.version,
-                role=self.role,
-                endpoint=endpoint
-            )
-        else:
-            url = '{base_url}{role}{endpoint}'.format(
-                base_url=config.get('FYLE', 'SERVER_URL'),
-                version=self.version,
-                role=self.role,
-                endpoint=endpoint
-            )
-        return url
+        return '{base_url}/{role}{endpoint}'.format(
+            base_url=config.get('FYLE', 'SERVER_URL'),
+            version=self.version,
+            role=self.role,
+            endpoint=endpoint
+        )
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_get_request(self, api_url, query_params=None):
         """Create a HTTP GET request.
         Parameters:
@@ -76,19 +65,20 @@ class ApiBase(Network):
 
         return None
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_post_request(self, api_url, payload):
         """Create a HTTP post request.
 
         Parameters:
-            data (dict): HTTP POST body data for the wanted API.
+            payload (dict): HTTP POST body data for the wanted API.
             api_url (str): Url for the wanted API.
 
         Returns:
             A response from the request (dict).
         """
 
-        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
+        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN')),
+                       'Content-Type': 'application/json'}
 
         response = self.post_request(
             url=self._format_api_url(api_url),
@@ -104,7 +94,7 @@ class ApiBase(Network):
 
         return None
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_delete_request(self, api_url):
         """Create a HTTP delete request.
 
@@ -122,9 +112,8 @@ class ApiBase(Network):
             headers=api_headers
         )
 
-        if response.status_code == 200:
-            result = json.loads(response.text)
-            return result
+        if response.status_code == 204:
+            return None
 
         self._assert_response(response)
 

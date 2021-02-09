@@ -14,16 +14,16 @@ class Auth(Network):
 
     def __init__(self):
         self.__access_token = None
+        super(Auth, self).__init__()
 
-    def __get_access_token(self):
+    @staticmethod
+    def __get_access_token():
         """
         Get the access token using a HTTP post.
 
         Returns:
             A new access token.
         """
-
-        access_token = None
 
         api_data = {
             'grant_type': 'refresh_token',
