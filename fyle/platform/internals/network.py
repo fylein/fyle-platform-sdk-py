@@ -40,7 +40,8 @@ class Network:
 
         Parameters:
             url (str): Url for the wanted API.
-
+            data:
+            headers:
         Returns:
             A response from the request (dict).
         """
@@ -59,7 +60,8 @@ class Network:
         """
         return self._http_request('DELETE', url, **kwargs)
 
-    def _http_request(self, method, url, headers=None, **kwargs):
+    @staticmethod
+    def _http_request(method, url, headers=None, **kwargs):
         headers = requests.structures.CaseInsensitiveDict(headers)
         headers[Network.HEADERS.USER_AGENT] = Network.HOSTNAME
 

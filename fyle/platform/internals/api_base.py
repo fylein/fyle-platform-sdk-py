@@ -27,7 +27,7 @@ class ApiBase(Network):
             endpoint=endpoint
         )
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_get_request(self, api_url, query_params=None):
         """Create a HTTP GET request.
         Parameters:
@@ -65,12 +65,12 @@ class ApiBase(Network):
 
         return None
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_post_request(self, api_url, payload):
         """Create a HTTP post request.
 
         Parameters:
-            data (dict): HTTP POST body data for the wanted API.
+            payload (dict): HTTP POST body data for the wanted API.
             api_url (str): Url for the wanted API.
 
         Returns:
@@ -94,7 +94,7 @@ class ApiBase(Network):
 
         return None
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError))
+    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_delete_request(self, api_url):
         """Create a HTTP delete request.
 
