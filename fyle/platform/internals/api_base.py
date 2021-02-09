@@ -77,7 +77,8 @@ class ApiBase(Network):
             A response from the request (dict).
         """
 
-        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN')), 'Content-Type': 'application/json'}
+        api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN')),
+                       'Content-Type': 'application/json'}
 
         response = self.post_request(
             url=self._format_api_url(api_url),
