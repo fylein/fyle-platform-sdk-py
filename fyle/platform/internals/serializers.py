@@ -52,7 +52,6 @@ class ComplexEncoder(json.JSONEncoder):
     """Class for Custom JSON Encoder"""
 
     def default(self, obj):
-        encoded_obj = None
         if isinstance(obj, Response):
             try:
                 encoded_obj = obj.json()

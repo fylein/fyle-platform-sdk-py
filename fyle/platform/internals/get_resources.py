@@ -7,7 +7,7 @@ from typing import Dict
 from .api_base import ApiBase
 
 
-class GetResources():
+class GetResources(ApiBase):
     """Get Resource Class"""
 
     def __init__(self, version, role, endpoint):
@@ -15,17 +15,18 @@ class GetResources():
         self.role = role
         self.endpoint = endpoint
 
-        api = ApiBase(self.version, self.role)
+        api = super().__init__(self.version, self.role)
         self.make_get_request = api.make_get_request
 
-    def get(self, id: str = None, query_params=None) -> Dict:
+    def get(self, id_: str = None, query_params=None) -> Dict:
         """
         Get Single Resource object by ID
-        :param id: Resource object ID
+        :param id_: Resource object ID
+        :param query_params:
         :return: Resource Object
         """
         query_params = {} if query_params is None else query_params
-        if id:
+        if id_:
             api_url = '{endpoint}/{id}'.format(endpoint=self.endpoint, id=id)
         else:
             api_url = self.endpoint

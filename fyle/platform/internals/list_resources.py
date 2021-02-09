@@ -15,7 +15,7 @@ class ListResources(ApiBase):
         self.role = role
         self.endpoint = endpoint
 
-        api = ApiBase(self.version, self.role)
+        api = super().__init__(self.version, self.role)
         self.make_get_request = api.make_get_request
 
     def list(self, query_params=None) -> Dict:
