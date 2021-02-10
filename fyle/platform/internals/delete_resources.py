@@ -5,7 +5,7 @@
 from .api_base import ApiBase
 
 
-class DeleteResources(ApiBase):
+class DeleteResources:
     """Delete Resource Class"""
 
     def __init__(self, version, role, endpoint):
@@ -13,8 +13,7 @@ class DeleteResources(ApiBase):
         self.role = role
         self.endpoint = endpoint
 
-        api = super().__init__(self.version, self.role)
-        self.make_get_request = api.make_get_request
+        self.api = ApiBase(self.version, self.role)
 
     def delete(self, id_: str):
         """
@@ -22,6 +21,6 @@ class DeleteResources(ApiBase):
         :param id_: resource object id
         :return: Status
         """
-        return self.make_delete_request(
+        return self.api.make_delete_request(
             api_url='{endpoint}/{id}'.format(endpoint=self.endpoint, id=id_)
         )
