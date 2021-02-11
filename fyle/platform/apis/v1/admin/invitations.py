@@ -1,14 +1,13 @@
 """
 V1 Admin Employees
 """
+from ....internals.bulk_post_resources import BulkPostResources
 
-from ....internals.post_resources import PostResources
 
-
-class InvitationsBulk(PostResources):
+class Invitations(BulkPostResources):
     """Class for Invitations APIs."""
 
     INVITATIONS_BULK = '/invitations/bulk'
 
     def __init__(self, version, role):
-        super().__init__(version, role, InvitationsBulk.INVITATIONS_BULK)
+        super().__init__(version, role, Invitations.INVITATIONS_BULK)
