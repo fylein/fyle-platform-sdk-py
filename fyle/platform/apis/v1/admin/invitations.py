@@ -1,5 +1,5 @@
 """
-V1 Admin Employees
+V1 Admin Invitations
 """
 from ....internals.bulk_post_resources import BulkPostResources
 
