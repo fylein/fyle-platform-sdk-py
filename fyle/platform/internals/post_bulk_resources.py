@@ -7,7 +7,7 @@ from typing import Dict
 from .api_base import ApiBase
 
 
-class BulkPostResources:
+class PostBulkResources:
     """Bulk Post Resource Class"""
 
     def __init__(self, version, role, endpoint):
@@ -16,7 +16,7 @@ class BulkPostResources:
         self.endpoint = endpoint
         self.api = ApiBase(self.version, self.role)
 
-    def bulk_post(self, payload: dict) -> Dict:
+    def post_bulk(self, payload: dict) -> Dict:
         """
         Creates or updates resources in bulk.
         :param payload: top-level object containing data which is a array of objects.
