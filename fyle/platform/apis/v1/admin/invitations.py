@@ -1,10 +1,10 @@
 """
 V1 Admin Invitations
 """
-from ....internals.bulk_post_resources import BulkPostResources
+from fyle.platform.internals.post_bulk_resources import PostBulkResources
 
 
-class Invitations(BulkPostResources):
+class Invitations(PostBulkResources):
     """Class for Invitations APIs."""
 
     INVITATIONS_BULK = '/invitations/bulk'
