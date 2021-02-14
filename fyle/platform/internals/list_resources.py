@@ -23,7 +23,23 @@ class ListResources:
         :return: List of Resource Objects
         """
         query_params = {} if query_params is None else query_params
-        return self.api.make_get_request(
-            api_url=self.endpoint,
-            query_params=query_params
-        )
+        if query_params.get('offset') or query_params.get('limit'):
+            return self.api.make_get_request(
+                api_url=self.endpoint,
+                query_params=query_params
+            )
+        else:
+            first_response = self.api.make_get_request(
+                api_url=self.endpoint,
+                query_params=query_params
+            )
+            count = first_response.get('count')
+            limit = len(first_response.get('data')) if first_response.get('data') else 0
+            for offset in range(limit, count, limit):
+                query_params.update({'offset': offset, 'limit': limit})
+                resp = self.api.make_get_request(
+                    api_url=self.endpoint,
+                    query_params=query_params
+                )
+                first_response.get('data').extend(resp.get('data'))
+            return first_response
