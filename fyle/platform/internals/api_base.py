@@ -83,7 +83,7 @@ class ApiBase(Network):
         response = self.post_request(
             url=self._format_api_url(api_url),
             headers=api_headers,
-            json=payload
+            data=payload
         )
 
         if response.status_code == 200:
