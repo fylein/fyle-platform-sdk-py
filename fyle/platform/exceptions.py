@@ -12,7 +12,7 @@ class PlatformError(Exception):
     """
 
     def __init__(self, msg, response=None):
-        super(PlatformError, self).__init__(msg)
+        super().__init__(msg)
         self.message = msg
         self.response = response
 

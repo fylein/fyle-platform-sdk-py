@@ -22,7 +22,6 @@ class ApiBase(Network):
     def _format_api_url(self, endpoint):
         return '{base_url}/{role}{endpoint}'.format(
             base_url=config.get('FYLE', 'SERVER_URL'),
-            version=self.version,
             role=self.role,
             endpoint=endpoint
         )
@@ -61,7 +60,7 @@ class ApiBase(Network):
             result = json.loads(response.text)
             return result
 
-        self._assert_response(response)
+        ApiBase._assert_response(response)
 
         return None
 
@@ -90,7 +89,7 @@ class ApiBase(Network):
             result = json.loads(response.text)
             return result
 
-        self._assert_response(response)
+        ApiBase._assert_response(response)
 
         return None
 
@@ -115,11 +114,12 @@ class ApiBase(Network):
         if response.status_code == 204:
             return None
 
-        self._assert_response(response)
+        ApiBase._assert_response(response)
 
         return None
 
-    def _assert_response(self, response):
+    @staticmethod
+    def _assert_response(response):
         if response.status_code == 400:
             raise exceptions.WrongParamsError(
                 'Some of the parameters are wrong', json.loads(response.text))

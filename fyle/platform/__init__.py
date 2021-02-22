@@ -2,20 +2,20 @@
     Initializing Fyle Platform SDK
 """
 
-from . import exceptions
+from .exceptions import *
 from .platform import Platform
 
 __all__ = [
-    Platform,
-    exceptions.PlatformError,
-    exceptions.NotFoundClientError,
-    exceptions.UnauthorizedClientError,
-    exceptions.ExpiredTokenError,
-    exceptions.InvalidTokenError,
-    exceptions.NoPrivilegeError,
-    exceptions.WrongParamsError,
-    exceptions.NotFoundItemError,
-    exceptions.InternalServerError
+    'Platform',
+    'PlatformError',
+    'NotFoundClientError',
+    'UnauthorizedClientError',
+    'ExpiredTokenError',
+    'InvalidTokenError',
+    'NoPrivilegeError',
+    'WrongParamsError',
+    'NotFoundItemError',
+    'InternalServerError'
 ]
 
-name = "platform"
+name = 'platform'
