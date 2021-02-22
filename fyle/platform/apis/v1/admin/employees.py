@@ -3,11 +3,12 @@ V1 Admin Employees
 """
 
 from ....internals.get_resources import GetResources
+from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources
 from ....internals.post_resources import PostResources
 
 
-class Employees(ListResources, PostResources, GetResources):
+class Employees(ListResources, ListAllResources, PostResources, GetResources):
     """Class for Employees APIs."""
 
     EMPLOYEES = '/employees'
