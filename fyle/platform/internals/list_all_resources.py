@@ -1,7 +1,7 @@
 """
     Defines List resource class.
 """
-
+from collections import Iterable
 from typing import Dict
 
 from .api_base import ApiBase
@@ -17,7 +17,7 @@ class ListAllResources:
         self.endpoint = endpoint
         self.api = ApiBase(self.version, self.role)
 
-    def list_all(self, query_params=None) -> Dict:
+    def list_all(self, query_params=None) -> Iterable:
         """
         Get Resources
         :param query_params:
