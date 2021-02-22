@@ -51,32 +51,32 @@ def deserialize(dictionary):
 class ComplexEncoder(json.JSONEncoder):
     """Class for Custom JSON Encoder"""
 
-    def default(self, obj):
-        if isinstance(obj, Response):
+    def default(self, o):
+        if isinstance(o, Response):
             try:
-                encoded_obj = obj.json()
+                encoded_obj = o.json()
             except Exception:
                 encoded_obj = {}
-        elif isinstance(obj, date):
-            encoded_obj = obj.isoformat()
-        elif isinstance(obj, datetime):
-            encoded_obj = obj.isoformat() + "Z"
-        elif isinstance(obj, enum.Enum):
-            encoded_obj = obj.value
-        elif isinstance(obj, GeneralObject):
-            encoded_obj = obj.__dict__
-        elif hasattr(obj, '__class__'):
-            if hasattr(obj, 'serialize'):
-                encoded_obj = obj.serialize()
+        elif isinstance(o, date):
+            encoded_obj = o.isoformat()
+        elif isinstance(o, datetime):
+            encoded_obj = o.isoformat() + "Z"
+        elif isinstance(o, enum.Enum):
+            encoded_obj = o.value
+        elif isinstance(o, GeneralObject):
+            encoded_obj = o.__dict__
+        elif hasattr(o, '__class__'):
+            if hasattr(o, 'serialize'):
+                encoded_obj = o.serialize()
             else:
                 return None
-        elif isinstance(obj, Exception):
+        elif isinstance(o, Exception):
             encoded_obj = {
-                "error": obj.__class__.__name__,
-                "args": obj.args,
+                "error": o.__class__.__name__,
+                "args": o.args,
             }
         else:
-            encoded_obj = json.JSONEncoder.default(self, obj)
+            encoded_obj = json.JSONEncoder.default(self, o)
 
         return encoded_obj
 

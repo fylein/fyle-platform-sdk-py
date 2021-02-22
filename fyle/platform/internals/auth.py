@@ -14,7 +14,7 @@ class Auth(Network):
 
     def __init__(self):
         self.__access_token = None
-        super(Auth, self).__init__()
+        super().__init__()
 
     @staticmethod
     def __get_access_token():
