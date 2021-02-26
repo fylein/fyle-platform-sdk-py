@@ -1,7 +1,7 @@
 """
     Defines List resource class.
 """
-from collections import Iterable
+from typing import Iterable
 
 from .api_base import ApiBase
 from .. import exceptions
