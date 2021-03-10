@@ -4,19 +4,18 @@
 
 from typing import Dict
 
+from fyle.platform import exceptions
 from .api_base import ApiBase
 
 
-class ListResources(ApiBase):
+class ListResources:
     """List Resource Class"""
 
     def __init__(self, version, role, endpoint):
         self.version = version
         self.role = role
         self.endpoint = endpoint
-
-        api = super().__init__(self.version, self.role)
-        self.make_get_request = api.make_get_request
+        self.api = ApiBase(self.version, self.role)
 
     def list(self, query_params=None) -> Dict:
         """
@@ -25,7 +24,10 @@ class ListResources(ApiBase):
         :return: List of Resource Objects
         """
         query_params = {} if query_params is None else query_params
-        return self.make_get_request(
+        if not str(query_params.get('offset')) or not str(query_params.get('limit')) or not query_params.get('order'):
+            raise exceptions.WrongParamsError(
+                'Mandatory query params missing: offset, limit and order are mandatory query params.')
+        return self.api.make_get_request(
             api_url=self.endpoint,
             query_params=query_params
         )

@@ -1,6 +1,7 @@
 """
     Defining Network related operations
 """
+# pylint: disable=no-member
 
 import os
 
@@ -46,7 +47,7 @@ class Network:
             A response from the request (dict).
         """
 
-        data, headers = self._process_data_and_headers(data, headers)
+        data, headers = Network._process_data_and_headers(data, headers)
         return self._http_request('POST', url, headers=headers, data=data, **kwargs)
 
     def delete_request(self, url, **kwargs):
@@ -74,7 +75,8 @@ class Network:
 
         return response
 
-    def _process_data_and_headers(self, data, headers):
+    @classmethod
+    def _process_data_and_headers(cls, data, headers):
         headers = requests.structures.CaseInsensitiveDict(headers)
 
         if isinstance(data, dict):
