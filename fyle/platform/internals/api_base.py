@@ -3,6 +3,7 @@
 """
 
 import json
+from urllib.parse import quote_plus
 
 from .decorators import retry
 from .network import Network
@@ -48,7 +49,7 @@ class ApiBase(Network):
                 if isinstance(value, bool):
                     value = str(value).lower()
 
-                api_query_params[param] = value
+                api_query_params[param] = quote_plus(value)
 
         response = self.get_request(
             url=self._format_api_url(api_url),
