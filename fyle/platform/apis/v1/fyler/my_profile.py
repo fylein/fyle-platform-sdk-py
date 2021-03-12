@@ -6,7 +6,7 @@ from ....internals.get_resources import GetResources
 
 
 class MyProfile(GetResources):
-    """Class for Employee Profile API."""
+    """Class for My Profile API."""
 
     MY_PROFILE = '/my_profile'
 
