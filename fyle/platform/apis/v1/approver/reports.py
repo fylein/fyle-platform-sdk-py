@@ -3,9 +3,10 @@ V1 Approver Reports
 """
 
 from ....internals.list_resources import ListResources
+from ....internals.get_resources import GetResources
 
 
-class Reports(ListResources):
+class Reports(ListResources, GetResources):
     """Class for Reports APIs."""
 
     REPORTS = '/reports'
