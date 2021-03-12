@@ -1,5 +1,5 @@
 """
-V1 Fyler Employees
+V1 Fyler My Profile
 """
 
 from ....internals.get_resources import GetResources
