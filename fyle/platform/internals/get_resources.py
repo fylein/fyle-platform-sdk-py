@@ -26,7 +26,7 @@ class GetResources:
         """
         query_params = {} if query_params is None else query_params
         if id_:
-            api_url = '{endpoint}/{id}'.format(endpoint=self.endpoint, id=id)
+            api_url = '{endpoint}/{id}'.format(endpoint=self.endpoint, id=id_)
         else:
             api_url = self.endpoint
 
