@@ -15,18 +15,18 @@ class Reports(ListResources, GetResources):
     def __init__(self, version, role):
         super().__init__(version, role, Reports.REPORTS)
 
-    def approve(self, id_, comment=None):
+    def approve(self, id_):
         """
         To approve the report
         :param id_: id of report to be approved
-        :param comment: comment to be added along with approve action
         :return: partially_approved_report
         """
         partially_approve_report_url = Reports.PARTIALLY_APPROVE_REPORT
         return self.api.make_post_request(
             api_url=partially_approve_report_url,
             payload={
-                'id': id_,
-                'comment': comment
+                'data': {
+                    'id': id_
+                }
             }
         )
