@@ -15,7 +15,7 @@ class Reports(ListResources, GetResources):
     def __init__(self, version, role):
         super().__init__(version, role, Reports.REPORTS)
 
-    def approve(self, id_, comment):
+    def approve(self, id_, comment=None):
         """
         To approve the report
         :param id_: id of report to be approved
