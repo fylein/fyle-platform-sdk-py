@@ -3,7 +3,7 @@
 """
 
 from typing import Dict
-
+from .. import exceptions
 from .api_base import ApiBase
 
 
@@ -28,9 +28,14 @@ class GetResources:
         api_url = self.endpoint
 
         if id_:
-            query_params['id'] = id_
+            query_params['id'] = 'eq.{}'.format(id_)
 
-        return self.api.make_get_request(
+        response = self.api.make_get_request(
             api_url=api_url,
             query_params=query_params,
         )
+
+        if id_ and response['count'] < 1:
+            raise exceptions.NotFoundItemError('Resource Does not exists', id_)
+
+        return response
