@@ -28,7 +28,7 @@ class GetResources:
         api_url = self.endpoint
 
         if id_:
-            query_params.id = id_
+            query_params['id'] = id_
 
         return self.api.make_get_request(
             api_url=api_url,
