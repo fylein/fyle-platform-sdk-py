@@ -36,6 +36,6 @@ class GetResources:
         )
 
         if id_ and response['count'] < 1:
-            raise exceptions.NotFoundItemError('Resource Does not exists', id_)
+            raise exceptions.NotFoundItemError('Not found item with ID')
 
         return response
