@@ -17,7 +17,7 @@ class GetResources:
 
         self.api = ApiBase(self.version, self.role)
 
-    def get_by_id(self, id_: str = None) -> Dict:
+    def get_by_id(self, id_: str) -> Dict:
         """
         Get Single Resource object by ID
         :param id_: Resource object ID
@@ -26,11 +26,10 @@ class GetResources:
         query_params = {} 
         api_url = self.endpoint
 
-        if id_:
-            query_params['id'] = 'eq.{}'.format(id_)
-        else: 
+        if not id_:
             raise exceptions.WrongParamsError('Not found item with ID')
 
+        query_params['id'] = 'eq.{}'.format(id_)
         response = self.api.make_get_request(
             api_url=api_url,
             query_params=query_params,
