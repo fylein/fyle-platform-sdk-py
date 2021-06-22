@@ -3,7 +3,7 @@
 """
 
 from typing import Dict
-
+from .. import exceptions
 from .api_base import ApiBase
 
 
@@ -25,12 +25,19 @@ class GetResources:
         :return: Resource Object
         """
         query_params = {} if query_params is None else query_params
-        if id_:
-            api_url = '{endpoint}/{id}'.format(endpoint=self.endpoint, id=id_)
-        else:
-            api_url = self.endpoint
+        api_url = self.endpoint
 
-        return self.api.make_get_request(
+        if id_:
+            query_params['id'] = 'eq.{}'.format(id_)
+
+        response = self.api.make_get_request(
             api_url=api_url,
             query_params=query_params,
         )
+
+        if id_ and response['count'] < 1:
+            raise exceptions.NotFoundItemError('Not found item with ID')
+        elif id_ and response['count'] > 1:
+            raise exceptions.MultipleObjectReturned('Multiple Objects returned')
+
+        return response
