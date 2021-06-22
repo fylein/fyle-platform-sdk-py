@@ -17,18 +17,19 @@ class GetResources:
 
         self.api = ApiBase(self.version, self.role)
 
-    def get(self, id_: str = None, query_params=None) -> Dict:
+    def get_by_id(self, id_: str = None) -> Dict:
         """
         Get Single Resource object by ID
         :param id_: Resource object ID
-        :param query_params:
         :return: Resource Object
         """
-        query_params = {} if query_params is None else query_params
+        query_params = {} 
         api_url = self.endpoint
 
         if id_:
             query_params['id'] = 'eq.{}'.format(id_)
+        else: 
+            raise exceptions.WrongParamsError('Not found item with ID')
 
         response = self.api.make_get_request(
             api_url=api_url,
@@ -40,4 +41,6 @@ class GetResources:
         elif id_ and response['count'] > 1:
             raise exceptions.MultipleObjectReturned('Multiple Objects returned')
 
-        return response
+        return {
+            'data': response.get('data')[0]
+        }
