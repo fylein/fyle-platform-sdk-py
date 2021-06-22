@@ -35,7 +35,9 @@ class GetResources:
             query_params=query_params,
         )
 
-        if id_ and response['count'] != 1:
+        if id_ and response['count'] < 1:
             raise exceptions.NotFoundItemError('Not found item with ID')
+        elif id_ and response['count'] > 1:
+            raise exceptions.MultipleObjectReturned('Multiple Objects returned')
 
         return response

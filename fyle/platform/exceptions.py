@@ -57,6 +57,11 @@ class NotFoundItemError(PlatformError):
     pass
 
 
+class MultipleObjectReturned(PlatformError):
+    """Multiple Object Returned Error"""
+    pass
+
+
 class InternalServerError(PlatformError):
     """The rest FyleSDK errors, 500 error."""
     pass
