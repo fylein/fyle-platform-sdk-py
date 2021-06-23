@@ -27,7 +27,7 @@ class GetResources:
         api_url = self.endpoint
 
         if not id_:
-            raise exceptions.WrongParamsError('Not found item with ID')
+            raise exceptions.WrongParamsError('Invalid Parameters')
 
         query_params['id'] = 'eq.{}'.format(id_)
         response = self.api.make_get_request(
