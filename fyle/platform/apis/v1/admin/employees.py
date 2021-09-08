@@ -15,3 +15,10 @@ class Employees(ListResources, ListAllResources, PostResources, GetResources):
 
     def __init__(self, version, role):
         super().__init__(version, role, Employees.EMPLOYEES)
+
+    def invite_bulk(self, payload):
+        invite_bulk_api = '{}/{}'.format(self.endpoint, 'invite/bulk')
+        return self.api.make_post_request(
+            api_url=invite_bulk_api,
+            payload=payload
+        )
