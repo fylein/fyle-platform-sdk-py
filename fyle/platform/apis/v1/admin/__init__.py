@@ -10,6 +10,7 @@ from .tax_groups import TaxGroups
 from .reimbursements import Reimbursements
 from .settlements import Settlements
 from .projects import Projects
+from .advance_requests import AdvanceRequests
 from ..version import version
 
 role = 'admin'
@@ -22,3 +23,4 @@ expenses = Expenses(version, role)
 tax_groups = TaxGroups(version, role)
 reimbursements = Reimbursements(version, role)
 settlements = Settlements(version, role)
+advance_requests = AdvanceRequests(version, role)
