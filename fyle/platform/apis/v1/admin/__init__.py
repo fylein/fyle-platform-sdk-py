@@ -10,7 +10,6 @@ from .tax_groups import TaxGroups
 from .reimbursements import Reimbursements
 from .settlements import Settlements
 from .projects import Projects
-from .expense_fields import ExpenseFields
 from ..version import version
 
 role = 'admin'
@@ -23,4 +22,3 @@ expenses = Expenses(version, role)
 tax_groups = TaxGroups(version, role)
 reimbursements = Reimbursements(version, role)
 settlements = Settlements(version, role)
-expense_fields = ExpenseFields(version,  role)

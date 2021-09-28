@@ -135,4 +135,3 @@ dmypy.json
 *.iml
 setup.sh
 .DS_Store
-.vscode

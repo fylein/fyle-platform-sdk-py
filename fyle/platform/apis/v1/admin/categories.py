@@ -2,12 +2,11 @@
 V1 Admin Categories
 """
 
-from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources
 from ....internals.post_resources import PostResources
 
 
-class Categories(ListResources, ListAllResources, PostResources):
+class Categories(ListResources, PostResources):
     """Class for Categories APIs."""
 
     CATEGORIES = '/categories'
