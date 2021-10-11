@@ -12,6 +12,7 @@ class AccountingExports(ListResources, ListAllResources, PostResources, GetResou
 
     ACCOUNTING_EXPORTS = '/accounting_exports'
     ACCOUNTING_EXPORT_LINEITEMS = '/accounting_export_lineitems'
+    BULK_CREATE_ACCOUNTING_EXPORT_LINEITEMS = '/accounting_export_lineitems/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, AccountingExports.ACCOUNTING_EXPORTS)
@@ -26,5 +27,11 @@ class AccountingExports(ListResources, ListAllResources, PostResources, GetResou
     def create_accounting_export_lineitems(self, payload):
         return self.api.make_post_request(
             api_url=AccountingExports.ACCOUNTING_EXPORT_LINEITEMS,
+            payload=payload
+        )
+
+    def bulk_create_accounting_export_lineitems(self, payload):
+        return self.api.make_post_request(
+            api_url=AccountingExports.BULK_CREATE_ACCOUNTING_EXPORT_LINEITEMS,
             payload=payload
         )
