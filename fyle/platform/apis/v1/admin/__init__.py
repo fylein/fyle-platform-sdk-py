@@ -14,6 +14,7 @@ from .expense_fields import ExpenseFields
 from .advance_requests import AdvanceRequests
 from .files import Files
 from .accounting_exports import AccountingExports
+from .corporate_cards import CorporateCards
 from ..version import version
 
 role = 'admin'
@@ -30,3 +31,4 @@ settlements = Settlements(version, role)
 advance_requests = AdvanceRequests(version, role)
 files = Files(version, role)
 accounting_exports = AccountingExports(version, role)
+corporate_cards = CorporateCards(version, role)
