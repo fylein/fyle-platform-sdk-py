@@ -23,7 +23,7 @@ class ExpenseExtract(PostResources):
         """
         if not file_name or not b64_content:
             raise exceptions.WrongParamsError(
-                "Mandatory query params missing: file_name, b64_content are mandatory query params.")
+                "Mandatory arguments missing: file_name, b64_content are mandatory arguments.")
 
         if not len(file_name.split('.')) > 1:
             raise exceptions.WrongParamsError(
