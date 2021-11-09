@@ -12,3 +12,13 @@ class Currencies(ListResources):
 
     def __init__(self, version, role):
         super().__init__(version, role, Currencies.CURRENCIES)
+
+    def list(self):
+        """
+        To get object of currencies
+        :return: currencies object
+        """
+        return self.api.make_get_request(
+            api_url=self.endpoint,
+            query_params={}
+        )
