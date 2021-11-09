@@ -17,7 +17,8 @@ class ExpenseExtract(PostResources):
     def extract(self, file_name, b64_content):
         """
         To extract the expenses from images
-        :param params_object
+        :param file_name: name of the file with extension
+        :param b64_content: base64 encoded string of the file_object
         :return extracted expense
         """
         if not file_name or not b64_content:
