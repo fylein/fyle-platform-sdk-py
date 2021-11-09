@@ -19,7 +19,7 @@ class ExpenseExtract(PostResources):
         To extract the expenses from images
         :param file_name: name of the file with extension
         :param b64_content: base64 encoded string of the file_object
-        :return extracted expense
+        :return: extracted expense
         """
         if not file_name or not b64_content:
             raise exceptions.WrongParamsError(
