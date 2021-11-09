@@ -15,6 +15,7 @@ from .advance_requests import AdvanceRequests
 from .files import Files
 from .accounting_exports import AccountingExports
 from .corporate_cards import CorporateCards
+from .corporate_card_transactions import CorporateCardTransactions
 from ..version import version
 
 role = 'admin'
@@ -32,3 +33,4 @@ advance_requests = AdvanceRequests(version, role)
 files = Files(version, role)
 accounting_exports = AccountingExports(version, role)
 corporate_cards = CorporateCards(version, role)
+corporate_card_transactions = CorporateCardTransactions(version, role)
