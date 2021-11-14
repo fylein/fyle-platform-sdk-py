@@ -10,6 +10,7 @@ from .expense_fields import ExpenseFields
 from .expenses import Expenses
 from .reports import Reports
 from .merchants import Merchants
+from .employess import Employees
 from .tax_groups import TaxGroups
 from ..version import version
 
@@ -23,4 +24,5 @@ expense_fields = ExpenseFields(version, role)
 expenses = Expenses(version, role)
 reports = Reports(version, role)
 merchants = Merchants(version, role)
+employees = Employees(version, role)
 tax_groups = TaxGroups(version, role)

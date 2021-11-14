@@ -1,0 +1,14 @@
+"""
+V1 Fyler Employees
+"""
+from ....internals.list_all_resources import ListAllResources
+from ....internals.list_resources import ListResources
+
+
+class Employees(ListResources, ListAllResources):
+    """Class for Merchant APIs."""
+
+    EMPLOYEES = '/employees'
+
+    def __init__(self, version, role):
+        super().__init__(version, role, Employees.EMPLOYEES)
