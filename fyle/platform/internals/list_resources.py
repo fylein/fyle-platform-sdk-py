@@ -24,7 +24,7 @@ class ListResources:
         :return: List of Resource Objects
         """
         query_params = {} if query_params is None else query_params
-        if not str(query_params.get('offset')) or not str(query_params.get('limit')) or not query_params.get('order'):
+        if query_params.get('offset') is None or query_params.get('limit') is None or not query_params.get('order'):
             raise exceptions.WrongParamsError(
                 'Mandatory query params missing: offset, limit and order are mandatory query params.')
         return self.api.make_get_request(
