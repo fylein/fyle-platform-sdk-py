@@ -10,7 +10,7 @@ from .expense_fields import ExpenseFields
 from .expenses import Expenses
 from .reports import Reports
 from .merchants import Merchants
-from .employess import Employees
+from .employees import Employees
 from .tax_groups import TaxGroups
 from ..version import version
 

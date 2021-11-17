@@ -6,7 +6,7 @@ from ....internals.list_resources import ListResources
 
 
 class Employees(ListResources, ListAllResources):
-    """Class for Merchant APIs."""
+    """Class for Employees APIs."""
 
     EMPLOYEES = '/employees'
 
