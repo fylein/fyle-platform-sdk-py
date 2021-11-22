@@ -1,5 +1,5 @@
 """
-    Initializing Fyler API's
+    Initializing Spender API's
 """
 
 from .my_profile import MyProfile
@@ -14,7 +14,7 @@ from .employees import Employees
 from .tax_groups import TaxGroups
 from ..version import version
 
-role = 'fyler'
+role = 'spender'
 
 my_profile = MyProfile(version, role)
 cost_centers = CostCenters(version, role)

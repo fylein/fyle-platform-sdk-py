@@ -1,5 +1,5 @@
 """
-V1 Fyler Reports
+V1 Beta Spender Reports
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

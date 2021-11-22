@@ -1,5 +1,5 @@
 """
-V1 Approver Reports
+V1 Beta Approver Reports
 """
 
 from ....internals.get_resources import GetResources

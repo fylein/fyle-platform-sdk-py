@@ -1,5 +1,5 @@
 """
-V1 Admin Categories
+V1 Beta Admin Categories
 """
 
 from ....internals.list_resources import ListResources

@@ -1,5 +1,5 @@
 """
-V1 Common Currencies
+V1 Beta Common Currencies
 """
 
 from ....internals.list_resources import ListResources

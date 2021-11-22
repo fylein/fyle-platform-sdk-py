@@ -1,5 +1,5 @@
 """
-V1 Admin Tax Groups
+V1 Beta Admin Tax Groups
 """
 
 from ....internals.get_resources import GetResources

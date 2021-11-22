@@ -2,7 +2,7 @@
     Fyle Platform SDK Class
 """
 
-from .apis import v1
+from .apis import v1beta
 from .globals.config import config
 from .internals.auth import Auth
 
@@ -27,7 +27,7 @@ class Platform(Auth):
         self.__client_secret = client_secret
         self.__refresh_token = refresh_token
 
-        self.v1 = v1
+        self.v1beta = v1beta
 
         # get the access token
         self.set_server_url()

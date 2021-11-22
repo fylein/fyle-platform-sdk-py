@@ -1,5 +1,5 @@
 """
-V1 Fyler Cost Centers
+V1 Beta Spender Cost Centers
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

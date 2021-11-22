@@ -1,5 +1,5 @@
 """
-V1 Admin Settlements
+V1 Beta Admin Settlements
 """
 
 from ....internals.get_resources import GetResources

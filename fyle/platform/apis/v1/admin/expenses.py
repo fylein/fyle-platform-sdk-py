@@ -1,5 +1,5 @@
 """
-V1 Admin Expenses
+V1 Beta Admin Expenses
 """
 
 from ....internals.get_resources import GetResources

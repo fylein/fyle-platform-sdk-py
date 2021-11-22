@@ -1,6 +1,6 @@
-from . import admin, approver, fyler, common
+from . import admin, approver, spender, common
 
 __all__ = [
-    admin, approver, fyler, common
+    admin, approver, spender, common
 ]
-version = 'v1'
+version = 'v1beta'

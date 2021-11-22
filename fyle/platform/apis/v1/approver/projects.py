@@ -1,5 +1,5 @@
 """
-V1 Approver Projects
+V1 Beta Approver Projects
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

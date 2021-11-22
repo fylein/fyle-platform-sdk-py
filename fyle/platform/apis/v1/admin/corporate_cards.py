@@ -1,5 +1,5 @@
 """
-V1 Admin Corporate Cards
+V1 Beta Admin Corporate Cards
 """
 
 from ....internals.list_all_resources import ListAllResources
