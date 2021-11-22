@@ -27,10 +27,9 @@ class Places(GetResources):
             query_params=query_params,
         )
 
-        count = len(response["data"])
-        if id_ and count < 1:
+        if id_ and response["count"] < 1:
             raise exceptions.NotFoundItemError("Not found item with ID")
-        elif id_ and count > 1:
+        elif id_ and response["count"] > 1:
             raise exceptions.MultipleObjectReturned("Multiple Objects returned")
 
         return response.get("data")[0]
