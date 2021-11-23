@@ -1,7 +1,6 @@
 """
     Initializing Admin API's
 """
-
 from .categories import Categories
 from .cost_centers import CostCenters
 from .employees import Employees
