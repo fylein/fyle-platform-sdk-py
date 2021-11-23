@@ -58,7 +58,7 @@ class PlacesAutocomplete(ListResources):
         if types:
             query_params['types'] = types
 
-        if types:
+        if location:
             query_params['location'] = location
 
         return self.api.make_get_request(

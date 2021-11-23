@@ -11,7 +11,7 @@ from ..version import version
 
 role = 'common'
 
-placesAutocomplete = PlacesAutocomplete(version, role)
+places_autocomplete = PlacesAutocomplete(version, role)
 places = Places(version, role)
 currencies = Currencies(version, role)
 currencies_exchange_rate = CurrenciesExchangeRate(version, role)
