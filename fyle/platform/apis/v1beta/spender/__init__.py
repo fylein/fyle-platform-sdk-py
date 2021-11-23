@@ -1,7 +1,7 @@
 """
     Initializing Spender API's
 """
-
+from .accounts import Accounts
 from .my_profile import MyProfile
 from .cost_centers import CostCenters
 from .projects import Projects
@@ -17,6 +17,7 @@ from ..version import version
 role = 'spender'
 
 my_profile = MyProfile(version, role)
+accounts = Accounts(version, role)
 cost_centers = CostCenters(version, role)
 categories = Categories(version, role)
 projects = Projects(version, role)
