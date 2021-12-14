@@ -13,9 +13,11 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
     """Class for Files APIs."""
 
     FILES = '/files'
+    BULK_GENERATE_FILES_URLS = '/files/generate_urls/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, Files.FILES)
+        super().__init__(version, role, Files.BULK_GENERATE_FILES_URLS)
 
     def create_file(self, payload):
         return self.api.make_post_request(
@@ -37,3 +39,9 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
         headers = {"Content-Type": content_type}
         requests.put(url=url, data=data, headers=headers)
+
+    def bulk_generate_file_urls(self, payload):
+        return self.api.make_post_request(
+            api_url=Files.BULK_GENERATE_FILES_URLS,
+            payload=payload
+        )
