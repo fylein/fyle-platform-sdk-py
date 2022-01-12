@@ -17,13 +17,14 @@ class PostBulkResources:
         self.api = ApiBase(self.version, self.role)
 
     def post_bulk(self, payload: dict) -> Dict:
-        self.endpoint = '{}/{}'.format(self.endpoint, 'bulk')
         """
         Creates or updates resources in bulk.
         :param payload: top-level object containing data which is a array of objects.
             example: {"data": [{object 1}, {object 2}]}
         :return: empty response
         """
+
+        self.endpoint = '{}/{}'.format(self.endpoint, 'bulk')
         return self.api.make_post_request(
             api_url=self.endpoint,
             payload=payload
