@@ -19,7 +19,7 @@ class TaxGroups(ListResources, ListAllResources, PostResources, GetResources):
     def __init__(self, version, role):
         super().__init__(version, role, TaxGroups.TAX_GROUPS)
 
-    def post_bulk(self, payload: List[Dict]):
+    def post_bulk(self, payload):
 
         return self.api.make_post_request(
             api_url=TaxGroups.BULK_TAX_GROUPS,
