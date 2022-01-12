@@ -24,6 +24,6 @@ class PostBulkResources:
         :return: empty response
         """
         return self.api.make_post_request(
-            api_url=self.endpoint,
+            api_url='{}/bulk'.format(self.endpoint),
             payload=payload
         )
