@@ -10,18 +10,10 @@ from ....internals.list_resources import ListResources
 from ....internals.post_resources import PostResources
 
 
-class TaxGroups(ListResources, ListAllResources, PostResources, GetResources):
+class TaxGroups(ListResources, ListAllResources, PostResources, GetResources, PostBulkResources):
     """Class for Tax Groups APIs."""
 
     TAX_GROUPS = '/tax_groups'
-    BULK_TAX_GROUPS = '/tax_groups/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, TaxGroups.TAX_GROUPS)
-
-    def post_bulk(self, payload):
-
-        return self.api.make_post_request(
-            api_url=TaxGroups.BULK_TAX_GROUPS,
-            payload=payload
-        )
