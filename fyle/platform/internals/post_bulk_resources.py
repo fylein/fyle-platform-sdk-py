@@ -23,9 +23,7 @@ class PostBulkResources:
             example: {"data": [{object 1}, {object 2}]}
         :return: empty response
         """
-
-        self.endpoint = '{}/bulk'.format(self.endpoint)
         return self.api.make_post_request(
-            api_url=self.endpoint,
+            api_url='{}/bulk'.format(self.endpoint),
             payload=payload
         )
