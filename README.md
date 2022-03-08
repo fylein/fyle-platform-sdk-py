@@ -18,7 +18,7 @@ To use this SDK you'll need these Fyle credentials used for OAuth2 authenticatio
 This SDK is very easy to use.
 * First you'll need to create a connection using the main class Platform.
 ```python
-from fyle import Platform
+from fyle.platform import Platform
 
 fyle = Platform(
     server_url='FYLE SERVER URL',
