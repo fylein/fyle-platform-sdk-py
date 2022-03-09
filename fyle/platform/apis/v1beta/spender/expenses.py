@@ -15,7 +15,7 @@ class Expenses(ListResources, ListAllResources, PostResources):
         super().__init__(version, role, Expenses.EXPENSES)
 
     def create_expense(self, payload):
-        self.api.make_post_request(
+        return self.api.make_post_request(
             api_url=Expenses.EXPENSES,
             payload=payload
         )
