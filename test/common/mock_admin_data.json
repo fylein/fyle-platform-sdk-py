@@ -1,0 +1,35 @@
+{
+  "accounting_export" : [
+    {
+      "id": "ae2froib22i0",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "file_ids": [
+        "fi123819sa"
+      ],
+      "exported_at": "2020-06-01T01:18:19.292-08:00",
+      "name": "Accounting exports test",
+      "description": "Win the trophy",
+      "url": "string",
+      "org_id": "orwruogwnngg"
+    }
+  ],
+  "categories" : [
+    {
+      "id": 1234,
+      "org_id": "orwruogwnngg",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "name": "Engine",
+      "sub_category": "Turbo charged",
+      "is_enabled": true,
+      "display_name": "Engine / Turbo charged",
+      "system_category": "Others",
+      "code": "C1234",
+      "restricted_project_ids": [
+        2222,
+        1221
+      ]
+    }
+  ]
+}
