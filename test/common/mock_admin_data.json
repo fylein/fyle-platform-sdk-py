@@ -31,5 +31,105 @@
         1221
       ]
     }
+  ],
+  "employees" : [
+    {
+      "id": "sdfd2391",
+      "org_id": "orwruogwnngg",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "user_id": "sdfd2391",
+      "user": {
+        "id": "uswjwgnwwgo",
+        "email": "john.doe@example.com",
+        "full_name": "John Doe"
+      },
+      "business_unit": "Finance ops",
+      "code": "E84122",
+      "department_id": "sdfd2391",
+      "department": {
+        "id": "sdfd2391",
+        "code": "C1234",
+        "name": "Sales",
+        "sub_department": "Outbound Sales"
+      },
+      "is_enabled": true,
+      "joined_at": "2020-06-01T13:14:54.804+00:00",
+      "level_id": "sdfd2391",
+      "level": {
+        "id": "sdfd2391",
+        "name": "Associate I",
+        "band": "Associate"
+      },
+      "location": "Bangalore Ofc",
+      "roles": [
+        "FYLER"
+      ],
+      "special_email": "receipts+admin1_mb4w@fyle.ai",
+      "title": "Branch Manager",
+      "custom_fields": [
+        {
+          "name": "cf1",
+          "value": "string1"
+        }
+      ],
+      "project_ids": [
+        2222,
+        1221
+      ],
+      "projects": [
+        {
+          "id": 1234,
+          "name": "Fast and Furious",
+          "sub_project": "Formula One",
+          "code": "C1234"
+        }
+      ],
+      "cost_center_ids": [
+        2222,
+        1221
+      ],
+      "cost_centers": [
+        {
+          "id": 1234,
+          "name": "sales & marketing",
+          "code": "C1234"
+        }
+      ],
+      "per_diem_rate_ids": [
+        2222,
+        1221
+      ],
+      "per_diem_rates": [
+        {
+          "id": 1234,
+          "name": "Florida Rate",
+          "code": "C1234"
+        }
+      ],
+      "mileage_rate_ids": [
+        2222,
+        1221
+      ],
+      "mileage_rates": [
+        {
+          "id": 1234,
+          "vehicle_type": "four_wheeler",
+          "code": "C1234"
+        }
+      ],
+      "approver_user_ids": [
+        "uswoirwlwwg",
+        "uswlgwkgw42"
+      ],
+      "approver_users": [
+        {
+          "id": "uswjwgnwwgo",
+          "email": "john.doe@example.com",
+          "full_name": "John Doe"
+        }
+      ],
+      "has_accepted_invite": true
+    }
   ]
 }
