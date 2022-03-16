@@ -8,7 +8,6 @@ __pycache__/
 
 # Test Files
 dry_run.py
-usage.py
 test_credentials.json
 
 # Distribution / packaging
