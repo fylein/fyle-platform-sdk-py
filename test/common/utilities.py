@@ -7,27 +7,6 @@ from fyle.platform import Platform
 logger = logging.getLogger(__name__)
 
 
-def get_mock_data_dict(filename):
-  basepath = path.dirname(__file__)
-  filepath = path.join(basepath, filename)
-  mock_data_json = open(filepath, 'r').read()
-  mock_data_dict = json.loads(mock_data_json)
-  return mock_data_dict
-
-
-def get_mock_data_from_file(filename):
-  mock_data_dict = get_mock_data_dict(filename)
-  mock_data = Mock()
-  mock_data.accounting_export.get.return_value = mock_data_dict['accounting_export']
-  mock_data.categories.get.return_value = mock_data_dict['categories']
-  mock_data.employees.get.return_value = mock_data_dict['employees']
-  return mock_data
-
-
-def get_mock_data():
-  return get_mock_data_from_file('mock_admin_data.json')
-
-
 def dict_compare_keys(d1, d2, key_path=''):
   """
   Compare two dicts recursively and see if dict1 has any keys that dict2 does not

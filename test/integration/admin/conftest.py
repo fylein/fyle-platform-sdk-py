@@ -1,8 +1,8 @@
 import logging
 import pytest
 
-from test.common.utilities import get_mock_data, fyle_connect
-
+from test.common.utilities import fyle_connect
+from test.integration.admin.utilities import get_mock_data
 logger = logging.getLogger(__name__)
 
 
