@@ -229,7 +229,7 @@ def test_bulk_generate_file_urls(fyle, mock_data):
 
 def test_upload_file_to_aws(fyle, mock_data):
   basepath = path.dirname(__file__)
-  file_path = path.join(basepath, 'uber_expenses_2.txt')
+  file_path = path.join(basepath, 'sample_files/uber_expenses_2.txt')
   file_data = open(file_path, 'rb')
 
   try:
