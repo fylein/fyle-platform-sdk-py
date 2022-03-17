@@ -14,6 +14,18 @@
       "org_id": "orwruogwnngg"
     }
   ],
+  "accounting_export_lineitems": [
+    {
+      "id": "sdfd2391",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "object_id": "sdfd2391",
+      "object_type": "ADVANCE_REQUEST",
+      "reference": "string",
+      "accounting_export_id": "sdfd2391",
+      "org_id": "orwruogwnngg"
+    }
+  ],
   "categories" : [
     {
       "id": 1234,
@@ -130,6 +142,39 @@
         }
       ],
       "has_accepted_invite": true
+    }
+  ],
+  "file_create": [
+    {
+      "id": "sdfd2391",
+      "org_id": "orwruogwnngg",
+      "user_id": "sdfd2391",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "name": "uber_expenses_vmrpw.pdf",
+      "type": "RECEIPT",
+      "content_type": "text/csv"
+    }
+  ],
+  "file_generate_url": [
+    {
+      "id": "sdfd2391",
+      "name": "uber_expenses_vmrpw.pdf",
+      "content_type": "application/pdf",
+      "download_url": "https://aaa.bbb.cc/x232sds",
+      "upload_url": "https://aaa.bbb.cc/x232sds"
+    }
+  ],
+  "tax_groups": [
+    {
+      "id": "tgwfjbgqo32",
+      "org_id": "orwruogwnngg",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "name": "Engine",
+      "percentage": 18,
+      "is_enabled": true,
+      "code": "C1234"
     }
   ]
 }

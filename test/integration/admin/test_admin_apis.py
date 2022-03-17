@@ -1,8 +1,13 @@
+import string
+import random
 import logging
+from os import path
 from test.common.utilities import dict_compare_keys
 
 logger = logging.getLogger(__name__)
 
+random_name = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k = 10))
 
 def test_get_accounting_exports(fyle, mock_data):
   """
@@ -27,6 +32,58 @@ def test_get_accounting_exports(fyle, mock_data):
   if accounting_export:
     assert dict_compare_keys(accounting_export[0], mock_accounting_exports[0]) == [], 'fyle.v1beta.admin.accounting_exports.list_all() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_accounting_exports[0], accounting_export[0]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+
+
+def test_create_accounting_exports(fyle, mock_data):
+  create_accounting_exports = fyle.v1beta.admin.accounting_exports.create_accounting_exports(payload={
+    "data": {
+      "file_ids": [
+        "fiFqjxHuSwX5"
+      ],
+      "exported_at": "2020-06-01T13:14:54.804+00:00",
+      "name": "Accounting exports tests",
+      "description": "Win the trophy",
+    }
+  })
+  mock_accounting_exports = mock_data.accounting_export.get()
+
+  if create_accounting_exports["data"]:
+    assert dict_compare_keys(create_accounting_exports["data"], mock_accounting_exports[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_exports() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_accounting_exports[0], create_accounting_exports["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+
+
+def test_create_accounting_export_lineitems(fyle, mock_data):
+  create_accounting_export_lineitems = fyle.v1beta.admin.accounting_exports.create_accounting_export_lineitems(payload={
+    "data": {
+      "object_id": "sdfd2391",
+      "object_type": "REIMBURSEMENT",
+      "reference": "string",
+      "accounting_export_id": "ae59LMcL2fgg"
+    }
+  })
+  mock_accounting_exports_lineitems = mock_data.accounting_export.get()
+  
+  if create_accounting_export_lineitems["data"]:
+    assert dict_compare_keys(create_accounting_export_lineitems["data"], mock_accounting_exports_lineitems[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_export_lineitems() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_accounting_exports_lineitems[0], create_accounting_export_lineitems["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+
+
+def test_bulk_create_accounting_export_lineitems(fyle, mock_data):
+  bulk_create_accounting_export_lineitems = fyle.v1beta.admin.accounting_exports.bulk_create_accounting_export_lineitems(payload={
+    "data": [
+      {
+        "object_id": "sdfd2391",
+        "object_type": "ADVANCE_REQUEST",
+        "reference": "string",
+        "accounting_export_id": "ae59LMcL2fgg"
+      }
+    ]
+  })
+  mock_accounting_exports_lineitems = mock_data.accounting_export.get()
+  
+  if bulk_create_accounting_export_lineitems["data"]:
+    assert dict_compare_keys(bulk_create_accounting_export_lineitems["data"][0], mock_accounting_exports_lineitems[0]) == [], 'response from fyle.v1beta.admin.accounting_export.bulk_create_accounting_export_lineitems() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_accounting_exports_lineitems[0], bulk_create_accounting_export_lineitems["data"][0]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
 
 
 def test_get_categories(fyle, mock_data):
@@ -57,7 +114,7 @@ def test_get_categories(fyle, mock_data):
 def test_post_categories(fyle, mock_data):
   add_category = fyle.v1beta.admin.categories.post(payload = {
     "data": {
-      "name": "Engine samp122",
+      "name": random_name,
       "sub_category": "Turbo charged",
       "is_enabled": True,
       "system_category": "Others",
@@ -118,5 +175,134 @@ def test_bulk_upload_employees(fyle, mock_data):
   mock_employees = mock_data.employees.get()
 
   if employees_generator:
-    assert dict_compare_keys(employees_generator[0], mock_employees[0]) == [], 'fyle.v1beta.admin.employees.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(employees_generator[0], mock_employees[0]) == [], 'fyle.v1beta.admin.employees.invite_bulk() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_employees[0], employees_generator[0]) == [], 'mock_data.employees.get() has stuff that fyle doesnt'
+
+
+def test_create_file(fyle, mock_data):
+  create_fyle = fyle.v1beta.admin.files.create_file(payload = {
+    "data": {
+      "name": "uber_expenses_2.pdf",
+      "type": "RECEIPT",
+      "user_id": "usqywo0f3nBY"
+    }
+  })
+  mock_files = mock_data.files_create.get()
+
+  if create_fyle["data"]:
+    assert dict_compare_keys(create_fyle["data"], mock_files[0]) == [], 'response from fyle.v1beta.admin.files.create_file() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_files[0], create_fyle["data"]) == [], 'mock_data.files_create.get() has stuff that fyle doesnt'
+
+
+def test_bulk_generate_file_urls(fyle, mock_data):
+  bulk_generate_file = fyle.v1beta.admin.files.bulk_generate_file_urls(payload = {
+    "data": [
+      {
+        "id": "fihHuRIiQ9XE"
+      },
+      {
+        "id": "fiGfMnIHDK2L"
+      }
+    ]
+  })
+  mock_files = mock_data.file_generate_url.get()
+
+  if bulk_generate_file["data"]:
+    assert dict_compare_keys(bulk_generate_file["data"][0], mock_files[0]) == [], 'response from fyle.v1beta.admin.files.create_file() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_files[0], bulk_generate_file["data"][0]) == [], 'mock_data.file_generate_url.get() has stuff that fyle doesnt'
+  
+
+def test_upload_file_to_aws(fyle, mock_data):
+  basepath = path.dirname(__file__)
+  file_path = path.join(basepath, 'uber_expenses_2.txt')
+  file_data = open(file_path, 'rb')
+
+  upload_file_to_aws = fyle.v1beta.admin.files.upload_file_to_aws(
+    content_type="text/csv", url="https://fyle-storage-mumbai-3.s3.amazonaws.com/2022-03-16/or79Cob97KSh/receipts/fiGfMnIHDK2L.uber_expenses_2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA54Z3LIXTX6CFH4VG%2F20220316%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20220316T165353Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=d6d7e05a6909f32d3767c49e202fba0a5a13d9829283d73deea20f590b3dfa75",
+    data=file_data
+  )
+  
+
+def test_list_all_tax_groups(fyle, mock_data):
+  tax_groups = []
+  query_params = {
+    'order': 'created_at.desc'
+  }
+
+  tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all(query_params=query_params)
+  mock_tax_groups = mock_data.tax_groups.get()
+
+  for response in tax_groups_generator:
+    if response.get('data'):
+      tax_groups.extend(response['data'])
+
+  if tax_groups:
+    assert dict_compare_keys(tax_groups[0], mock_tax_groups[0]) == [], 'fyle.v1beta.admin.tax_groups.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_tax_groups[0], tax_groups[0]) == [], 'mock_data.tax_groups.get() has stuff that fyle doesnt'
+
+
+def test_list_all_tax_groups_offset_limit(fyle, mock_data):
+  query_params = {
+    'offset': 1,
+    'limit': 1
+  }
+
+  tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all(query_params=query_params)
+
+
+def test_list_all_tax_groups_missing_order(fyle, mock_data):
+  tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all()
+
+
+def test_list_tax_groups(fyle, mock_data):
+  query_params = {
+    'offset': 1,
+    'limit': 1,
+    'order': 'created_at.desc'
+  }
+
+  tax_groups_generator = fyle.v1beta.admin.tax_groups.list(query_params=query_params)
+  mock_tax_groups = mock_data.tax_groups.get()
+
+  if tax_groups_generator["data"]:
+    assert dict_compare_keys(tax_groups_generator["data"][0], mock_tax_groups[0]) == [], 'fyle.v1beta.admin.tax_groups.list() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_tax_groups[0], tax_groups_generator["data"][0]) == [], 'mock_data.tax_groups.get() has stuff that fyle doesnt'
+
+
+def test_list_tax_groups_missing_order(fyle, mock_data):
+  query_params = {
+    'offset': 1,
+    'limit': 1
+  }
+
+  tax_groups_generator = fyle.v1beta.admin.tax_groups.list(query_params=query_params)
+
+
+def test_post_bulk_tax_groups(fyle):
+  post_bulk = fyle.v1beta.admin.tax_groups.post_bulk(payload={
+    "data": [
+      {
+        "is_enabled":True,
+        "name":random_name,
+        "org_id":"or79Cob97KSh",
+        "percentage":0.18,
+      }
+    ]
+  })
+
+
+def test_get_by_id_tax_groups(fyle, mock_data):
+  get_by_id = fyle.v1beta.admin.tax_groups.get_by_id(id_="tgXueCemFa6Q")
+  mock_files = mock_data.tax_groups.get()
+
+  if get_by_id["data"]:
+    assert dict_compare_keys(get_by_id["data"], mock_files[0]) == [], 'response from fyle.v1beta.admin.tax_groups.post_bulk() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_files[0], get_by_id["data"]) == [], 'mock_data.tax_groups.get() has stuff that fyle doesnt'
+
+
+def test_get_by_id_tax_groups_wrong_id(fyle, mock_data):
+  get_by_id = fyle.v1beta.admin.tax_groups.get_by_id(id_="tgXuQ")
+
+
+def test_get_by_id_tax_groups_empty_id(fyle, mock_data):
+  get_by_id = fyle.v1beta.admin.tax_groups.get_by_id(id_="")
