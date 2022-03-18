@@ -43,8 +43,6 @@ def test_list_reports(fyle, mock_data):
     'offset': 823
   }
 
-  user = fyle.v1beta.spender.my_profile.get()
-  print(user)
   reports_generator = fyle.v1beta.approver.reports.list(query_params=query_params)
   mock_reports = mock_data.reports.get()
 
@@ -55,10 +53,19 @@ def test_list_reports(fyle, mock_data):
 
 def test_approve_report(fyle, mock_data):
   approve_report = fyle.v1beta.approver.reports.approve(id_="rp6yFhpzfEhc")
-  print(approve_report)
   mock_reports = mock_data.reports.get()
 
   if approve_report:
     assert dict_compare_keys(approve_report["data"], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], approve_report["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
+
+
+def test_get_by_id(fyle, mock_data):
+  reports_generator = fyle.v1beta.approver.reports.get_by_id(id_="rp6yFhpzfEhc")
+  mock_reports = mock_data.reports.get()
+  print(reports_generator)
+  if reports_generator:
+    assert dict_compare_keys(reports_generator["data"], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_reports[0], reports_generator["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
+
 
