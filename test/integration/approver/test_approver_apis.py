@@ -63,7 +63,7 @@ def test_approve_report(fyle, mock_data):
 def test_get_by_id(fyle, mock_data):
   reports_generator = fyle.v1beta.approver.reports.get_by_id(id_="rp6yFhpzfEhc")
   mock_reports = mock_data.reports.get()
-  print(reports_generator)
+
   if reports_generator:
     assert dict_compare_keys(reports_generator["data"], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], reports_generator["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
