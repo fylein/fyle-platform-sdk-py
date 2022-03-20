@@ -171,5 +171,29 @@
   },
   "exchange_rate": {
     "exchange_rate": 12.123456
-  }
+  },
+  "expense_extract": {
+    "amount": 1500,
+    "category": "Flight",
+    "currency": "USD",
+    "spent_at": "2020-06-01T13:14:54.804+00:00",
+    "merchant": "Uber"
+  },
+  "places_autocomplete": [
+    {
+      "id": "ChIJify3BTzI5zsR2q86fwXrh74",
+      "formatted_address": "221 Baker St, Marylebone, London, United Kingdom"
+    }
+  ],
+  "place_by_id": [
+    {
+      "id": "ChIJify3BTzI5zsR2q86fwXrh74",
+      "city": "London",
+      "state": "London",
+      "country": "United Kingdom",
+      "formatted_address": "221 Baker St, Marylebone, London, United Kingdom",
+      "latitude": 12.971599,
+      "longitude": 77.594566
+    }
+  ]
 }
