@@ -1,0 +1,20 @@
+{
+  "profile": {
+    "user_id": "uswjwgnwwgo",
+    "org_id": "orwruogwnngg",
+    "org": {
+      "id": "orwruogwnngg",
+      "name": "Demo Account",
+      "domain": "example.com",
+      "currency": "USD"
+    },
+    "user": {
+      "id": "uswjwgnwwgo",
+      "email": "john.doe@example.com",
+      "full_name": "John Doe"
+    },
+    "roles": [
+      "FYLER"
+    ]
+  }
+}
