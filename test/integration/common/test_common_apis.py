@@ -23,20 +23,6 @@ def test_get_exchange_rate(fyle, mock_data):
     assert dict_compare_keys(mock_exchange_rate, exchange_rate["data"]) == [], 'mock_data.exchange_rate.get() has stuff that fyle doesnt'
 
 
-def test_extract_expense(fyle, mock_data):
-  basepath = path.dirname(__file__)
-  filepath = path.join(basepath, "fixtures/sample_files/expense.jpg")
-  with open(filepath, "rb") as img_file:
-    file_b64_content = base64.b64encode(img_file.read())
-
-  extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="expense.jpg", b64_content=str(file_b64_content))
-  mock_extract_expense = mock_data.expense_extract.get()
-
-  if extract_expense["data"]:
-    assert dict_compare_keys(extract_expense["data"], mock_extract_expense) == [], 'response from fyle.v1beta.common.extract_expense.extract() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_extract_expense, extract_expense["data"]) == [], 'mock_data.expense_extract.get() has stuff that fyle doesnt'
-
-
 def test_extract_expense_missing_file_name_b64(fyle, mock_data):
   try:
     extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="", b64_content="")
