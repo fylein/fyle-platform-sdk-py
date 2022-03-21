@@ -16,4 +16,4 @@ def test_get_by_id_profile(fyle, mock_data):
   try:
     profile = fyle.v1beta.spender.my_profile.get_by_id(id_="123456")
   except:
-    print("Not implemented")
+    logger.error("Api Not implemented")  
