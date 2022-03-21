@@ -1,0 +1,63 @@
+{
+  "categories": [
+    {
+      "id": 1234,
+      "org_id": "orwruogwnngg",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "name": "Engine",
+      "sub_category": "Turbo charged",
+      "is_enabled": true,
+      "display_name": "Engine / Turbo charged",
+      "system_category": "Others",
+      "code": "C1234",
+      "restricted_project_ids": [
+        2222,
+        1221
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "id": "sdfd2391",
+      "org_id": "orwruogwnngg",
+      "created_at": "2020-06-01T13:14:54.804+00:00",
+      "updated_at": "2020-06-11T13:14:55.201598+00:00",
+      "user_id": "sdfd2391",
+      "user": {
+        "id": "uswjwgnwwgo",
+        "email": "john.doe@example.com",
+        "full_name": "John Doe"
+      },
+      "purpose": "Business trip to London",
+      "currency": "USD",
+      "amount": 47.99,
+      "tax": 18.23,
+      "state": "DRAFT",
+      "num_expenses": 3,
+      "is_verified": true,
+      "settlement_id": "set5nlgnwgwl",
+      "is_physical_bill_submitted": true,
+      "physical_bill_submitted_at": "2020-06-11T13:14:55.201598+00:00",
+      "is_manually_flagged": true,
+      "is_policy_flagged": true,
+      "is_exported": true,
+      "last_paid_at": "2020-06-11T13:14:55.201598+00:00",
+      "last_approved_at": "2020-06-11T13:14:55.201598+00:00",
+      "last_submitted_at": "2020-06-11T13:14:55.201598+00:00",
+      "seq_num": "C/2021/02/R/907",
+      "source": "string",
+      "approvals": [
+        {
+          "approver_user_id": "usge49ielgel",
+          "approver_user": {
+            "id": "uswjwgnwwgo",
+            "email": "john.doe@example.com",
+            "full_name": "John Doe"
+          },
+          "state": "APPROVAL_PENDING"
+        }
+      ]
+    }
+  ]
+}
