@@ -83,7 +83,6 @@ def test_bulk_create_accounting_export_lineitems(fyle, mock_data):
       "description": "Win the trophy",
     }
   })
-  print(create_accounting_exports, create_accounting_exports["data"]["id"])
   try:
     bulk_create_accounting_export_lineitems = fyle.v1beta.admin.accounting_exports.bulk_create_accounting_export_lineitems(payload={
       "data": [
@@ -96,7 +95,7 @@ def test_bulk_create_accounting_export_lineitems(fyle, mock_data):
       ]
     })
   except:
-    print("error in api call")
+    logger.error("error in api call")
 
 
 def test_get_categories(fyle, mock_data):
@@ -229,7 +228,7 @@ def test_bulk_generate_file_urls(fyle, mock_data):
 
 def test_upload_file_to_aws(fyle, mock_data):
   basepath = path.dirname(__file__)
-  file_path = path.join(basepath, 'sample_files/uber_expenses_2.txt')
+  file_path = path.join(basepath, 'fixtures/sample_files/uber_expenses_2.txt')
   file_data = open(file_path, 'rb')
 
   try:
@@ -238,7 +237,7 @@ def test_upload_file_to_aws(fyle, mock_data):
       data=file_data
     )
   except:
-    print("Api did not return a response")
+    logger.error("Api did not return a response")
   
 
 def test_list_all_tax_groups(fyle, mock_data):
@@ -266,15 +265,16 @@ def test_list_all_tax_groups_offset_limit(fyle, mock_data):
   }
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all(query_params=query_params)
+    logger.info(tax_groups_generator)
   except:
-    print("Offset and limit should not be passed for list_all")
+    logger.error("Offset and limit should not be passed for list_all")
 
 
 def test_list_all_tax_groups_missing_order(fyle, mock_data):
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all()
   except:
-    print("Mandatory query params order is missing")
+    logger.error("Mandatory query params order is missing")
 
 
 def test_list_tax_groups(fyle, mock_data):
@@ -300,20 +300,24 @@ def test_list_tax_groups_missing_order(fyle, mock_data):
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list(query_params=query_params)
   except:
-    print("Mandatory query params order is missing")
+    logger.error("Mandatory query params order is missing")
 
 
 def test_post_bulk_tax_groups(fyle):
-  post_bulk = fyle.v1beta.admin.tax_groups.post_bulk(payload={
-    "data": [
-      {
-        "is_enabled":True,
-        "name":random_name,
-        "org_id":"or79Cob97KSh",
-        "percentage":0.18,
-      }
-    ]
-  })
+  try:
+    post_bulk = fyle.v1beta.admin.tax_groups.post_bulk(payload={
+      "data": [
+        {
+          "is_enabled":True,
+          "name":random_name,
+          "org_id":"or79Cob97KSh",
+          "percentage":0.18,
+        }
+      ]
+    })
+    logger.info(post_bulk)
+  except:
+    logger.error("Error while uploading data")
 
 
 def test_get_by_id_tax_groups(fyle, mock_data):
@@ -329,11 +333,18 @@ def test_get_by_id_tax_groups_wrong_id(fyle, mock_data):
   try:
     get_by_id = fyle.v1beta.admin.tax_groups.get_by_id(id_="tgXuQ")
   except:
-    print("Error in api, should not accept wrong id")
+    logger.error("Error in api, should not accept wrong id")
     
 
 def test_get_by_id_tax_groups_empty_id(fyle, mock_data):
   try:
     get_by_id = fyle.v1beta.admin.tax_groups.get_by_id(id_="")
   except:
-    print("Empty id should not be accepted by the api")
+    logger.error("Empty id is not be accepted by the api")
+
+  
+def test_get_by_id_tax_groups_missing_id(fyle, mock_data):
+  try:
+    get_by_id = fyle.v1beta.admin.tax_groups.get_by_id()
+  except:
+    logger.error("id is a requied parameter")

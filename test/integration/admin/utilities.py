@@ -25,4 +25,4 @@ def get_mock_data_from_file(filename):
 
 
 def get_mock_data():
-  return get_mock_data_from_file('mock_admin_data.json')
+  return get_mock_data_from_file('fixtures/mock_admin_data.json')
