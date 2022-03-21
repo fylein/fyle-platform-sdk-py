@@ -62,8 +62,6 @@ class ApiBase(Network):
 
         ApiBase._assert_response(response)
 
-        return None
-
     @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_post_request(self, api_url, payload):
         """Create a HTTP post request.
@@ -91,8 +89,6 @@ class ApiBase(Network):
 
         ApiBase._assert_response(response)
 
-        return None
-
     @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
     def make_delete_request(self, api_url):
         """Create a HTTP delete request.
@@ -115,8 +111,6 @@ class ApiBase(Network):
             return None
 
         ApiBase._assert_response(response)
-
-        return None
 
     @staticmethod
     def _assert_response(response):
