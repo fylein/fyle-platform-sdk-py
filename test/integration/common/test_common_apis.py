@@ -39,11 +39,11 @@ def test_extract_expense_invalid_file_name(fyle, mock_data):
 
 def test_list_places_autocomplete(fyle, mock_data):
   places_autocomplete = fyle.v1beta.common.places_autocomplete.list(q="bang", types="(cities)", location="26.595889,85.4891037")
-  mock_places_autocomplete = mock_data.place.get()
+  mock_places_autocomplete = mock_data.places_autocomplete.get()
 
   if places_autocomplete["data"]:
     assert dict_compare_keys(places_autocomplete["data"][0], mock_places_autocomplete[0]) == [], 'response from fyle.v1beta.common.places_autocomplete.list() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_places_autocomplete[0], places_autocomplete["data"][0]) == [], 'mock_data.place.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_places_autocomplete[0], places_autocomplete["data"][0]) == [], 'mock_data.places_autocomplete.get() has stuff that fyle doesnt'
 
 
 def test_list_places_autocomplete_missing_q(fyle, mock_data):
@@ -54,11 +54,11 @@ def test_list_places_autocomplete_missing_q(fyle, mock_data):
 
 def test_get_by_id_places(fyle, mock_data):
   place_by_id = fyle.v1beta.common.places.get_by_id(id_="ChIJbU60yXAWrjsR4E9-UejD3_g")
-  mock_places = mock_data.place.get()
+  mock_places = mock_data.place_by_id.get()
 
   if place_by_id:
     assert dict_compare_keys(place_by_id, mock_places[0]) == [], 'response from fyle.v1beta.common.places.get_by_id() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_places[0], place_by_id) == [], 'mock_data.place.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_places[0], place_by_id) == [], 'mock_data.place_by_id.get() has stuff that fyle doesnt'
 
 
 def test_get_by_id_places_missing_id(fyle, mock_data):
