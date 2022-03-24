@@ -12,6 +12,7 @@ from .reports import Reports
 from .merchants import Merchants
 from .employees import Employees
 from .tax_groups import TaxGroups
+from .files import Files
 from ..version import version
 
 role = 'spender'
@@ -27,3 +28,4 @@ reports = Reports(version, role)
 merchants = Merchants(version, role)
 employees = Employees(version, role)
 tax_groups = TaxGroups(version, role)
+files = Files(version, role)

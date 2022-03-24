@@ -10,6 +10,7 @@ class Expenses(ListResources, ListAllResources, PostResources):
     """Class for Expense APIs."""
 
     EXPENSES = '/expenses'
+    ATTACH_RECEIPT = '/expenses/attach_receipt'
 
     def __init__(self, version, role):
         super().__init__(version, role, Expenses.EXPENSES)
@@ -17,5 +18,11 @@ class Expenses(ListResources, ListAllResources, PostResources):
     def create_expense(self, payload):
         return self.api.make_post_request(
             api_url=Expenses.EXPENSES,
+            payload=payload
+        )
+
+    def attach_receipt(self, payload):
+        return self.api.make_post_request(
+            api_url=Expenses.ATTACH_RECEIPT,
             payload=payload
         )
