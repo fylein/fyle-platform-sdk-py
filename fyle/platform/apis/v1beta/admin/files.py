@@ -17,6 +17,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
     def __init__(self, version, role):
         super().__init__(version, role, Files.FILES)
+        super().__init__(version, role, Files.BULK_GENERATE_FILES_URLS)
 
     def create_file(self, payload):
         return self.api.make_post_request(
