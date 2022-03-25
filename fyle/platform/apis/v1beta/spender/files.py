@@ -13,11 +13,10 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
     """Class for Files APIs."""
 
     FILES = '/files'
-    GENERATE_FILES_URLS = '/files/generate_urls'
+    GENERATE_FILE_URLS = '/files/generate_urls'
 
     def __init__(self, version, role):
         super().__init__(version, role, Files.FILES)
-        super().__init__(version, role, Files.GENERATE_FILES_URLS)
 
     def create_file(self, payload):
         return self.api.make_post_request(
@@ -25,7 +24,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
             payload=payload
         )
 
-    def upload_file_to_aws(self, content_type, data, url):
+    def put_file_to_url(self, content_type, data, url):
         """Create an File.
 
         Parameters:
@@ -39,9 +38,10 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
         headers = {"Content-Type": content_type}
         requests.put(url=url, data=data, headers=headers)
+        return True
 
     def generate_file_urls(self, payload):
         return self.api.make_post_request(
-            api_url=Files.GENERATE_FILES_URLS,
+            api_url=Files.GENERATE_FILE_URLS,
             payload=payload
         )
