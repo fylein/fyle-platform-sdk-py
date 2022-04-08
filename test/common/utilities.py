@@ -58,3 +58,10 @@ def fyle_connect():
   with open('test_credentials.json', 'w') as fp:
     json.dump(fyle_config, fp)
   return connection
+
+
+def get_sample_file_path():
+  basepath = path.dirname(__file__)
+  file_path = path.join(basepath, 'fixtures/sample_files/')
+
+  return file_path
