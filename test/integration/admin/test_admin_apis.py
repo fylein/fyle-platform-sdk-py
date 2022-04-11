@@ -2,7 +2,7 @@ import string
 import random
 import logging
 from os import path
-from test.common.utilities import dict_compare_keys
+from test.common.utilities import dict_compare_keys, get_sample_file_path
 
 logger = logging.getLogger(__name__)
 
@@ -227,8 +227,8 @@ def test_bulk_generate_file_urls(fyle, mock_data):
   
 
 def test_upload_file_to_aws(fyle, mock_data):
-  basepath = path.dirname(__file__)
-  file_path = path.join(basepath, 'fixtures/sample_files/uber_expenses_2.txt')
+  basepath = get_sample_file_path()
+  file_path = path.join(basepath, 'uber_expenses_2.txt')
   file_data = open(file_path, 'rb')
 
   try:
