@@ -62,11 +62,11 @@ pip install pytest
 
 ```json
 {
-    server_url='FYLE SERVER URL',
-    token_url='FYLE TOKEN URL',
-    refresh_token='FYLE REFRESH TOKEN',
-    client_id='FYLE CLIENT ID',
-    client_secret='FYLE CLIENT SECRET'
+    'server_url':'FYLE SERVER URL',
+    'token_url':'FYLE TOKEN URL',
+    'refresh_token':'FYLE REFRESH TOKEN',
+    'client_id':'FYLE CLIENT ID',
+    'client_secret':'FYLE CLIENT SECRET'
 }
 ```
 
