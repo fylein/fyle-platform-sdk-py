@@ -13,6 +13,7 @@ from .merchants import Merchants
 from .employees import Employees
 from .tax_groups import TaxGroups
 from .files import Files
+from .corporate_cards import CorporateCards
 from ..version import version
 
 role = 'spender'
@@ -29,3 +30,4 @@ merchants = Merchants(version, role)
 employees = Employees(version, role)
 tax_groups = TaxGroups(version, role)
 files = Files(version, role)
+corporate_cards = CorporateCards(version, role)
