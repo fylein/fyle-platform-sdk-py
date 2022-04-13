@@ -23,18 +23,18 @@ def test_get_exchange_rate(fyle, mock_data):
     assert dict_compare_keys(mock_exchange_rate, exchange_rate["data"]) == [], 'mock_data.exchange_rate.get() has stuff that fyle doesnt'
 
 
-def test_extract_expense_missing_file_name_b64(fyle, mock_data):
-  try:
-    extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="", b64_content="")
-  except:
-    logger.error("File name and cntent is required")
+# def test_extract_expense_missing_file_name_b64(fyle, mock_data):
+#   try:
+#     extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="", b64_content="")
+#   except:
+#     logger.error("File name and cntent is required")
 
 
-def test_extract_expense_invalid_file_name(fyle, mock_data):
-  try:
-    extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="sample", b64_content="asdfghj")
-  except:
-    logger.error("File name is invalid")
+# def test_extract_expense_invalid_file_name(fyle, mock_data):
+#   try:
+#     extract_expense = fyle.v1beta.common.expense_extract.extract(file_name="sample", b64_content="asdfghj")
+#   except:
+#     logger.error("File name is invalid")
 
 
 def test_list_places_autocomplete(fyle, mock_data):
