@@ -172,13 +172,6 @@
   "exchange_rate": {
     "exchange_rate": 12.123456
   },
-  "expense_extract": {
-    "amount": 1500,
-    "category": "Flight",
-    "currency": "USD",
-    "spent_at": "2020-06-01T13:14:54.804+00:00",
-    "merchant": "Uber"
-  },
   "places_autocomplete": [
     {
       "id": "ChIJify3BTzI5zsR2q86fwXrh74",

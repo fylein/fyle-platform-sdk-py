@@ -15,7 +15,7 @@ def get_mock_data_from_file(filename):
   mock_data = Mock()
   mock_data.currencies.get.return_value = mock_data_dict['currencies']
   mock_data.exchange_rate.get.return_value = mock_data_dict['exchange_rate']
-  mock_data.expense_extract.get.return_value = mock_data_dict['expense_extract']
+  # mock_data.expense_extract.get.return_value = mock_data_dict['expense_extract']
   mock_data.places_autocomplete.get.return_value = mock_data_dict['places_autocomplete']
   mock_data.place_by_id.get.return_value = mock_data_dict['place_by_id']
   return mock_data
