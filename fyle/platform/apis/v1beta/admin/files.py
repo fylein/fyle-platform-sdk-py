@@ -1,6 +1,8 @@
 """
 V1 Beta Admin Files
 """
+import base64
+
 import requests
 
 from ....internals.get_resources import GetResources
@@ -38,7 +40,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
         """
 
         headers = {"Content-Type": content_type}
-        requests.put(url=url, data=data, headers=headers)
+        requests.put(url=url, data=base64.b64decode(data), headers=headers)
 
     def bulk_generate_file_urls(self, payload):
         return self.api.make_post_request(
