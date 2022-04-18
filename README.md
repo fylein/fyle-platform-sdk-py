@@ -61,10 +61,10 @@ pip install pytest
 2. Add the following environment variables to setup.sh file
 
 ```
-    export SERVER_URL = <FYLE SERVER URL>,
-    export TOKEN_URL = <FYLE TOKEN URL>,
-    export REFRESH_TOKEN = <FYLE REFRESH TOKEN>,
-    export CLIENT_ID = <FYLE CLIENT ID>,
+    export SERVER_URL = <FYLE SERVER URL>
+    export TOKEN_URL = <FYLE TOKEN URL>
+    export REFRESH_TOKEN = <FYLE REFRESH TOKEN>
+    export CLIENT_ID = <FYLE CLIENT ID>
     export CLIENT_SECRET = <FYLE CLIENT SECRET>
 ```
 
