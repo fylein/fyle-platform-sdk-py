@@ -58,16 +58,14 @@ for response in expenses_generator:
 pip install pytest
 ```
 
-2. Create a 'test_credentials.json' file at project root directory with the following Fyle credentials
+2. Add the following environment variables to setup.sh file
 
-```json
-{
-    "server_url":"<FYLE SERVER URL>",
-    "token_url":"<FYLE TOKEN URL>",
-    "refresh_token":"<FYLE REFRESH TOKEN>",
-    "client_id":"<FYLE CLIENT ID>",
-    "client_secret":"<FYLE CLIENT SECRET>"
-}
+```
+    export server_url = <FYLE SERVER URL>,
+    export token_url = <FYLE TOKEN URL>,
+    export refresh_token = <FYLE REFRESH TOKEN>,
+    export client_id = <FYLE CLIENT ID>,
+    export client_secret = <FYLE CLIENT SECRET>
 ```
 
 3. Run integration tests as follows:
