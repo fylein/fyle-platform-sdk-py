@@ -61,11 +61,11 @@ pip install pytest
 2. Add the following environment variables to setup.sh file
 
 ```
-    export server_url = <FYLE SERVER URL>,
-    export token_url = <FYLE TOKEN URL>,
-    export refresh_token = <FYLE REFRESH TOKEN>,
-    export client_id = <FYLE CLIENT ID>,
-    export client_secret = <FYLE CLIENT SECRET>
+    export SERVER_URL = <FYLE SERVER URL>,
+    export TOKEN_URL = <FYLE TOKEN URL>,
+    export REFRESH_TOKEN = <FYLE REFRESH TOKEN>,
+    export CLIENT_ID = <FYLE CLIENT ID>,
+    export CLIENT_SECRET = <FYLE CLIENT SECRET>
 ```
 
 3. Run integration tests as follows:
