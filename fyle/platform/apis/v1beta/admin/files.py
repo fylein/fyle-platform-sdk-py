@@ -37,7 +37,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
             url (str): AWS S3 upload URL.
 
         Returns:
-            AWS S3 upload url.
+            True
         """
         try:
             base64.b64decode(data)
@@ -46,6 +46,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
         headers = {"Content-Type": content_type}
         requests.put(url=url, data=base64.b64decode(data), headers=headers)
+        return True
 
     def bulk_generate_file_urls(self, payload):
         return self.api.make_post_request(

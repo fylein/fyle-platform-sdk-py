@@ -36,7 +36,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
             url (str): AWS S3 upload URL.
 
         Returns:
-            AWS S3 upload url.
+            True
         """
 
         try:
