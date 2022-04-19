@@ -5,6 +5,7 @@ import base64
 
 import requests
 
+from fyle.platform import exceptions
 from ....internals.get_resources import GetResources
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources
@@ -39,6 +40,10 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
         """
 
         headers = {"Content-Type": content_type}
+        try:
+            base64.b64decode(data)
+        except Exception:
+            raise exceptions.WrongParamsError('Invalid base64')
         requests.put(url=url, data=base64.b64decode(data), headers=headers)
         return True
 
