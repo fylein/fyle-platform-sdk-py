@@ -33,7 +33,7 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
         Parameters:
             content_type (str): Content type of file. Example application/json for JSON
-            data (file): File data as binary string.
+            data (file): File data as Base64 string.
             url (str): AWS S3 upload URL.
 
         Returns:
