@@ -39,11 +39,12 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
             AWS S3 upload url.
         """
 
-        headers = {"Content-Type": content_type}
         try:
             base64.b64decode(data)
         except Exception:
             raise exceptions.WrongParamsError('Invalid base64')
+
+        headers = {"Content-Type": content_type}
         requests.put(url=url, data=base64.b64decode(data), headers=headers)
         return True
 
