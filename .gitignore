@@ -9,6 +9,8 @@ __pycache__/
 # Test Files
 dry_run.py
 test_credentials.json
+test-reports/
+pytest-coverage.txt
 
 # Distribution / packaging
 .Python

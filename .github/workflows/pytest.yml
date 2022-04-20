@@ -1,0 +1,56 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  pylint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Python Pylin GitHub Action
+      uses: fylein/python-pylint-github-action@v4
+      with:
+        args: pip3 install -r requirements.txt && pip install pylint-django==2.3.0 && pylint --load-plugins pylint_django --rcfile=.pylintrc **/**.py
+        
+  pytest:
+    runs-on: ubuntu-latest
+    environment: CI Environment
+    steps:
+      - uses: actions/checkout@v2 
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - name: Run Tests
+        run: |
+          python -m pytest tests/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=90 | tee pytest-coverage.txt
+          echo "STATUS=$(cat pytest-coverage.txt | grep 'Required test' | awk '{ print $1 }')" >> $GITHUB_ENV
+        env:
+          SERVER_URL: ${{ secrets.SERVER_URL }}
+          TOKEN_URL: ${{ secrets.TOKEN_URL }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        if: ${{ always() && github.ref != 'refs/heads/master' }}
+        with:
+          create-new-comment: true
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./test-reports/report.xml
+      - name: Evaluate Coverage
+        if: env.STATUS == 'FAIL'
+        run: exit 1
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: ${{ always() && github.ref != 'refs/heads/master' }}
+        env:
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: pytest job status - ${{ job.status }}
+          SLACK_TITLE: Pytest Run Stats
+          SLACK_ICON_EMOJI: ":terminator:"
+          SLACK_USERNAME: Gandalf
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_FOOTER: ''
