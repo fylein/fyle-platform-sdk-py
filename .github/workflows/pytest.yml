@@ -13,6 +13,12 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
       - name: Run Tests
+        env:
+          SERVER_URL: ${{ secrets.SERVER_URL }}
+          TOKEN_URL: ${{ secrets.TOKEN_URL }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         run: |
           pip install -r requirements.txt && pip install pytest pytest-coverage
           python -m pytest test/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=90 | tee pytest-coverage.txt
