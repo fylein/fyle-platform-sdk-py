@@ -5,17 +5,6 @@ on:
     types: [assigned, opened, synchronize, reopened]
 
 jobs:
-  pylint:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Python Pylin GitHub Action
-      uses: fylein/python-pylint-github-action@v4
-      with:
-        args: pip3 install -r requirements.txt && pip install pytest pytest-coverage pylint-django==2.3.0 && pylint --load-plugins pylint_django --rcfile=.pylintrc **/**.py
-        
   pytest:
     runs-on: ubuntu-latest
     environment: CI Environment
@@ -25,6 +14,7 @@ jobs:
         continue-on-error: true
       - name: Run Tests
         run: |
+          pip install -r requirements.txt && pip install pytest pytest-coverage
           python -m pytest tests/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=90 | tee pytest-coverage.txt
           echo "STATUS=$(cat pytest-coverage.txt | grep 'Required test' | awk '{ print $1 }')" >> $GITHUB_ENV
       - name: Pytest coverage comment
