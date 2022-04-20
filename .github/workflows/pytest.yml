@@ -15,7 +15,7 @@ jobs:
       - name: Run Tests
         run: |
           pip install -r requirements.txt && pip install pytest pytest-coverage
-          python -m pytest tests/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=90 | tee pytest-coverage.txt
+          python -m pytest test/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=90 | tee pytest-coverage.txt
           echo "STATUS=$(cat pytest-coverage.txt | grep 'Required test' | awk '{ print $1 }')" >> $GITHUB_ENV
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
