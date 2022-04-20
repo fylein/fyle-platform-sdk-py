@@ -58,7 +58,7 @@ for response in expenses_generator:
 pip install pytest
 ```
 
-2. Add the following environment variables to setup.sh file
+2. Add the following environment variables to test_credentials.sh file
 
 ```
     export SERVER_URL=<FYLE SERVER URL>
