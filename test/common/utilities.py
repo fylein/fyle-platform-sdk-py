@@ -45,16 +45,6 @@ def fyle_connect():
     FYLE connector
     :param: db connection
   """
-  # file = open('test_credentials.json', 'r')
-  # fyle_config = json.load(file)
-
-  # connection = Platform(
-  #   server_url=fyle_config['server_url'],
-  #   token_url=fyle_config['token_url'],
-  #   refresh_token=fyle_config['refresh_token'],
-  #   client_id=fyle_config['client_id'],
-  #   client_secret=fyle_config['client_secret']
-  # )
 
   connection = Platform(
     server_url=os.environ.get('SERVER_URL'),
@@ -63,9 +53,6 @@ def fyle_connect():
     client_id=os.environ.get('CLIENT_ID'),
     client_secret=os.environ.get('CLIENT_SECRET')
   )
-
-  # with open('test_credentials.json', 'w') as fp:
-  #   json.dump(fyle_config, fp)
 
   return connection
 
