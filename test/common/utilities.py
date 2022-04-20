@@ -1,4 +1,5 @@
 import json
+import os
 import logging
 from os import path
 from unittest.mock import Mock
@@ -44,19 +45,13 @@ def fyle_connect():
     FYLE connector
     :param: db connection
   """
-  file = open('test_credentials.json', 'r')
-  fyle_config = json.load(file)
-
   connection = Platform(
-    server_url=fyle_config['server_url'],
-    token_url=fyle_config['token_url'],
-    refresh_token=fyle_config['refresh_token'],
-    client_id=fyle_config['client_id'],
-    client_secret=fyle_config['client_secret']
+    server_url=os.environ.get('SERVER_URL'),
+    token_url=os.environ.get('TOKEN_URL'),
+    refresh_token=os.environ.get('REFRESH_TOKEN'),
+    client_id=os.environ.get('CLIENT_ID'),
+    client_secret=os.environ.get('CLIENT_SECRET')
   )
-
-  with open('test_credentials.json', 'w') as fp:
-    json.dump(fyle_config, fp)
   return connection
 
 
