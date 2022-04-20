@@ -23,6 +23,7 @@ jobs:
           pip install -r requirements.txt && pip install pytest pytest-coverage
           python -m pytest test/ --cov=. --junit-xml=test-reports/report.xml --cov-report=term-missing --cov-fail-under=99 | tee pytest-coverage.txt
           echo "STATUS=$(cat pytest-coverage.txt | grep 'Required test' | awk '{ print $1 }')" >> $GITHUB_ENV
+          echo "${{ env.STATUS }}"
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         if: ${{ always() && github.ref != 'refs/heads/master' }}
