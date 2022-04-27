@@ -13,6 +13,7 @@ def get_mock_data_dict(filename):
 def get_mock_data_from_file(filename):
   mock_data_dict = get_mock_data_dict(filename)
   mock_data = Mock()
+  mock_data.created_accounting_export.get.return_value = mock_data_dict['created_accounting_export']
   mock_data.accounting_export.get.return_value = mock_data_dict['accounting_export']
   mock_data.accounting_export.get.return_value = mock_data_dict['accounting_export_lineitems']
   mock_data.categories.get.return_value = mock_data_dict['categories']
