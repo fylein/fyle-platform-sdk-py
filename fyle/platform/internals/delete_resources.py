@@ -2,18 +2,18 @@
     Defines Delete resource class.
 """
 
-from .api_base import ApiBase
+# from .api_base import ApiBase
 
 
-class DeleteResources:
-    """Delete Resource Class"""
+# class DeleteResources:
+#     """Delete Resource Class"""
 
-    def __init__(self, version, role, endpoint):
-        self.version = version
-        self.role = role
-        self.endpoint = endpoint
+#     def __init__(self, version, role, endpoint):
+#         self.version = version
+#         self.role = role
+#         self.endpoint = endpoint
 
-        self.api = ApiBase(self.version, self.role)
+#         self.api = ApiBase(self.version, self.role)
 
     # def delete(self, id_: str):
     #     """
