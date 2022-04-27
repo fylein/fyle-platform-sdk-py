@@ -11,7 +11,7 @@ random_name = ''.join(random.choices(string.ascii_uppercase +
 upload_url = ''
 account_export_id = ''
 
-def test_get_accounting_exports(fyle, mock_data):
+def test_list_all_accounting_exports_lineitems(fyle, mock_data):
   """
   Test Fyle admin accounting exports Object
   :param fyle: fyle sdk instance
@@ -19,21 +19,20 @@ def test_get_accounting_exports(fyle, mock_data):
   :return: None
   """
   # Get a list of all Admin Accounting_exports in a paginated manner and add to a list
-  accounting_export = []
+  accounting_export_lineitems = []
   query_params = {
     'order': 'created_at.desc'
   }
 
-  accounting_exports_generator = fyle.v1beta.admin.accounting_exports.list_all(query_params=query_params)
-  mock_accounting_exports = mock_data.accounting_export.get()
+  accounting_export_lineitems_generator = fyle.v1beta.admin.accounting_exports.list_all(query_params=query_params)
+  mock_accounting_export_lineitemss = mock_data.accounting_export_lineitems.get()
 
-  for response in accounting_exports_generator:
+  for response in accounting_export_lineitems_generator:
     if response.get('data'):
-      accounting_export.extend(response['data'])
-
-  if accounting_export:
-    assert dict_compare_keys(accounting_export[0], mock_accounting_exports[0]) == [], 'fyle.v1beta.admin.accounting_exports.list_all() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports[0], accounting_export[0]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+      accounting_export_lineitems.extend(response['data'])
+  if accounting_export_lineitems:
+    assert dict_compare_keys(accounting_export_lineitems[0], mock_accounting_export_lineitemss[0]) == [], 'fyle.v1beta.admin.accounting_export_lineitemss.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_accounting_export_lineitemss[0], accounting_export_lineitems[0]) == [], 'mock_data.accounting_export_lineitems.get() has stuff that fyle doesnt'
 
 
 def test_create_accounting_exports(fyle, mock_data):
@@ -65,11 +64,11 @@ def test_create_accounting_export_lineitems(fyle, mock_data):
       "accounting_export_id": account_export_id
     }
   })
-  mock_accounting_exports_lineitems = mock_data.accounting_export.get()
+  mock_accounting_exports_lineitems = mock_data.accounting_export_lineitems.get()
 
   if create_accounting_export_lineitems["data"]:
     assert dict_compare_keys(create_accounting_export_lineitems["data"], mock_accounting_exports_lineitems[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_export_lineitems() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports_lineitems[0], create_accounting_export_lineitems["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_accounting_exports_lineitems[0], create_accounting_export_lineitems["data"]) == [], 'mock_data.accounting_export_lineitems.get() has stuff that fyle doesnt'
 
 
 def test_bulk_create_accounting_export_lineitems(fyle, mock_data):

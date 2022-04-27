@@ -1,3 +1,5 @@
+import base64
+from distutils.ccompiler import gen_lib_options
 import logging
 from os import path
 from test.common.utilities import dict_compare_keys, get_sample_file_path
@@ -35,6 +37,7 @@ def test_create_file(fyle, mock_data):
   if create_file["data"]: 
     global file_id
     file_id = create_file["data"]["id"]
+    print(create_file['data'], file_id)
     assert dict_compare_keys(create_file["data"], mock_files) == [], 'response from fyle.v1beta.spender.files.create_file() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_files, create_file["data"]) == [], 'mock_data.files_create.get() has stuff that fyle doesnt'
 
@@ -49,18 +52,19 @@ def test_generate_file_urls(fyle, mock_data):
   if generate_file_urls["data"]:
     global upload_url
     upload_url = generate_file_urls["data"]["upload_url"]
+    print(generate_file_urls['data'])
     assert dict_compare_keys(generate_file_urls["data"], mock_files) == [], 'response from fyle.v1beta.spender.files.create_file() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_files, generate_file_urls["data"]) == [], 'mock_data.file_generate_url.get() has stuff that fyle doesnt'
-  
 
 def test_put_file_to_url(fyle):
   basepath = get_sample_file_path()
   file_path = path.join(basepath, 'sample.jpg')
-  file_data = open(file_path, 'rb')
+  with open(file_path, "rb") as image_file:
+    file_data = base64.b64encode(image_file.read())
 
   try:
     put_file_to_url = fyle.v1beta.spender.files.put_file_to_url(
-      content_type="text/csv", url=upload_url,
+      content_type="image/jpeg", url=upload_url,
       data=file_data
     )
   except:
@@ -84,10 +88,11 @@ def test_create_expense(fyle, mock_data):
 
 
 def test_attach_receipt(fyle, mock_data):
+  print(file_id)
   attach_receipt = fyle.v1beta.spender.expenses.attach_receipt(payload = {
     "data": {
       "id": expense_id,
-      "file_id": 'fi0Wa1GHhcwi'
+      "file_id": file_id
     }
   })
   mock_files = mock_data.attach_receipt.get()
