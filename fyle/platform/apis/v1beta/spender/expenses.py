@@ -11,10 +11,17 @@ class Expenses(ListResources, ListAllResources, PostResources):
 
     EXPENSES = '/expenses'
     ATTACH_RECEIPT = '/expenses/attach_receipt'
+    CREATE_FROM_RECEIPT = '/expenses/create_from_receipt'
 
     def attach_receipt(self, payload):
         return self.api.make_post_request(
             api_url=Expenses.ATTACH_RECEIPT,
+            payload=payload
+        )
+
+    def create_expense_from_receipt(self, payload):
+        return self.api.make_post_request(
+            api_url=Expenses.CREATE_FROM_RECEIPT,
             payload=payload
         )
 
