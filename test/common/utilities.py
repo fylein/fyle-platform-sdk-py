@@ -16,11 +16,9 @@ def dict_compare_keys(d1, d2, key_path=''):
   res = []
   if not d1:
     return res
-  if not isinstance(d1, dict):
+  if not isinstance(d1, dict) or not isinstance(d2, dict):
     return res
   if not d2:
-    return res
-  if not isinstance(d2, dict):
     return res
   for k in d1:
     if k not in d2:
