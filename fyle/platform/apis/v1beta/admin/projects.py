@@ -2,7 +2,6 @@
 V1 Beta Admin Projects
 """
 
-from ....internals.post_bulk_resources import PostBulkResources
 from ....internals.list_resources import ListResources
 from ....internals.list_all_resources import ListAllResources
 from ....internals.post_resources import PostResources
