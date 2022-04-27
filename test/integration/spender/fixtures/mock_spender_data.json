@@ -35,6 +35,8 @@
     "upload_url": "string"
   },
   "create_expense": {
+    "activity_details":"None",
+    "per_diem_num_days": "None",
     "id": "txwownwrng",
     "user_id": "uswjwgnwwgo",
     "user": {
@@ -49,6 +51,7 @@
     "source": "SLACK_APP",
     "merchant": "Uber",
     "currency": "USD",
+    "creator_user_id": "usqywo0f3nBY",
     "amount": 1500,
     "claim_amount": 1984.18,
     "policy_amount": 1500,
@@ -102,7 +105,6 @@
       "name": "Florida Rate",
       "code": "C1234"
     },
-    "num_days": 2,
     "started_at": "2020-06-01T13:14:54.804+00:00",
     "ended_at": "2020-06-01T13:14:54.804+00:00",
     "travel_classes": [

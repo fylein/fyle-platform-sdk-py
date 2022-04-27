@@ -47,7 +47,7 @@ def test_create_accounting_exports(fyle, mock_data):
       "description": "Win the trophy",
     }
   })
-  mock_accounting_exports = mock_data.accounting_export.get()
+  mock_accounting_exports = mock_data.created_accounting_export.get()
 
   if create_accounting_exports["data"]:
     global account_export_id

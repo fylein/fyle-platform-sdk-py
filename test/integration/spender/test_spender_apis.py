@@ -76,7 +76,7 @@ def test_create_expense(fyle, mock_data):
     }
   })
   mock_files = mock_data.create_expense.get()
-  if create_expense["data"]: 
+  if create_expense["data"]:
     global expense_id
     expense_id = create_expense["data"]["id"]
     assert dict_compare_keys(create_expense["data"], mock_files) == [], 'response from fyle.v1beta.spender.expenses.create_expense() has stuff that mock_data doesnt'
