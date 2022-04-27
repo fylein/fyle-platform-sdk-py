@@ -32,7 +32,5 @@ jobs:
           pytest-coverage-path: ./pytest-coverage.txt
           junitxml-path: ./test-reports/report.xml
       - name: Evaluate Coverage
-        if: env.STATUS == 'FAIL'
-        run: exit 1
-        if: env.FAILED > 0
+        if: ${{ (env.STATUS == 'FAIL') || (env.FAILED > 0) }}
         run: exit 1
