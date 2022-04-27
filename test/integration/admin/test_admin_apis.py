@@ -269,20 +269,27 @@ def test_list_all_tax_groups(fyle, mock_data):
 
 
 def test_list_all_tax_groups_offset_limit(fyle, mock_data):
+  tax_groups = []  
   query_params = {
     'offset': 1,
     'limit': 1
   }
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all(query_params=query_params)
-    logger.info(tax_groups_generator)
+    for response in tax_groups_generator:
+      if response.get('data'):
+        tax_groups.extend(response['data'])
   except:
     logger.error("Offset and limit should not be passed for list_all")
 
 
 def test_list_all_tax_groups_missing_order(fyle, mock_data):
+  tax_groups = []  
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all()
+    for response in tax_groups_generator:
+      if response.get('data'):
+        tax_groups.extend(response['data'])
   except:
     logger.error("Mandatory query params order is missing")
 
