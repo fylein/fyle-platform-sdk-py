@@ -1,13 +1,12 @@
 """
 V1 Beta Admin Expense Fields
 """
-from ....internals.post_bulk_resources import PostBulkResources
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources
 from ....internals.post_resources import PostResources
 
 
-class ExpenseFields(ListResources, ListAllResources, PostResources, PostBulkResources):
+class ExpenseFields(ListResources, ListAllResources, PostResources):
     """Class for Expense Fields APIs."""
 
     EXPENSE_FIELDS = '/expense_fields'
