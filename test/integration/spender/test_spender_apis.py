@@ -84,11 +84,10 @@ def test_create_expense(fyle, mock_data):
 
 
 def test_attach_receipt(fyle, mock_data):
-  print('expense_id', expense_id)
   attach_receipt = fyle.v1beta.spender.expenses.attach_receipt(payload = {
     "data": {
       "id": expense_id,
-      "file_id": file_id
+      "file_id": 'fi0Wa1GHhcwi'
     }
   })
   mock_files = mock_data.attach_receipt.get()
