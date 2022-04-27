@@ -1,8 +1,11 @@
 """
 V1 Beta Admin Files
 """
+import base64
+
 import requests
 
+from fyle.platform import exceptions
 from ....internals.get_resources import GetResources
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources
@@ -30,15 +33,20 @@ class Files(ListResources, ListAllResources, PostResources, GetResources):
 
         Parameters:
             content_type (str): Content type of file. Example application/json for JSON
-            data (file): File data as binary string.
+            data (file): File data as Base64 string.
             url (str): AWS S3 upload URL.
 
         Returns:
-            AWS S3 upload url.
+            True
         """
+        try:
+            base64.b64decode(data)
+        except Exception:
+            raise exceptions.WrongParamsError('Invalid base64')
 
         headers = {"Content-Type": content_type}
-        requests.put(url=url, data=data, headers=headers)
+        requests.put(url=url, data=base64.b64decode(data), headers=headers)
+        return True
 
     def bulk_generate_file_urls(self, payload):
         return self.api.make_post_request(
