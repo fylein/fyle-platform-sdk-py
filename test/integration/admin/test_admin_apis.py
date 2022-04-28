@@ -53,7 +53,7 @@ def test_create_accounting_exports(fyle, mock_data):
     global account_export_id
     account_export_id = create_accounting_exports["data"]["id"]
     assert dict_compare_keys(create_accounting_exports["data"], mock_accounting_exports[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_exports() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports[0], create_accounting_exports["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_accounting_exports[0], create_accounting_exports["data"]) == [], 'mock_data.created_accounting_export.get() has stuff that fyle doesnt'
 
 
 def test_create_accounting_export_lineitems(fyle, mock_data):
