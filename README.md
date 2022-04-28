@@ -67,7 +67,7 @@ pip install pytest
     export CLIENT_ID=<FYLE CLIENT ID>
     export CLIENT_SECRET=<FYLE CLIENT SECRET>
 ```
-# NOTE: The credentials used should have required roles assigned to them
+### NOTE: The credentials used should have required roles assigned to them
 
 3. Run integration tests as follows:
 
