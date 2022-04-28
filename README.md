@@ -49,6 +49,38 @@ for response in expenses_generator:
         expenses.extend(response['data'])
 
 ```
+
+## Integration Tests
+
+1. Install [pytest](https://pypi.org/project/pytest/) package using pip as follows:
+
+```
+pip install pytest
+```
+
+2. Add the following environment variables to test_credentials.sh file
+
+```
+    export SERVER_URL=<FYLE SERVER URL>
+    export TOKEN_URL=<FYLE TOKEN URL>
+    export REFRESH_TOKEN=<FYLE REFRESH TOKEN>
+    export CLIENT_ID=<FYLE CLIENT ID>
+    export CLIENT_SECRET=<FYLE CLIENT SECRET>
+```
+##### NOTE: The credentials used should have required roles assigned to them
+
+3. Run integration tests as follows:
+
+```
+python -m pytest test/integration
+```
+4. To get the code coverage execute the following:
+
+```
+pytest test/ --cov
+```
+Currently the code coverage is at 95%
+
 ## Release latest version to [PyPi](https://pypi.org/project/fyle/)
 
 * Open the releases section on GitHub and [Draft a new release](https://github.com/fylein/fyle-platform-sdk-py/releases/new).
