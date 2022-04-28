@@ -89,28 +89,6 @@ class ApiBase(Network):
 
         ApiBase._assert_response(response)
 
-    # @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
-    # def make_delete_request(self, api_url):
-    #     """Create a HTTP delete request.
-
-    #     Parameters:
-    #         api_url (str): Url for the wanted API.
-
-    #     Returns:
-    #         A response from the request
-    #     """
-
-    #     api_headers = {'Authorization': 'Bearer {0}'.format(config.get('AUTH', 'ACCESS_TOKEN'))}
-
-    #     response = self.delete_request(
-    #         url=self._format_api_url(api_url),
-    #         headers=api_headers
-    #     )
-
-    #     if response.status_code == 204:
-    #         return None
-
-    #     ApiBase._assert_response(response)
 
     @staticmethod
     def _assert_response(response):

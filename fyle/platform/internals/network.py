@@ -50,17 +50,6 @@ class Network:
         data, headers = Network._process_data_and_headers(data, headers)
         return self._http_request('POST', url, headers=headers, data=data, **kwargs)
 
-    def delete_request(self, url, **kwargs):
-        """Create a HTTP delete request.
-
-        Parameters:
-            url (str): Url for the wanted API.
-
-        Returns:
-            A response from the request (dict).
-        """
-        return self._http_request('DELETE', url, **kwargs)
-
     @staticmethod
     def _http_request(method, url, headers=None, **kwargs):
         headers = requests.structures.CaseInsensitiveDict(headers)
