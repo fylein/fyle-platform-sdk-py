@@ -14,13 +14,9 @@ def dict_compare_keys(d1, d2, key_path=''):
   Returns: list of key paths
   """
   res = []
-  if not d1:
+  if not d1 or not d2:
     return res
-  if not isinstance(d1, dict):
-    return res
-  if not d2:
-    return res
-  if not isinstance(d2, dict):
+  if not isinstance(d1, dict) or not isinstance(d2, dict):
     return res
   for k in d1:
     if k not in d2:

@@ -1,5 +1,6 @@
 import string
 import random
+import base64
 import logging
 from os import path
 from test.common.utilities import dict_compare_keys, get_sample_file_path
@@ -11,7 +12,7 @@ random_name = ''.join(random.choices(string.ascii_uppercase +
 upload_url = ''
 account_export_id = ''
 
-def test_get_accounting_exports(fyle, mock_data):
+def test_list_all_accounting_exports_lineitems(fyle, mock_data):
   """
   Test Fyle admin accounting exports Object
   :param fyle: fyle sdk instance
@@ -19,21 +20,20 @@ def test_get_accounting_exports(fyle, mock_data):
   :return: None
   """
   # Get a list of all Admin Accounting_exports in a paginated manner and add to a list
-  accounting_export = []
+  accounting_export_lineitems = []
   query_params = {
     'order': 'created_at.desc'
   }
 
-  accounting_exports_generator = fyle.v1beta.admin.accounting_exports.list_all(query_params=query_params)
-  mock_accounting_exports = mock_data.accounting_export.get()
+  accounting_export_lineitems_generator = fyle.v1beta.admin.accounting_exports.list_all(query_params=query_params)
+  mock_accounting_export_lineitemss = mock_data.accounting_export_lineitems.get()
 
-  for response in accounting_exports_generator:
+  for response in accounting_export_lineitems_generator:
     if response.get('data'):
-      accounting_export.extend(response['data'])
-
-  if accounting_export:
-    assert dict_compare_keys(accounting_export[0], mock_accounting_exports[0]) == [], 'fyle.v1beta.admin.accounting_exports.list_all() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports[0], accounting_export[0]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+      accounting_export_lineitems.extend(response['data'])
+  if accounting_export_lineitems:
+    assert dict_compare_keys(accounting_export_lineitems[0], mock_accounting_export_lineitemss[0]) == [], 'fyle.v1beta.admin.accounting_export_lineitemss.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_accounting_export_lineitemss[0], accounting_export_lineitems[0]) == [], 'mock_data.accounting_export_lineitems.get() has stuff that fyle doesnt'
 
 
 def test_create_accounting_exports(fyle, mock_data):
@@ -53,7 +53,7 @@ def test_create_accounting_exports(fyle, mock_data):
     global account_export_id
     account_export_id = create_accounting_exports["data"]["id"]
     assert dict_compare_keys(create_accounting_exports["data"], mock_accounting_exports[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_exports() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports[0], create_accounting_exports["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_accounting_exports[0], create_accounting_exports["data"]) == [], 'mock_data.created_accounting_export.get() has stuff that fyle doesnt'
 
 
 def test_create_accounting_export_lineitems(fyle, mock_data):
@@ -65,11 +65,11 @@ def test_create_accounting_export_lineitems(fyle, mock_data):
       "accounting_export_id": account_export_id
     }
   })
-  mock_accounting_exports_lineitems = mock_data.accounting_export.get()
+  mock_accounting_exports_lineitems = mock_data.accounting_export_lineitems.get()
 
   if create_accounting_export_lineitems["data"]:
     assert dict_compare_keys(create_accounting_export_lineitems["data"], mock_accounting_exports_lineitems[0]) == [], 'response from fyle.v1beta.admin.accounting_export.create_accounting_export_lineitems() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_accounting_exports_lineitems[0], create_accounting_export_lineitems["data"]) == [], 'mock_data.accounting_export.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_accounting_exports_lineitems[0], create_accounting_export_lineitems["data"]) == [], 'mock_data.accounting_export_lineitems.get() has stuff that fyle doesnt'
 
 
 def test_bulk_create_accounting_export_lineitems(fyle, mock_data):
@@ -162,33 +162,30 @@ def test_list_employees(fyle, mock_data):
 
 
 def test_bulk_upload_employees(fyle, mock_data):
-  employees_generator = fyle.v1beta.admin.employees.invite_bulk(payload = {
-    "data": [{
-      "user_email": "mikasa@fyle.in",
-      "user_full_name": "mikasa",
-      "business_unit": "Finance ops",
-      "code": "E84122",
-      "department_name": "",
-      "sub_department": "",
-      "is_enabled": True,
-      "joined_at": "2020-06-01T01:18:19.292-08:00",
-      "level": "",
-      "location": "",
-      "title": "",
-      "custom_fields": [],
-      "approver_emails": [],
-      "project_names": [],
-      "cost_center_names": [],
-      "per_diem_rate_names": [],
-      "vehicle_types": []
-    }]
-  })
-
-  mock_employees = mock_data.employees.get()
-
-  if employees_generator:
-    assert dict_compare_keys(employees_generator[0], mock_employees[0]) == [], 'fyle.v1beta.admin.employees.invite_bulk() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_employees[0], employees_generator[0]) == [], 'mock_data.employees.get() has stuff that fyle doesnt'
+  try:
+    employees_generator = fyle.v1beta.admin.employees.invite_bulk(payload = {
+      "data": [{
+        "user_email": "mikasa@fyle.in",
+        "user_full_name": "mikasa",
+        "business_unit": "Finance ops",
+        "code": "E84122",
+        "department_name": "",
+        "sub_department": "",
+        "is_enabled": True,
+        "joined_at": "2020-06-01T01:18:19.292-08:00",
+        "level": "",
+        "location": "",
+        "title": "",
+        "custom_fields": [],
+        "approver_emails": [],
+        "project_names": [],
+        "cost_center_names": [],
+        "per_diem_rate_names": [],
+        "vehicle_types": []
+      }]
+    })
+  except:
+    logger.error('Error in api')
 
 
 def test_create_file(fyle, mock_data):
@@ -228,12 +225,25 @@ def test_bulk_generate_file_urls(fyle, mock_data):
 
 def test_upload_file_to_aws(fyle, mock_data):
   basepath = get_sample_file_path()
+  file_path = path.join(basepath, 'sample.jpg')
+  with open(file_path, "rb") as image_file:
+    file_data = base64.b64encode(image_file.read())
+
+  upload_file_to_aws = fyle.v1beta.admin.files.upload_file_to_aws(
+    content_type="image/jpeg", url=upload_url,
+    data=file_data
+  )
+  assert upload_file_to_aws == True
+
+
+def test_upload_file_to_aws_invalid_file(fyle, mock_data):
+  basepath = get_sample_file_path()
   file_path = path.join(basepath, 'uber_expenses_2.txt')
   file_data = open(file_path, 'rb')
 
   try:
     upload_file_to_aws = fyle.v1beta.admin.files.upload_file_to_aws(
-      content_type="text/csv", url=upload_url,
+      content_type="image/jpeg", url=upload_url,
       data=file_data
     )
   except:
@@ -259,20 +269,27 @@ def test_list_all_tax_groups(fyle, mock_data):
 
 
 def test_list_all_tax_groups_offset_limit(fyle, mock_data):
+  tax_groups = []  
   query_params = {
     'offset': 1,
     'limit': 1
   }
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all(query_params=query_params)
-    logger.info(tax_groups_generator)
+    for response in tax_groups_generator:
+      if response.get('data'):
+        tax_groups.extend(response['data'])
   except:
     logger.error("Offset and limit should not be passed for list_all")
 
 
 def test_list_all_tax_groups_missing_order(fyle, mock_data):
+  tax_groups = []  
   try:
     tax_groups_generator = fyle.v1beta.admin.tax_groups.list_all()
+    for response in tax_groups_generator:
+      if response.get('data'):
+        tax_groups.extend(response['data'])
   except:
     logger.error("Mandatory query params order is missing")
 

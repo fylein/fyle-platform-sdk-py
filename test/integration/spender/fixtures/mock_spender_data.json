@@ -279,7 +279,7 @@
       "name": "Florida Rate",
       "code": "C1234"
     },
-    "num_days": 2,
+    "per_diem_num_days": 2,
     "started_at": "2020-06-01T13:14:54.804+00:00",
     "ended_at": "2020-06-01T13:14:54.804+00:00",
     "travel_classes": [
@@ -317,7 +317,9 @@
       "title": "Business trip to London",
       "state": "DRAFT",
       "settlement_id": "string",
-      "last_paid_at": "2020-06-11T13:14:55.201598+00:00"
+      "last_paid_at": "2020-06-11T13:14:55.201598+00:00",
+      "reimbursement_id": "reimntGt9ju6qP",
+      "reimbursement_seq_num": "P/2020/11/29"
     },
     "is_verified": true,
     "last_verified_at": "2020-06-01T13:14:54.804+00:00",
@@ -384,6 +386,11 @@
       ],
       "amount": true,
       "currency": true
+    },
+    "creator_user_id": "uswjwgnwwgo",
+    "activity_details": {
+      "unique_meetings": 21,
+      "total_meetings": 70
     }
   }
 }

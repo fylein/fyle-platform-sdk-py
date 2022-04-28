@@ -3,7 +3,7 @@ from test.common.utilities import dict_compare_keys
 
 logger = logging.getLogger(__name__)
 
-global report_id
+report_id = ''
 
 def test_list_all_categories(fyle, mock_data):
   """
@@ -46,7 +46,13 @@ def test_list_reports(fyle, mock_data):
   reports_generator = fyle.v1beta.approver.reports.list(query_params=query_params)
   mock_reports = mock_data.reports.get()
 
-  if reports_generator:
+  if reports_generator["data"]:
+    global report_id
+    report_id = reports_generator["data"][0]["id"]
+    for reports in reports_generator["data"]:
+      if reports["state"] == "APPROVER_PENDING":
+        report_id = reports["id"]
+        break
     assert dict_compare_keys(reports_generator["data"][0], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], reports_generator["data"][0]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
 
@@ -54,7 +60,7 @@ def test_list_reports(fyle, mock_data):
 def test_approve_report(fyle, mock_data):
   approve_report = {}
   try:
-    approve_report = fyle.v1beta.approver.reports.approve(id_="rpbHgskxt0cD")
+    approve_report = fyle.v1beta.approver.reports.approve(id_=report_id)
     mock_reports = mock_data.reports.get()
   except:
     logger.error("report is not in APPROVER_PENDING state")
@@ -63,10 +69,9 @@ def test_approve_report(fyle, mock_data):
     assert dict_compare_keys(mock_reports[0], approve_report["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
 
 
-def test_get_by_id(fyle, mock_data):
-  reports_generator = fyle.v1beta.approver.reports.get_by_id(id_="rp6yFhpzfEhc")
+def test_report_get_by_id(fyle, mock_data):
+  reports_generator = fyle.v1beta.approver.reports.get_by_id(id_=report_id)
   mock_reports = mock_data.reports.get()
-
   if reports_generator:
     assert dict_compare_keys(reports_generator["data"], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], reports_generator["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
