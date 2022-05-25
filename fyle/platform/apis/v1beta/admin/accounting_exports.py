@@ -41,3 +41,9 @@ class AccountingExports(ListResources, ListAllResources, PostResources, GetResou
             api_url=AccountingExports.ACCOUNTING_EXPORT_LINEITEMS,
             query_params=query_params
         )
+
+    def get_accounting_exports(self, query_params):
+        return self.api.make_get_request(
+            api_url=AccountingExports.ACCOUNTING_EXPORTS,
+            query_params=query_params
+        )
