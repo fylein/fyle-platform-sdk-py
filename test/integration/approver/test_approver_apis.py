@@ -39,7 +39,7 @@ def test_list_reports(fyle, mock_data):
   """
   query_params = {
     'order': 'created_at.desc',
-    'limit': 500,
+    'limit': 100,
     'offset': 823
   }
 

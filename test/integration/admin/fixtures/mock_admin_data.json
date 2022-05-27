@@ -27,7 +27,8 @@
       "name": "Accounting exports test",
       "description": "Win the trophy",
       "url": "string",
-      "org_id": "orwruogwnngg"
+      "org_id": "orwruogwnngg",
+      "client_id": "string"
     }
   ],
   "get_accounting_export": [
@@ -173,7 +174,10 @@
           "full_name": "John Doe"
         }
       ],
-      "has_accepted_invite": true
+      "has_accepted_invite": true,
+      "branch_account": null,
+      "branch_ifsc": null,
+      "mobile": "string"
     }
   ],
   "file_create": [

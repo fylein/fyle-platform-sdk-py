@@ -41,15 +41,15 @@ def test_get_accounting_exports(fyle, mock_data):
       'order': 'created_at.desc',
       'id': 'eq.aeCtoS8IircK'
     }
-    accounting_exports = connection.v1beta.admin.accounting_exports.get_accounting_exports(
+    accounting_exports = fyle.v1beta.admin.accounting_exports.get_accounting_exports(
         query_params=query_params
     )
-    mock_accounting_export = mock_data.get_accounting_export.get()
+    mock_accounting_export = mock_data.accounting_export.get()
     if accounting_exports["data"]:
         global account_export_id
         account_export_id = accounting_exports["data"][0]["id"]
-        assert dict_compare_keys(accounting_exports["data"][0], mock_accounting_export[0]) == [], 'response from fyle.v1beta.admin.accounting_export.get_accounting_exports() has stuff that mock_data doesnt'
-        assert dict_compare_keys(mock_accounting_export[0], accounting_exports["data"][0]) == [], 'mock_data.get_accounting_exports.get() has stuff that fyle doesnt'
+        assert dict_compare_keys(accounting_exports["data"][0], mock_accounting_export[0]) == [], 'response from fyle.v1beta.admin.accounting_export.accounting_exports() has stuff that mock_data doesnt'
+        assert dict_compare_keys(mock_accounting_export[0], accounting_exports["data"][0]) == [], 'mock_data.accounting_exports.get() has stuff that fyle doesnt'
 
 
 def test_create_accounting_exports(fyle, mock_data):
