@@ -106,7 +106,7 @@ def test_attach_receipt(fyle, mock_data):
     }
   })
   mock_files = mock_data.attach_receipt.get()
-  if attach_receipt["data"]: 
-    print(attach_receipt["data"])
+
+  if attach_receipt["data"]:
     assert dict_compare_keys(attach_receipt["data"], mock_files) == [], 'response from fyle.v1beta.spender.expenses.attach_receipt() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_files, attach_receipt["data"]) == [], 'mock_data.attach_receipt.get() has stuff that fyle doesnt'
