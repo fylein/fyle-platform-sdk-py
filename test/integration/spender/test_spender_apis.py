@@ -93,6 +93,7 @@ def test_create_expense(fyle, mock_data):
   if create_expense["data"]:
     global expense_id
     expense_id = create_expense["data"]["id"]
+    print(create_expense["data"])
     assert dict_compare_keys(create_expense["data"], mock_files) == [], 'response from fyle.v1beta.spender.expenses.create_expense() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_files, create_expense["data"]) == [], 'mock_data.create_expense.get() has stuff that fyle doesnt'
 
@@ -105,6 +106,7 @@ def test_attach_receipt(fyle, mock_data):
     }
   })
   mock_files = mock_data.attach_receipt.get()
+
   if attach_receipt["data"]:
     assert dict_compare_keys(attach_receipt["data"], mock_files) == [], 'response from fyle.v1beta.spender.expenses.attach_receipt() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_files, attach_receipt["data"]) == [], 'mock_data.attach_receipt.get() has stuff that fyle doesnt'
