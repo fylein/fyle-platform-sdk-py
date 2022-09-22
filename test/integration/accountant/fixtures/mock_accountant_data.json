@@ -1,0 +1,27 @@
+{
+  "get_orgs": [
+    {
+      "name": "Goldman Sachs",
+      "id": "orgs124",
+      "logo_download_url": "https://xyz.something.something",
+      "pending_invitations": 14,
+      "active_users_count": 34,
+      "total_users_count": 100,
+      "incomplete_card_expenses_count": 42,
+      "reports_to_approve_count": 3,
+      "pending_reimbursement_amount": 1889.2,
+      "currency": "USD"
+    },
+    {
+      "org_name": "QuickBooks",
+      "org_id": "orgs124",
+      "logo_download_url": "https://xyz.something.something",
+      "active_users_count": 34,
+      "total_users_count": 100,
+      "incomplete_card_expenses_count": 42,
+      "reports_to_approve_count": 3,
+      "pending_reimbursement_amount": 1889.2,
+      "currency": "USD"
+    }
+  ]
+}
