@@ -69,10 +69,10 @@ pip install pytest
 ```
 ##### NOTE: The credentials used should have required roles assigned to them
 
-3. Run integration tests as follows:
+3. Apply secrets and Run integration tests as follows:
 
 ```
-python -m pytest test/integration
+source test_credentials.sh  && python -m pytest test/integration
 ```
 4. To get the code coverage execute the following:
 
