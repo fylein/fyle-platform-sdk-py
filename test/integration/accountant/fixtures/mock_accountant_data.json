@@ -1,27 +1,27 @@
 {
   "get_orgs": [
     {
-      "name": "Goldman Sachs",
-      "id": "orgs124",
-      "logo_download_url": "https://xyz.something.something",
-      "pending_invitations": 14,
-      "active_users_count": 34,
-      "total_users_count": 100,
-      "incomplete_card_expenses_count": 42,
-      "reports_to_approve_count": 3,
-      "pending_reimbursement_amount": 1889.2,
-      "currency": "USD"
-    },
-    {
-      "org_name": "QuickBooks",
-      "org_id": "orgs124",
-      "logo_download_url": "https://xyz.something.something",
-      "active_users_count": 34,
-      "total_users_count": 100,
-      "incomplete_card_expenses_count": 42,
-      "reports_to_approve_count": 3,
-      "pending_reimbursement_amount": 1889.2,
-      "currency": "USD"
+      "approval_pending_reports_count": 0,
+      "billed_users_count": 0,
+      "created_at": "2020-09-02T08:04:52.891307+00:00",
+      "currency": "USD",
+      "domain": "fyleforqvd.com",
+      "enabled_users_count": 15,
+      "id": "orNoatdUnm1w",
+      "incomplete_card_expenses_count": 128,
+      "is_verified": true,
+      "logo_file": {
+        "content_type": "image/png",
+        "download_url": "https://fyle-storage-mumbai-3.s3.amazonaws.com/2020-09-02/orNoatdUnm1w/receipts/fi5oyRjAKjTT.branding_icon.png?response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA54Z3LIXTX6CFH4VG%2F20221003%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20221003T135322Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f56b41e92f2e0db4bb74136fff2985295c091f480b89ef06566b83a39dd8b30a",
+        "id": "fi5oyRjAKjTT",
+        "name": "branding_icon.png",
+        "upload_url": null
+      },
+      "logo_file_id": "fi5oyRjAKjTT",
+      "name": "Fyle For MS Dynamics Demo",
+      "pending_reimbursement_amount": 1163,
+      "pending_users_count": 1,
+      "updated_at": "2020-09-03T10:26:23.381774+00:00"
     }
   ]
 }

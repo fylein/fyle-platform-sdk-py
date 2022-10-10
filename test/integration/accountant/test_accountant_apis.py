@@ -17,14 +17,14 @@ def test_list_all_orgs(fyle, mock_data):
   }
 
   orgs_generator = fyle.v1beta.accountant.orgs.list_all(query_params=query_params)
-  mock_orgs = mock_data.orgs.get()
+  mock_orgs = mock_data.orgs.list_all()
 
   for response in orgs_generator:
     if response.get('data'):
       orgs.extend(response['data'])
   if orgs:
     assert dict_compare_keys(orgs[0], mock_orgs[0]) == [], 'fyle.v1beta.accountant.orgs.list_all() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_orgs[0], orgs[0]) == [], 'mock_data.orgs.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_orgs[0], orgs[0]) == [], 'mock_data.orgs.list_all() has stuff that fyle doesnt'
 
 def test_list_orgs(fyle, mock_data):
   query_params = {
@@ -34,8 +34,8 @@ def test_list_orgs(fyle, mock_data):
   }
 
   orgs = fyle.v1beta.accountant.orgs.list(query_params=query_params)
-  mock_orgs = mock_data.orgs.get()[0]
+  mock_orgs = mock_data.orgs.list()
 
   if orgs["data"]:
     assert dict_compare_keys(orgs["data"][0], mock_orgs[0]) == [], 'fyle.v1beta.accountant.orgs.list() has stuff that mock_data doesnt'
-    assert dict_compare_keys(mock_orgs[0], orgs["data"][0]) == [], 'mock_data.orgs.get() has stuff that fyle doesnt'
+    assert dict_compare_keys(mock_orgs[0], orgs["data"][0]) == [], 'mock_data.orgs.list() has stuff that fyle doesnt'
