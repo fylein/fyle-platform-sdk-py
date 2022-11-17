@@ -15,6 +15,7 @@ from .files import Files
 from .accounting_exports import AccountingExports
 from .corporate_cards import CorporateCards
 from .corporate_card_transactions import CorporateCardTransactions
+from .departments import Departments
 from ..version import version
 
 role = 'admin'
@@ -33,3 +34,4 @@ files = Files(version, role)
 accounting_exports = AccountingExports(version, role)
 corporate_cards = CorporateCards(version, role)
 corporate_card_transactions = CorporateCardTransactions(version, role)
+departments = Departments(version, role)
