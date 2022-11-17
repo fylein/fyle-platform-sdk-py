@@ -51,7 +51,6 @@ def test_list_reports(fyle, mock_data):
       if reports["state"] == "APPROVER_PENDING":
         report_id = reports["id"]
         break
-    print(reports_generator["data"][0])
     assert dict_compare_keys(reports_generator["data"][0], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], reports_generator["data"][0]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
 
@@ -72,6 +71,5 @@ def test_report_get_by_id(fyle, mock_data):
   reports_generator = fyle.v1beta.approver.reports.get_by_id(id_=report_id)
   mock_reports = mock_data.reports.get()
   if reports_generator:
-    print(reports_generator["data"])
     assert dict_compare_keys(reports_generator["data"], mock_reports[0]) == [], 'fyle.v1beta.approver.reports.list() has stuff that mock_data doesnt'
     assert dict_compare_keys(mock_reports[0], reports_generator["data"]) == [], 'mock_data.reports.get() has stuff that fyle doesnt'
