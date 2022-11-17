@@ -35,391 +35,272 @@
     "upload_url": "string"
   },
   "create_expense": {
-    "id": "txwownwrng",
-    "user_id": "uswjwgnwwgo",
-    "user": {
-      "id": "uswjwgnwwgo",
-      "email": "john.doe@example.com",
-      "full_name": "John Doe"
-    },
-    "org_id": "orwruogwnngg",
-    "created_at": "2020-06-01T13:14:54.804+00:00",
-    "updated_at": "2020-06-11T13:14:55.201598+00:00",
-    "spent_at": "2020-06-01T13:14:54.804+00:00",
-    "source": "SLACK_APP",
-    "merchant": "Uber",
-    "currency": "USD",
-    "amount": 1500,
-    "claim_amount": 1984.18,
-    "policy_amount": 1500,
-    "admin_amount": null,
-    "foreign_currency": "GBP",
-    "foreign_amount": 3768,
-    "purpose": "Team lunch",
-    "cost_center_id": 1049,
-    "cost_center": {
-      "id": 1234,
-      "name": "sales & marketing",
-      "code": "C1234"
-    },
-    "category_id": 49058,
-    "category": {
-      "id": 1234,
-      "system_category": "Others",
-      "name": "Engine",
-      "sub_category": "Turbo charged",
-      "code": "C1234",
-      "display_name": "Unspecified"
-    },
-    "project_id": 92895,
-    "project": {
-      "id": 1234,
-      "name": "Fast and Furious",
-      "sub_project": "Formula One",
-      "code": "C1234"
-    },
-    "source_account_id": "acwbl222wlg",
-    "source_account": {
-      "id": "acwbl222wlg",
-      "type": "PERSONAL_CASH_ACCOUNT"
-    },
-    "tax_amount": 0,
-    "tax_group_id": "sdfd2391",
-    "is_billable": true,
-    "is_reimbursable": true,
-    "distance": 0,
-    "distance_unit": "MILES",
-    "mileage_calculated_distance": 0,
-    "mileage_calculated_amount": 0,
-    "mileage_rate_id": 9080,
-    "mileage_rate": {
-      "id": 1234,
-      "vehicle_type": "four_wheeler",
-      "code": "C1234"
-    },
-    "mileage_is_round_trip": true,
-    "per_diem_rate_id": 583,
-    "per_diem_rate": {
-      "id": 1234,
-      "name": "Florida Rate",
-      "code": "C1234"
-    },
-    "per_diem_num_days": 2,
-    "started_at": "2020-06-01T13:14:54.804+00:00",
-    "ended_at": "2020-06-01T13:14:54.804+00:00",
-    "travel_classes": [
-      "ECONOMY",
-      "BUSINESS"
-    ],
-    "hotel_is_breakfast_provided": true,
-    "locations": [
+    "activity_details":"None",
+    "added_to_report_at":"None",
+    "admin_amount":"None",
+    "amount":100,
+    "approvals":[
       {
-        "city": "London",
-        "state": "London",
-        "display_name": "string",
-        "country": "United Kingdom",
-        "formatted_address": "221 Baker St, Marylebone, London, United Kingdom",
-        "latitude": 12.971599,
-        "longitude": 77.594566
-      }
-    ],
-    "custom_fields": [
-      {
-        "name": "cf1",
-        "value": "string1"
-      }
-    ],
-    "code": "wgjwgo3ihwljnlsww",
-    "state": "COMPLETE",
-    "seq_num": "E/2020/10/T/95",
-    "report_id": "rpvgnwlgw34",
-    "added_to_report_at": "2020-06-01T13:14:54.804+00:00",
-    "report": {
-      "id": "rpvgnwlgw34",
-      "last_approved_at": "2020-06-11T13:14:55.201598+00:00",
-      "last_submitted_at": "2020-06-11T13:14:55.201598+00:00",
-      "seq_num": "C/2021/02/R/907",
-      "title": "Business trip to London",
-      "state": "DRAFT",
-      "settlement_id": "string",
-      "last_paid_at": "2020-06-11T13:14:55.201598+00:00",
-      "reimbursement_id": "reimntGt9ju6qP",
-      "reimbursement_seq_num": "P/2020/11/29"
-    },
-    "is_verified": true,
-    "last_verified_at": "2020-06-01T13:14:54.804+00:00",
-    "is_receipt_mandatory": true,
-    "is_exported": true,
-    "last_exported_at": "2020-06-01T13:14:54.804+00:00",
-    "file_ids": [
-      "figwiwpjww"
-    ],
-    "files": [
-      {
-        "id": "figwiwpjww",
-        "name": "uber_expenses_vmrpw.pdf",
-        "type": "RECEIPT",
-        "content_type": "application/pdf"
-      }
-    ],
-    "approvals": [
-      {
-        "approver_user_id": "usge49ielgel",
-        "approver_user": {
-          "id": "uswjwgnwwgo",
-          "email": "john.doe@example.com",
-          "full_name": "John Doe"
+        "approver_user":{
+          "email":"abhishek.j@fyle.in",
+          "full_name":"abhishek jain",
+          "id":"us3aUeG50Adv"
         },
-        "state": "APPROVAL_PENDING"
+        "approver_user_id":"us3aUeG50Adv",
+        "state":"APPROVAL_PENDING"
       }
     ],
-    "employee_id": "outGt9ju6qP",
-    "employee": {
-      "id": "sdfd2391",
-      "user_id": "uswjwgnwwgo",
-      "user": {
-        "id": "uswjwgnwwgo",
-        "email": "john.doe@example.com",
-        "full_name": "John Doe"
+    "category":{
+      "code":"29",
+      "display_name":"Unspecified",
+      "id":135469,
+      "name":"Unspecified",
+      "sub_category":"None",
+      "system_category":"Unspecified"
+    },
+    "category_id":135469,
+    "claim_amount":100,
+    "code":"None",
+    "cost_center":"None",
+    "cost_center_id":"None",
+    "created_at":"2022-11-17T11:50:15.230934+00:00",
+    "creator_user_id":"usqywo0f3nBY",
+    "currency":"USD",
+    "custom_fields":[
+    ],
+    "distance":"None",
+    "distance_unit":"None",
+    "employee":{
+      "code":"None",
+      "department":{
+        "code":"None",
+        "display_name":"Department 1",
+        "id":"deptDhMjvs45aT",
+        "name":"Department 1",
+        "sub_department":"None"
       },
-      "code": "E84122",
-      "org_id": "orwruogwnngg",
-      "department_id": "dept9in4oIHpdR",
-      "department": {
-        "id": "sdfd2391",
-        "code": "C1234",
-        "name": "Sales",
-        "sub_department": "Outbound Sales"
-      }
+      "department_id":"deptDhMjvs45aT",
+      "id":"ouVLOYP8lelN",
+      "org_id":"or79Cob97KSh",
+      "user":{
+        "email":"ashwin.t@fyle.in",
+        "full_name":"Ashwin",
+        "id":"usqywo0f3nBY"
+      },
+      "user_id":"usqywo0f3nBY"
     },
-    "is_corporate_card_transaction_auto_matched": false,
-    "matched_corporate_card_transaction_ids": [
-      "btxnwownwrng"
+    "employee_id":"ouVLOYP8lelN",
+    "ended_at":"None",
+    "extracted_data":"None",
+    "file_ids":[
     ],
-    "matched_corporate_card_transactions": [
-      {
-        "id": "btxnwownwrng",
-        "corporate_card_id": "bawownwrng",
-        "corporate_card_number": "xxxx-4543"
-      }
+    "files":[
     ],
-    "last_settled_at": "2020-06-01T13:14:54.804+00:00",
-    "missing_mandatory_fields": {
-      "expense_field_ids": [
-        123,
-        12423
-      ],
-      "amount": true,
-      "currency": true
+    "foreign_amount":"None",
+    "foreign_currency":"None",
+    "hotel_is_breakfast_provided":"None",
+    "id":"txQOSjOjFqlY",
+    "is_billable":"None",
+    "is_corporate_card_transaction_auto_matched":false,
+    "is_exported":"None",
+    "is_manually_flagged":"None",
+    "is_physical_bill_submitted":"None",
+    "is_policy_flagged":"None",
+    "is_receipt_mandatory":"None",
+    "is_reimbursable":true,
+    "is_verified":"None",
+    "last_exported_at":"None",
+    "last_settled_at":"None",
+    "last_verified_at":"None",
+    "locations":[
+    ],
+    "matched_corporate_card_transaction_ids":[
+    ],
+    "matched_corporate_card_transactions":[
+    ],
+    "merchant":"None",
+    "mileage_calculated_amount":"None",
+    "mileage_calculated_distance":"None",
+    "mileage_is_round_trip":"None",
+    "mileage_rate":"None",
+    "mileage_rate_id":"None",
+    "missing_mandatory_fields":{
+      "amount":false,
+      "currency":false,
+      "expense_field_ids":[
+      ]
     },
-    "creator_user_id": "uswjwgnwwgo",
-    "activity_details": {
-      "unique_meetings": 21,
-      "total_meetings": 70
+    "org_id":"or79Cob97KSh",
+    "per_diem_num_days":"None",
+    "per_diem_rate":"None",
+    "per_diem_rate_id":"None",
+    "physical_bill_submitted_at":"None",
+    "policy_amount":"None",
+    "project":"None",
+    "project_id":"None",
+    "purpose":"None",
+    "report":"None",
+    "report_id":"None",
+    "seq_num":"E/2022/11/T/23",
+    "source":"TPA",
+    "source_account":{
+      "id":"accAjaCGVMheC",
+      "type":"PERSONAL_CASH_ACCOUNT"
     },
-    "extracted_data": {
-      "amount": 21,
-      "vendor_name": "Uber",
-      "currency": "USD",
-      "category": "Taxi",
-      "date": "2020-07-20"
+    "source_account_id":"accAjaCGVMheC",
+    "spent_at":"2020-06-01T09:18:19.292000+00:00",
+    "split_group_id":"txQOSjOjFqlY",
+    "started_at":"None",
+    "state":"COMPLETE",
+    "state_display_name":"Unreported",
+    "tax_amount":"None",
+    "tax_group_id":"None",
+    "travel_classes":[
+    ],
+    "updated_at":"2022-11-17T11:50:15.230934+00:00",
+    "user":{
+      "email":"ashwin.t@fyle.in",
+      "full_name":"Ashwin",
+      "id":"usqywo0f3nBY"
     },
-    "is_manually_flagged": true,
-    "is_policy_flagged": true,
-    "split_group_id": "txwownwrngx"
+    "user_id":"usqywo0f3nBY"
   },
   "attach_receipt": {
-    "id": "txwownwrng",
-    "user_id": "uswjwgnwwgo",
-    "user": {
-      "id": "uswjwgnwwgo",
-      "email": "john.doe@example.com",
-      "full_name": "John Doe"
-    },
-    "org_id": "orwruogwnngg",
-    "created_at": "2020-06-01T13:14:54.804+00:00",
-    "updated_at": "2020-06-11T13:14:55.201598+00:00",
-    "spent_at": "2020-06-01T13:14:54.804+00:00",
-    "source": "SLACK_APP",
-    "merchant": "Uber",
-    "currency": "USD",
-    "amount": 1500,
-    "claim_amount": 1984.18,
-    "policy_amount": 1500,
-    "admin_amount": null,
-    "foreign_currency": "GBP",
-    "foreign_amount": 3768,
-    "purpose": "Team lunch",
-    "cost_center_id": 1049,
-    "cost_center": {
-      "id": 1234,
-      "name": "sales & marketing",
-      "code": "C1234"
-    },
-    "category_id": 49058,
-    "category": {
-      "id": 1234,
-      "system_category": "Others",
-      "name": "Engine",
-      "sub_category": "Turbo charged",
-      "code": "C1234",
-      "display_name": "Unspecified"
-    },
-    "project_id": 92895,
-    "project": {
-      "id": 1234,
-      "name": "Fast and Furious",
-      "sub_project": "Formula One",
-      "code": "C1234"
-    },
-    "source_account_id": "acwbl222wlg",
-    "source_account": {
-      "id": "acwbl222wlg",
-      "type": "PERSONAL_CASH_ACCOUNT"
-    },
-    "tax_amount": 0,
-    "tax_group_id": "sdfd2391",
-    "is_billable": true,
-    "is_reimbursable": true,
-    "distance": 0,
-    "distance_unit": "MILES",
-    "mileage_calculated_distance": 0,
-    "mileage_calculated_amount": 0,
-    "mileage_rate_id": 9080,
-    "mileage_rate": {
-      "id": 1234,
-      "vehicle_type": "four_wheeler",
-      "code": "C1234"
-    },
-    "mileage_is_round_trip": true,
-    "per_diem_rate_id": 583,
-    "per_diem_rate": {
-      "id": 1234,
-      "name": "Florida Rate",
-      "code": "C1234"
-    },
-    "per_diem_num_days": 2,
-    "started_at": "2020-06-01T13:14:54.804+00:00",
-    "ended_at": "2020-06-01T13:14:54.804+00:00",
-    "travel_classes": [
-      "ECONOMY",
-      "BUSINESS"
-    ],
-    "hotel_is_breakfast_provided": true,
-    "locations": [
+    "activity_details":"None",
+    "added_to_report_at":"None",
+    "admin_amount":"None",
+    "amount":100,
+    "approvals":[
       {
-        "city": "London",
-        "state": "London",
-        "display_name": "string",
-        "country": "United Kingdom",
-        "formatted_address": "221 Baker St, Marylebone, London, United Kingdom",
-        "latitude": 12.971599,
-        "longitude": 77.594566
-      }
-    ],
-    "custom_fields": [
-      {
-        "name": "cf1",
-        "value": "string1"
-      }
-    ],
-    "code": "wgjwgo3ihwljnlsww",
-    "state": "COMPLETE",
-    "seq_num": "E/2020/10/T/95",
-    "report_id": "rpvgnwlgw34",
-    "added_to_report_at": "2020-06-01T13:14:54.804+00:00",
-    "report": {
-      "id": "rpvgnwlgw34",
-      "last_approved_at": "2020-06-11T13:14:55.201598+00:00",
-      "last_submitted_at": "2020-06-11T13:14:55.201598+00:00",
-      "seq_num": "C/2021/02/R/907",
-      "title": "Business trip to London",
-      "state": "DRAFT",
-      "settlement_id": "string",
-      "last_paid_at": "2020-06-11T13:14:55.201598+00:00",
-      "reimbursement_id": "reimntGt9ju6qP",
-      "reimbursement_seq_num": "P/2020/11/29"
-    },
-    "is_verified": true,
-    "last_verified_at": "2020-06-01T13:14:54.804+00:00",
-    "is_receipt_mandatory": true,
-    "is_exported": true,
-    "last_exported_at": "2020-06-01T13:14:54.804+00:00",
-    "file_ids": [
-      "figwiwpjww"
-    ],
-    "files": [
-      {
-        "id": "figwiwpjww",
-        "name": "uber_expenses_vmrpw.pdf",
-        "type": "RECEIPT",
-        "content_type": "application/pdf"
-      }
-    ],
-    "approvals": [
-      {
-        "approver_user_id": "usge49ielgel",
-        "approver_user": {
-          "id": "uswjwgnwwgo",
-          "email": "john.doe@example.com",
-          "full_name": "John Doe"
+        "approver_user":{
+          "email":"abhishek.j@fyle.in",
+          "full_name":"abhishek jain",
+          "id":"us3aUeG50Adv"
         },
-        "state": "APPROVAL_PENDING"
+        "approver_user_id":"us3aUeG50Adv",
+        "state":"APPROVAL_PENDING"
       }
     ],
-    "employee_id": "outGt9ju6qP",
-    "employee": {
-      "id": "sdfd2391",
-      "user_id": "uswjwgnwwgo",
-      "user": {
-        "id": "uswjwgnwwgo",
-        "email": "john.doe@example.com",
-        "full_name": "John Doe"
+    "category":{
+      "code":"29",
+      "display_name":"Unspecified",
+      "id":135469,
+      "name":"Unspecified",
+      "sub_category":"None",
+      "system_category":"Unspecified"
+    },
+    "category_id":135469,
+    "claim_amount":100,
+    "code":"None",
+    "cost_center":"None",
+    "cost_center_id":"None",
+    "created_at":"2022-11-17T11:43:38.148709+00:00",
+    "creator_user_id":"usqywo0f3nBY",
+    "currency":"USD",
+    "custom_fields":[
+    ],
+    "distance":"None",
+    "distance_unit":"None",
+    "employee":{
+      "code":"None",
+      "department":{
+        "code":"None",
+        "display_name":"Department 1",
+        "id":"deptDhMjvs45aT",
+        "name":"Department 1",
+        "sub_department":"None"
       },
-      "code": "E84122",
-      "org_id": "orwruogwnngg",
-      "department_id": "dept9in4oIHpdR",
-      "department": {
-        "id": "sdfd2391",
-        "code": "C1234",
-        "name": "Sales",
-        "sub_department": "Outbound Sales"
-      }
+      "department_id":"deptDhMjvs45aT",
+      "id":"ouVLOYP8lelN",
+      "org_id":"or79Cob97KSh",
+      "user":{
+        "email":"ashwin.t@fyle.in",
+        "full_name":"Ashwin",
+        "id":"usqywo0f3nBY"
+      },
+      "user_id":"usqywo0f3nBY"
     },
-    "is_corporate_card_transaction_auto_matched": false,
-    "matched_corporate_card_transaction_ids": [
-      "btxnwownwrng"
+    "employee_id":"ouVLOYP8lelN",
+    "ended_at":"None",
+    "extracted_data":"None",
+    "file_ids":[
+      "fic3mjhWDvgL"
     ],
-    "matched_corporate_card_transactions": [
+    "files":[
       {
-        "id": "btxnwownwrng",
-        "corporate_card_id": "bawownwrng",
-        "corporate_card_number": "xxxx-4543"
+        "content_type":"image/jpeg",
+        "id":"fic3mjhWDvgL",
+        "name":"sample.jpg",
+        "type":"RECEIPT"
       }
     ],
-    "last_settled_at": "2020-06-01T13:14:54.804+00:00",
-    "missing_mandatory_fields": {
-      "expense_field_ids": [
-        123,
-        12423
-      ],
-      "amount": true,
-      "currency": true
+    "foreign_amount":"None",
+    "foreign_currency":"None",
+    "hotel_is_breakfast_provided":"None",
+    "id":"tx3jRfk0N2lX",
+    "is_billable":"None",
+    "is_corporate_card_transaction_auto_matched":false,
+    "is_exported":"None",
+    "is_manually_flagged":"None",
+    "is_physical_bill_submitted":"None",
+    "is_policy_flagged":"None",
+    "is_receipt_mandatory":"None",
+    "is_reimbursable":true,
+    "is_verified":"None",
+    "last_exported_at":"None",
+    "last_settled_at":"None",
+    "last_verified_at":"None",
+    "locations":[
+    ],
+    "matched_corporate_card_transaction_ids":[
+    ],
+    "matched_corporate_card_transactions":[
+    ],
+    "merchant":"None",
+    "mileage_calculated_amount":"None",
+    "mileage_calculated_distance":"None",
+    "mileage_is_round_trip":"None",
+    "mileage_rate":"None",
+    "mileage_rate_id":"None",
+    "missing_mandatory_fields":{
+      "amount":false,
+      "currency":false,
+      "expense_field_ids":[
+      ]
     },
-    "creator_user_id": "uswjwgnwwgo",
-    "activity_details": {
-      "unique_meetings": 21,
-      "total_meetings": 70
+    "org_id":"or79Cob97KSh",
+    "per_diem_num_days":"None",
+    "per_diem_rate":"None",
+    "per_diem_rate_id":"None",
+    "physical_bill_submitted_at":"None",
+    "policy_amount":"None",
+    "project":"None",
+    "project_id":"None",
+    "purpose":"None",
+    "report":"None",
+    "report_id":"None",
+    "seq_num":"E/2022/11/T/22",
+    "source":"TPA",
+    "source_account":{
+      "id":"accAjaCGVMheC",
+      "type":"PERSONAL_CASH_ACCOUNT"
     },
-    "extracted_data": {
-      "amount": 21,
-      "vendor_name": "Uber",
-      "currency": "USD",
-      "category": "Taxi",
-      "date": "2020-07-20"
+    "source_account_id":"accAjaCGVMheC",
+    "spent_at":"2020-06-01T09:18:19.292000+00:00",
+    "split_group_id":"tx3jRfk0N2lX",
+    "started_at":"None",
+    "state":"COMPLETE",
+    "state_display_name":"Unreported",
+    "tax_amount":"None",
+    "tax_group_id":"None",
+    "travel_classes":[
+    ],
+    "updated_at":"2022-11-17T11:43:38.148709+00:00",
+    "user":{
+      "email":"ashwin.t@fyle.in",
+      "full_name":"Ashwin",
+      "id":"usqywo0f3nBY"
     },
-    "is_manually_flagged": true,
-    "is_policy_flagged": true,
-    "split_group_id": "txwownwrngx"
+    "user_id":"usqywo0f3nBY"
   }
 }

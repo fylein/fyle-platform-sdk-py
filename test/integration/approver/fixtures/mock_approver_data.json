@@ -19,45 +19,65 @@
   ],
   "reports": [
     {
-      "id": "sdfd2391",
-      "org_id": "orwruogwnngg",
-      "created_at": "2020-06-01T13:14:54.804+00:00",
-      "updated_at": "2020-06-11T13:14:55.201598+00:00",
-      "user_id": "sdfd2391",
-      "user": {
-        "id": "uswjwgnwwgo",
-        "email": "john.doe@example.com",
-        "full_name": "John Doe"
-      },
-      "purpose": "Business trip to London",
-      "currency": "USD",
-      "amount": 47.99,
-      "tax": 18.23,
-      "state": "DRAFT",
-      "num_expenses": 3,
-      "is_verified": true,
-      "settlement_id": "set5nlgnwgwl",
-      "is_physical_bill_submitted": true,
-      "physical_bill_submitted_at": "2020-06-11T13:14:55.201598+00:00",
-      "is_manually_flagged": true,
-      "is_policy_flagged": true,
-      "is_exported": true,
-      "last_paid_at": "2020-06-11T13:14:55.201598+00:00",
-      "last_approved_at": "2020-06-11T13:14:55.201598+00:00",
-      "last_submitted_at": "2020-06-11T13:14:55.201598+00:00",
-      "seq_num": "C/2021/02/R/907",
-      "source": "string",
-      "approvals": [
+      "amount":50,
+      "approvals":[
         {
-          "approver_user_id": "usge49ielgel",
-          "approver_user": {
-            "id": "uswjwgnwwgo",
-            "email": "john.doe@example.com",
-            "full_name": "John Doe"
-          },
-          "state": "APPROVAL_PENDING"
+            "approver_user":{
+                "email":"ashwin.t@fyle.in",
+                "full_name":"Joanna",
+                "id":"usqywo0f3nBY"
+            },
+            "approver_user_id":"usqywo0f3nBY",
+            "state":"APPROVAL_DONE"
         }
-      ]
+      ],
+      "created_at":"2021-10-22T07:43:08.159902+00:00",
+      "currency":"USD",
+      "employee":{
+        "ach_account":{
+            "added":"None",
+            "verified":"None"
+        },
+        "code":"None",
+        "department":"None",
+        "department_id":"None",
+        "id":"ou77JxTLLifN",
+        "org_id":"orf7jLXAJ6SY",
+        "user":{
+            "email":"ashwin.t@fyle.in",
+            "full_name":"Ashwin",
+            "id":"usqywo0f3nBY"
+        },
+        "user_id":"usqywo0f3nBY"
+      },
+      "employee_id":"ou77JxTLLifN",
+      "id":"rpnWQIpTxPzl",
+      "is_exported":false,
+      "is_manually_flagged":false,
+      "is_physical_bill_submitted":false,
+      "is_policy_flagged":false,
+      "is_verified":false,
+      "last_approved_at":"2021-10-22T07:43:12.802000+00:00",
+      "last_paid_at":"2022-05-23T01:39:10.004000+00:00",
+      "last_resubmitted_at":"None",
+      "last_submitted_at":"2021-10-22T07:43:08.615000+00:00",
+      "next_approver_user_ids":"None",
+      "num_expenses":1,
+      "org_id":"orf7jLXAJ6SY",
+      "physical_bill_submitted_at":"None",
+      "purpose":"#2:  Oct 2021",
+      "seq_num":"C/2021/10/R/2",
+      "settlement_id":"setKvFHOzcAjt",
+      "source":"WEBAPP",
+      "state":"PAID",
+      "tax":0.5,
+      "updated_at":"2022-10-27T05:09:08.976413+00:00",
+      "user":{
+        "email":"ashwin.t@fyle.in",
+        "full_name":"Joanna",
+        "id":"usqywo0f3nBY"
+      },
+      "user_id":"usqywo0f3nBY"
     }
   ]
 }
