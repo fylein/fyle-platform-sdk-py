@@ -381,3 +381,38 @@ def test_get_by_id_tax_groups_missing_id(fyle, mock_data):
     get_by_id = fyle.v1beta.admin.tax_groups.get_by_id()
   except:
     logger.error("id is a requied parameter")
+
+
+def test_post_departments(fyle, mock_data):
+  department = {
+    'data': {
+    'name': 'sample1',
+    'id': 'deptCWZRyDcq3Z',
+    'is_enabled': True
+    }}
+
+  departments_generator = fyle.v1beta.admin.departments.post(department)
+  mock_departments = mock_data.departments.get()
+
+  if departments_generator:
+    assert dict_compare_keys(departments_generator['data'], mock_departments[0]) == [], 'fyle.v1beta.admin.departments.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_departments[0], departments_generator['data']) == [], 'mock_data.departments.get() has stuff that fyle doesnt'
+
+
+def test_list_departments(fyle, mock_data):
+  departments = []
+  query_params = {
+    'order': 'created_at.desc',
+    'name': 'eq.sample1'
+  }
+
+  departments_generator = fyle.v1beta.admin.departments.list_all(query_params=query_params)
+  mock_departments = mock_data.departments.get()
+
+  for response in departments_generator:
+    if response.get('data'):
+      departments.extend(response['data'])
+
+  if departments:
+    assert dict_compare_keys(departments[0], mock_departments[0]) == [], 'fyle.v1beta.admin.departments.list_all() has stuff that mock_data doesnt'
+    assert dict_compare_keys(mock_departments[0], departments[0]) == [], 'mock_data.departments.get() has stuff that fyle doesnt'

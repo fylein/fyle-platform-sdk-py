@@ -21,6 +21,7 @@ def get_mock_data_from_file(filename):
   mock_data.files_create.get.return_value = mock_data_dict['file_create']
   mock_data.file_generate_url.get.return_value = mock_data_dict['file_generate_url']
   mock_data.tax_groups.get.return_value = mock_data_dict['tax_groups']
+  mock_data.departments.get.return_value = mock_data_dict['departments']
 
   return mock_data
 
