@@ -29,6 +29,6 @@ class ExpenseFields(ListResources, ListAllResources, PostResources, GetResources
         )
 
         if response is None or response['data'] is None or response['data'] == []:
-            raise exceptions.NotFoundItemError('Not found item with ID')
+            raise exceptions.NotFoundItemError('Not found expense-fields')
 
         return response
