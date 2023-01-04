@@ -18,8 +18,8 @@ class ExpenseFields(ListResources, ListAllResources, PostResources, GetResources
 
     def get(self, query_params=None):
         """
-        Get Single Resource object by ID
-        :return: Resource Object
+        Get Expense Fields
+        :return: expense-fields list
         """
         query_params = {} if query_params is None else query_params
 
