@@ -25,6 +25,6 @@ class ExpenseFields(ListResources, ListAllResources, PostResources, GetResources
 
     def bulk_post_dependent_expense_field_values(self, payload):
         return self.api.make_post_request(
-            api_url=ExpenseFields.DEPENDENT_EXPENSE_FIELDS_VALUES,
+            api_url=ExpenseFields.BULK_CREATE_DEPENDENT_EXPENSE_FIELDS_VALUES,
             payload=payload
         )
