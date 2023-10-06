@@ -24,12 +24,12 @@ def retry(n, backoff, exceptions):
             while attempt < n:
                 try:
                     return func(*args, **kwargs)
-                except exceptions:
-                    if exc.InvalidTokenError in exceptions:
+                except exceptions as e:
+                    if isinstance(e, exc.InvalidTokenError):
                         Auth().update_access_token()
                     time.sleep(backoff)
                     attempt += 1
-            raise exc.RetryException('failed to execute %s despite retrying' % func)
+            raise exc.RetryException('failed to execute %s despite retrying' % func.__name__)
 
         return new_fn
 
