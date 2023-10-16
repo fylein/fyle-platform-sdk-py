@@ -10,7 +10,7 @@ from .reimbursements import Reimbursements
 from .settlements import Settlements
 from .projects import Projects
 from .expense_fields import ExpenseFields
-from .dependent_field_values import DependentExpenseFieldValues
+from .dependent_expense_field_values import DependentExpenseFieldValues
 from .advance_requests import AdvanceRequests
 from .files import Files
 from .accounting_exports import AccountingExports
