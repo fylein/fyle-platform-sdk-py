@@ -18,9 +18,13 @@ class ExpenseFields(ListResources, ListAllResources, PostResources, GetResources
         super().__init__(version, role, ExpenseFields.EXPENSE_FIELDS)
 
 
-    def get_dependent_expense_field_values(self):
+    def get_dependent_expense_field_values(self, expense_field_id, parent_expense_field_id):
         return self.api.make_get_request(
-            api_url=ExpenseFields.DEPENDENT_EXPENSE_FIELDS_VALUES
+            api_url=ExpenseFields.DEPENDENT_EXPENSE_FIELDS_VALUES,
+            query_params={
+                'expense_field_id': f'eq.{expense_field_id}',
+                'parent_expense_field_id': f'eq.{parent_expense_field_id}'
+            }
         )
 
     def bulk_post_dependent_expense_field_values(self, payload):
