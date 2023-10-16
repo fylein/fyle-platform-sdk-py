@@ -18,7 +18,7 @@ class ExpenseFields(ListResources, ListAllResources, PostResources, GetResources
         super().__init__(version, role, ExpenseFields.EXPENSE_FIELDS)
 
 
-    def get_dependent_expense_field_values(self, expense_field_id, parent_expense_field_id):
+    def get_dependent_expense_field_values(self, expense_field_id: int, parent_expense_field_id: int):
         return self.api.make_get_request(
             api_url=ExpenseFields.DEPENDENT_EXPENSE_FIELDS_VALUES,
             query_params={
