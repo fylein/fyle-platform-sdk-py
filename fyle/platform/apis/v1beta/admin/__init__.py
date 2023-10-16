@@ -10,7 +10,7 @@ from .reimbursements import Reimbursements
 from .settlements import Settlements
 from .projects import Projects
 from .expense_fields import ExpenseFields
-from .dependent_field_values import DependentFieldValues
+from .dependent_field_values import DependentExpenseFieldValues
 from .advance_requests import AdvanceRequests
 from .files import Files
 from .accounting_exports import AccountingExports
@@ -26,7 +26,7 @@ cost_centers = CostCenters(version, role)
 employees = Employees(version, role)
 projects = Projects(version, role)
 expense_fields = ExpenseFields(version, role)
-dependent_field_values = DependentFieldValues(version, role)
+dependent_field_values = DependentExpenseFieldValues(version, role)
 expenses = Expenses(version, role)
 tax_groups = TaxGroups(version, role)
 reimbursements = Reimbursements(version, role)

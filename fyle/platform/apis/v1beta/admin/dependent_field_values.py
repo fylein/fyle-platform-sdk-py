@@ -9,14 +9,14 @@ from ....internals.get_resources import GetResources
 from .... import exceptions
 
 
-class DependentFieldValues(ListResources, ListAllResources, PostResources, GetResources):
+class DependentExpenseFieldValues(ListResources, ListAllResources, PostResources, GetResources):
     """Class for Expense Fields APIs."""
 
     DEPENDENT_FIELD_VALUES = '/dependent_expense_field_values'
     BULK_CREATE_DEPENDENT_EXPENSE_FIELDS_VALUES = '/dependent_expense_field_values/bulk'
 
     def __init__(self, version, role):
-        super().__init__(version, role, DependentFieldValues.DEPENDENT_FIELD_VALUES)
+        super().__init__(version, role, DependentExpenseFieldValues.DEPENDENT_FIELD_VALUES)
 
     def list_all(self, query_params=None) -> Iterable:
         query_params = {} if query_params is None else query_params
@@ -28,6 +28,6 @@ class DependentFieldValues(ListResources, ListAllResources, PostResources, GetRe
 
     def bulk_post_dependent_expense_field_values(self, payload):
         return self.api.make_post_request(
-            api_url=DependentFieldValues.BULK_CREATE_DEPENDENT_EXPENSE_FIELDS_VALUES,
+            api_url=DependentExpenseFieldValues.BULK_CREATE_DEPENDENT_EXPENSE_FIELDS_VALUES,
             payload=payload
         )
