@@ -21,9 +21,9 @@ class DependentExpenseFieldValues(ListResources, ListAllResources, PostResources
     def list_all(self, query_params=None) -> Iterable:
         query_params = {} if query_params is None else query_params
         if 'expense_field_id' not in query_params:
-            raise exceptions.WrongParamsError('expense_field_id and limit are not supported query params.')
+            raise exceptions.WrongParamsError('expense_field_id is a mandatory query param.')
         if 'parent_expense_field_id' not in query_params:
-            raise exceptions.WrongParamsError('parent_expense_field_id and limit are not supported query params.')
+            raise exceptions.WrongParamsError('parent_expense_field_id is a mandatory query param.')
         return super().list_all(query_params)
 
     def bulk_post_dependent_expense_field_values(self, payload):
