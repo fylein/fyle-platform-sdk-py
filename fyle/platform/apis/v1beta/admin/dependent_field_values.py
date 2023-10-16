@@ -10,7 +10,7 @@ from .... import exceptions
 
 
 class DependentExpenseFieldValues(ListResources, ListAllResources, PostResources, GetResources):
-    """Class for Expense Fields APIs."""
+    """Class for Dependent Expense Field Values APIs."""
 
     DEPENDENT_FIELD_VALUES = '/dependent_expense_field_values'
     BULK_CREATE_DEPENDENT_EXPENSE_FIELDS_VALUES = '/dependent_expense_field_values/bulk'
