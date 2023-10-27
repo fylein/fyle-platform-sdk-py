@@ -18,6 +18,7 @@ from .corporate_cards import CorporateCards
 from .corporate_card_transactions import CorporateCardTransactions
 from .departments import Departments
 from .subscriptions import Subscriptions
+from .scheduled_callbacks import ScheduledCallbacks
 from ..version import version
 
 role = 'admin'
@@ -39,3 +40,4 @@ corporate_cards = CorporateCards(version, role)
 corporate_card_transactions = CorporateCardTransactions(version, role)
 departments = Departments(version, role)
 subscriptions = Subscriptions(version, role)
+scheduled_callbacks = ScheduledCallbacks(version, role)
