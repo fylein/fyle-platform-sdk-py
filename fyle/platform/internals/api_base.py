@@ -26,7 +26,7 @@ class ApiBase(Network):
             endpoint=endpoint
         )
 
-    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
+    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError, exceptions.InternalServerError))
     def make_get_request(self, api_url, query_params=None):
         """Create a HTTP GET request.
         Parameters:

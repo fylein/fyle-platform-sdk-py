@@ -4,6 +4,8 @@
 
 import time
 
+from functools import wraps
+
 from .auth import Auth
 from .. import exceptions as exc
 
@@ -19,6 +21,7 @@ def retry(n, backoff, exceptions):
     """
 
     def decorator(func):
+        @wraps(func)
         def new_fn(*args, **kwargs):
             attempt = 0
             while attempt < n:
