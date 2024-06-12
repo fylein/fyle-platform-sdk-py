@@ -1,6 +1,7 @@
 """
     Initializing Admin API's
 """
+from .reports import Reports
 from .categories import Categories
 from .cost_centers import CostCenters
 from .employees import Employees
@@ -41,3 +42,4 @@ corporate_card_transactions = CorporateCardTransactions(version, role)
 departments = Departments(version, role)
 subscriptions = Subscriptions(version, role)
 scheduled_callbacks = ScheduledCallbacks(version, role)
+reports = Reports(version, role)
