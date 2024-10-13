@@ -2,6 +2,7 @@
     Define ApiBase class implementing API helper methods.
 """
 
+import logging
 import json
 
 from .decorators import retry
@@ -9,6 +10,8 @@ from .network import Network
 from .. import exceptions
 from ..globals.config import config
 
+
+logger = logging.getLogger(__name__)
 
 class ApiBase(Network):
     """The base class for all API classes."""
@@ -57,9 +60,11 @@ class ApiBase(Network):
         )
 
         if response.status_code == 200:
+            logger.debug('Response for get request for url: %s, %s', api_url, response.text)
             result = json.loads(response.text)
             return result
 
+        logger.info('Response for get request for url: %s, %s', api_url, response.text)
         ApiBase._assert_response(response)
 
     @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
@@ -83,10 +88,14 @@ class ApiBase(Network):
             data=payload
         )
 
+        logger.debug('Payload for post request: %s', payload)
+
         if response.status_code == 200:
+            logger.debug('Response for post request: %s', response.text)
             result = json.loads(response.text)
             return result
-
+        
+        logger.info('Response for post request: %s', response.text)
         ApiBase._assert_response(response)
 
 
