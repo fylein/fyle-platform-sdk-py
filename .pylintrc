@@ -161,8 +161,8 @@ disable=print-statement,
         W0107,
         W0703,
         missing-class-docstring,
-        fixme
-        too-many-positional-arguments
+        fixme,
+        R0917
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
