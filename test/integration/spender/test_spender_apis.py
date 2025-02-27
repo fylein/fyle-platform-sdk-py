@@ -1,5 +1,4 @@
 import base64
-from distutils.ccompiler import gen_lib_options
 import logging
 from os import path
 from test.common.utilities import dict_compare_keys, get_sample_file_path
