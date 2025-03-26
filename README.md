@@ -13,7 +13,7 @@ This project requires [Python 3+](https://www.python.org/downloads/) and [Reques
 
 ## Usage
 
-To use this SDK you'll need these Fyle credentials used for OAuth2 authentication: **client ID**, **client secret** and **refresh token**. You can follow the steps on this [Article](https://help.fylehq.com/en/articles/3045578-integrating-with-fyle) or reach out to support@fylehq.com.
+To use this SDK you'll need these Fyle credentials used for OAuth2 authentication: **client ID**, **client secret** and **refresh token**. You can follow the steps on this [Article](https://www.fylehq.com/help/en/articles/3045578-integrating-with-fyle) or reach out to support@fylehq.com.
 
 This SDK is very easy to use.
 * First you'll need to create a connection using the main class Platform.
