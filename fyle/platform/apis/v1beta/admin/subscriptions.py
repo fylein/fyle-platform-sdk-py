@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Subscriptions
+V1 Admin Subscriptions
 """
 
 from ....internals.list_resources import ListResources

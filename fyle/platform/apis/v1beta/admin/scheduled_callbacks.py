@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Scheduled Callbacks
+V1 Admin Scheduled Callbacks
 """
 
 from ....internals.list_resources import ListResources

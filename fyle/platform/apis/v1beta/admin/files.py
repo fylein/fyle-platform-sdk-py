@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Files
+V1 Admin Files
 """
 import base64
 

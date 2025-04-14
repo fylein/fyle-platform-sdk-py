@@ -1,5 +1,5 @@
 """
-V1 Beta Common Currencies
+V1 Common Currencies
 """
 
 from typing import Dict

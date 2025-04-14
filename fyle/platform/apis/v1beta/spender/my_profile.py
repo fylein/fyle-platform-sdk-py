@@ -1,5 +1,5 @@
 """
-V1 Beta Spender My Profile
+V1 Spender My Profile
 """
 from typing import Dict
 

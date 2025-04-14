@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Departments
+V1 Admin Departments
 """
 
 from ....internals.list_resources import ListResources

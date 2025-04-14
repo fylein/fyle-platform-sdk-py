@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Corporate Card Transactions
+V1 Admin Corporate Card Transactions
 """
 
 from ....internals.get_resources import GetResources

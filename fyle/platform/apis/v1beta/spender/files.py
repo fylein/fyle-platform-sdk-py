@@ -1,5 +1,5 @@
 """
-V1 Beta Spender Files
+V1 Spender Files
 """
 import base64
 

@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Expenses
+V1 Admin Expenses
 """
 from typing import Dict
 

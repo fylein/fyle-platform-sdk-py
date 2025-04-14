@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Employees
+V1 Admin Employees
 """
 
 from ....internals.get_resources import GetResources

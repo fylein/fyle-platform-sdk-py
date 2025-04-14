@@ -1,5 +1,5 @@
 """
-V1 Beta Spender Tax Groups
+V1 Spender Tax Groups
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

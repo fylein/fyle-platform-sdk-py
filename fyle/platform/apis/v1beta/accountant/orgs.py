@@ -1,5 +1,5 @@
 """
-V1 Beta Accountant Orgs
+V1 Accountant Orgs
 """
 
 from ....internals.list_resources import ListResources

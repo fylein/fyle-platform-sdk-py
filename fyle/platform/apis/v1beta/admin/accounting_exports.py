@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Accounting Exports
+V1 Admin Accounting Exports
 """
 from ....internals.get_resources import GetResources
 from ....internals.list_all_resources import ListAllResources

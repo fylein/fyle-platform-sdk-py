@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Expense Fields
+V1 Admin Expense Fields
 """
 from typing import Iterable
 from ....internals.list_all_resources import ListAllResources

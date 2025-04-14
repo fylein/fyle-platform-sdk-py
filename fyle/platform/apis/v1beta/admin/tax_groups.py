@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Tax Groups
+V1 Admin Tax Groups
 """
 
 from typing import Dict, List

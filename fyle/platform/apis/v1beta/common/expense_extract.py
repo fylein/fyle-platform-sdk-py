@@ -1,7 +1,7 @@
 # Currently not used by any client and thr are some changes WRT to the contract of extraction.x
 
 # """
-# V1 Beta Common Expense Extract
+# V1 Common Expense Extract
 # """
 #
 # from fyle.platform import exceptions

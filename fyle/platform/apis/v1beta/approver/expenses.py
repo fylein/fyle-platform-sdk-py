@@ -1,5 +1,5 @@
 """
-V1 Beta Approver Expenses
+V1 Approver Expenses
 """
 
 from ....internals.get_resources import GetResources

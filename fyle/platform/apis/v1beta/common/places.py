@@ -1,5 +1,5 @@
 """
-V1 Beta Common Places
+V1 Common Places
 """
 
 from typing import Dict

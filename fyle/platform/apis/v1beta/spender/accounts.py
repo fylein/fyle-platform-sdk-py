@@ -1,5 +1,5 @@
 """
-V1 Beta Spender Accounts
+V1 Spender Accounts
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

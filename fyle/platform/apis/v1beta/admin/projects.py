@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Projects
+V1 Admin Projects
 """
 
 from ....internals.list_resources import ListResources

@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Expense Fields
+V1 Admin Expense Fields
 """
 from ....internals.list_all_resources import ListAllResources
 from ....internals.list_resources import ListResources

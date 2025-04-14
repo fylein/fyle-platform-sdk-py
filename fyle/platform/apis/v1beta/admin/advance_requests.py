@@ -1,5 +1,5 @@
 """
-V1 Beta Admin Advance Requests
+V1 Admin Advance Requests
 """
 
 from ....internals.get_resources import GetResources

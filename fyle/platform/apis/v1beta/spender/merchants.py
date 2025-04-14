@@ -1,5 +1,5 @@
 """
-V1 Beta Spender Merchants
+V1 Spender Merchants
 """
 from ....internals.post_bulk_resources import PostBulkResources
 from ....internals.list_all_resources import ListAllResources
