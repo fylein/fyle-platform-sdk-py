@@ -14,7 +14,8 @@
       "restricted_project_ids": [
         2222,
         1221
-      ]
+      ],
+      "restricted_spender_user_ids": []
     }
   ],
   "reports": [

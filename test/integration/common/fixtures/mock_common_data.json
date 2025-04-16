@@ -127,28 +127,26 @@
     "ZWL"
   ],
   "exchange_rate": {
-    "from_currency": "USD",
-    "to_currency": "INR",
-    "rate": 75.0
+    "from_currency": "INR",
+    "to_currency": "USD",
+    "date": "2021-11-18",
+    "exchange_rate": 75.0
   },
-  "places_autocomplete": {
-    "predictions": [
-      {
-        "description": "Bangalore, Karnataka, India",
-        "place_id": "ChIJbU60yXAWrjsR4E9-UejD3_g"
-      }
-    ]
-  },
-  "place_by_id": {
-    "result": {
-      "formatted_address": "Bangalore, Karnataka, India",
-      "geometry": {
-        "location": {
-          "lat": 12.9715987,
-          "lng": 77.5945627
-        }
-      },
-      "place_id": "ChIJbU60yXAWrjsR4E9-UejD3_g"
+  "places_autocomplete": [
+    {
+      "id": "ChIJbU60yXAWrjsR4E9-UejD3_g",
+      "formatted_address": "Bangalore, Karnataka, India"
     }
-  }
+  ],
+  "place_by_id": [
+    {
+      "id": "ChIJbU60yXAWrjsR4E9-UejD3_g",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "country": "India",
+      "formatted_address": "Bangalore, Karnataka, India",
+      "latitude": 12.9715987,
+      "longitude": 77.5945627
+    }
+  ]
 }
