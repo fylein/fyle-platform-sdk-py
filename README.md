@@ -29,10 +29,10 @@ fyle = Platform(
 )
 ```
 
-*  You can access the V1beta version of the APIs as follows:
+*  You can access the V1 version of the APIs as follows:
 ```python
 """
-USAGE: <Platform INSTANCE>.<VERSION: eg. v1beta>.<FYLE ROLE: eg. admin>.<API_NAME: eg. expenses>.<API_METHOD: eg. get>(<PARAMETERS>)
+USAGE: <Platform INSTANCE>.<VERSION: eg. v1>.<FYLE ROLE: eg. admin>.<API_NAME: eg. expenses>.<API_METHOD: eg. get>(<PARAMETERS>)
 """
 
 # Get a list of all Expenses in a paginated manner and add to a list
@@ -42,7 +42,7 @@ query_params = {
     'order': 'created_at.desc'
 }
 
-expenses_generator = fyle.v1beta.admin.expenses.list_all(query_params=query_params)
+expenses_generator = fyle.v1.admin.expenses.list_all(query_params=query_params)
 
 for response in expenses_generator:
     if response.get('data'):

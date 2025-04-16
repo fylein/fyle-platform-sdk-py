@@ -14,7 +14,8 @@
       "restricted_project_ids": [
         2222,
         1221
-      ]
+      ],
+      "restricted_spender_user_ids": []
     }
   ],
   "reports": [
@@ -28,7 +29,8 @@
                 "id":"usqywo0f3nBY"
             },
             "approver_user_id":"usqywo0f3nBY",
-            "state":"APPROVAL_DONE"
+            "state":"APPROVAL_DONE",
+            "approver_order": 1
         }
       ],
       "created_at":"2021-10-22T07:43:08.159902+00:00",
@@ -48,7 +50,16 @@
             "full_name":"Ashwin",
             "id":"usqywo0f3nBY"
         },
-        "user_id":"usqywo0f3nBY"
+        "user_id":"usqywo0f3nBY",
+        "business_unit": "Finance",
+        "has_accepted_invite": true,
+        "is_enabled": true,
+        "joined_at": "2021-10-22T07:43:08.159902+00:00",
+        "level": "Manager",
+        "location": "Bangalore",
+        "mobile": "+919876543210",
+        "org_name": "Fyle",
+        "title": "Manager"
       },
       "employee_id":"ou77JxTLLifN",
       "id":"rpnWQIpTxPzl",
@@ -69,6 +80,7 @@
       "seq_num":"C/2021/10/R/2",
       "source":"WEBAPP",
       "state":"PAID",
+      "state_display_name": "Paid",
       "tax":0.5,
       "updated_at":"2022-10-27T05:09:08.976413+00:00",
       "user":{
@@ -76,7 +88,10 @@
         "full_name":"Joanna",
         "id":"usqywo0f3nBY"
       },
-      "user_id":"usqywo0f3nBY"
+      "user_id":"usqywo0f3nBY",
+      "accounting_export_summary": {},
+      "applied_advance_wallets": [],
+      "comments": []
     }
   ]
 }

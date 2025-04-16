@@ -74,7 +74,8 @@
       "restricted_project_ids": [
         2222,
         1221
-      ]
+      ],
+      "restricted_spender_user_ids": []
     }
   ],
   "employees" : [
@@ -177,7 +178,18 @@
       "has_accepted_invite": true,
       "branch_account": null,
       "branch_ifsc": null,
-      "mobile": "string"
+      "mobile": "string",
+      "ach_account": {
+        "added": null,
+        "verified": null
+      },
+      "categories": [],
+      "category_ids": [],
+      "delegatees": [],
+      "flattened_custom_field": {},
+      "is_mobile_verified": false,
+      "locale": "en",
+      "mileage_settings": {}
     }
   ],
   "file_create": [
@@ -189,7 +201,9 @@
       "updated_at": "2020-06-11T13:14:55.201598+00:00",
       "name": "uber_expenses_vmrpw.pdf",
       "type": "RECEIPT",
-      "content_type": "text/csv"
+      "content_type": "text/csv",
+      "download_url": "https://aaa.bbb.cc/x232sds",
+      "upload_url": "https://aaa.bbb.cc/x232sds"
     }
   ],
   "file_generate_url": [
