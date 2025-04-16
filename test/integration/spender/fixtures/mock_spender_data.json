@@ -25,145 +25,99 @@
     "updated_at": "2020-06-11T13:14:55.201598+00:00",
     "name": "uber_expenses_vmrpw.pdf",
     "type": "RECEIPT",
-    "content_type": "text/csv"
+    "content_type": "text/csv",
+    "download_url": "https://aaa.bbb.cc/x232sds",
+    "upload_url": "https://aaa.bbb.cc/x232sds"
   },
   "file_generate_url": {
     "id": "sdfd2391",
     "name": "uber_expenses_vmrpw.pdf",
     "content_type": "text/csv",
-    "download_url": "string",
-    "upload_url": "string"
+    "download_url": "https://aaa.bbb.cc/x232sds",
+    "upload_url": "https://aaa.bbb.cc/x232sds"
   },
   "create_expense": {
-    "activity_details":"None",
-    "added_to_report_at":"None",
-    "admin_amount":"None",
-    "amount":100,
-    "approvals":[
+    "id": "tx3jRfk0N2lX",
+    "org_id": "or79Cob97KSh",
+    "created_at": "2022-11-17T11:43:38.148709+00:00",
+    "updated_at": "2022-11-17T11:43:38.148709+00:00",
+    "user_id": "usqywo0f3nBY",
+    "employee_id": "ouVLOYP8lelN",
+    "creator_user_id": "usqywo0f3nBY",
+    "claim_amount": 100,
+    "currency": "USD",
+    "is_reimbursable": true,
+    "is_corporate_card_transaction_auto_matched": false,
+    "file_ids": ["fic3mjhWDvgL"],
+    "files": [
       {
-        "approver_user":{
-          "email":"abhishek.j@fyle.in",
-          "full_name":"abhishek jain",
-          "id":"us3aUeG50Adv"
-        },
-        "approver_user_id":"us3aUeG50Adv",
-        "state":"APPROVAL_PENDING"
+        "content_type": "image/jpeg",
+        "id": "fic3mjhWDvgL",
+        "name": "sample.jpg",
+        "type": "RECEIPT"
       }
     ],
-    "category":{
-      "code":"29",
-      "display_name":"Unspecified",
-      "id":135469,
-      "name":"Unspecified",
-      "sub_category":"None",
-      "system_category":"Unspecified"
+    "category": {
+      "code": "29",
+      "display_name": "Unspecified",
+      "id": 135469,
+      "name": "Unspecified",
+      "sub_category": "None",
+      "system_category": "Unspecified"
     },
-    "category_id":135469,
-    "claim_amount":100,
-    "code":"None",
-    "cost_center":"None",
-    "cost_center_id":"None",
-    "created_at":"2022-11-17T11:50:15.230934+00:00",
-    "creator_user_id":"usqywo0f3nBY",
-    "currency":"USD",
-    "custom_fields":[
-    ],
-    "distance":"None",
-    "distance_unit":"None",
-    "employee":{
-      "code":"None",
-      "department":{
-        "code":"None",
-        "display_name":"Department 1",
-        "id":"deptDhMjvs45aT",
-        "name":"Department 1",
-        "sub_department":"None"
+    "category_id": 135469,
+    "employee": {
+      "code": "None",
+      "department": {
+        "code": "None",
+        "display_name": "Department 1",
+        "id": "deptDhMjvs45aT",
+        "name": "Department 1",
+        "sub_department": "None"
       },
-      "department_id":"deptDhMjvs45aT",
-      "id":"ouVLOYP8lelN",
-      "org_id":"or79Cob97KSh",
-      "user":{
-        "email":"ashwin.t@fyle.in",
-        "full_name":"Ashwin",
-        "id":"usqywo0f3nBY"
+      "department_id": "deptDhMjvs45aT",
+      "id": "ouVLOYP8lelN",
+      "org_id": "or79Cob97KSh",
+      "user": {
+        "email": "ashwin.t@fyle.in",
+        "full_name": "Ashwin",
+        "id": "usqywo0f3nBY"
       },
-      "user_id":"usqywo0f3nBY"
+      "user_id": "usqywo0f3nBY",
+      "business_unit": "Finance",
+      "custom_fields": [],
+      "flattened_custom_field": {},
+      "has_accepted_invite": true,
+      "is_enabled": true,
+      "joined_at": "2021-10-22T07:43:08.159902+00:00",
+      "level": "Manager",
+      "location": "Bangalore",
+      "mobile": "+919876543210",
+      "org_name": "Fyle",
+      "title": "Manager"
     },
-    "employee_id":"ouVLOYP8lelN",
-    "ended_at":"None",
-    "extracted_data":"None",
-    "file_ids":[
-    ],
-    "files":[
-    ],
-    "foreign_amount":"None",
-    "foreign_currency":"None",
-    "hotel_is_breakfast_provided":"None",
-    "id":"txQOSjOjFqlY",
-    "is_billable":"None",
-    "is_corporate_card_transaction_auto_matched":false,
-    "is_exported":"None",
-    "is_manually_flagged":"None",
-    "is_physical_bill_submitted":"None",
-    "is_policy_flagged":"None",
-    "is_receipt_mandatory":"None",
-    "is_reimbursable":true,
-    "is_verified":"None",
-    "last_exported_at":"None",
-    "last_settled_at":"None",
-    "last_verified_at":"None",
-    "locations":[
-    ],
-    "matched_corporate_card_transaction_ids":[
-    ],
-    "matched_corporate_card_transactions":[
-    ],
-    "merchant":"None",
-    "mileage_calculated_amount":"None",
-    "mileage_calculated_distance":"None",
-    "mileage_is_round_trip":"None",
-    "mileage_rate":"None",
-    "mileage_rate_id":"None",
-    "missing_mandatory_fields":{
-      "amount":false,
-      "currency":false,
-      "expense_field_ids":[
-      ]
+    "accounting_export_summary": {},
+    "advance_wallet_id": null,
+    "approver_comments": [],
+    "commute_deduction": null,
+    "commute_details": null,
+    "commute_details_id": null,
+    "custom_fields_flattened": {},
+    "expense_rule_data": {},
+    "expense_rule_id": null,
+    "invoice_number": null,
+    "is_duplicate_present": false,
+    "is_split": false,
+    "missing_mandatory_fields": {
+      "receipt": []
     },
-    "org_id":"or79Cob97KSh",
-    "per_diem_num_days":"None",
-    "per_diem_rate":"None",
-    "per_diem_rate_id":"None",
-    "physical_bill_submitted_at":"None",
-    "policy_amount":"None",
-    "project":"None",
-    "project_id":"None",
-    "purpose":"None",
-    "report":"None",
-    "report_id":"None",
-    "seq_num":"E/2022/11/T/23",
-    "source":"TPA",
-    "source_account":{
-      "id":"accAjaCGVMheC",
-      "type":"PERSONAL_CASH_ACCOUNT"
-    },
-    "source_account_id":"accAjaCGVMheC",
-    "spent_at":"2020-06-01T09:18:19.292000+00:00",
-    "split_group_id":"txQOSjOjFqlY",
-    "started_at":"None",
-    "state":"COMPLETE",
-    "state_display_name":"Unreported",
-    "tax_amount":"None",
-    "tax_group_id":"None",
-    "travel_classes":[
-    ],
-    "updated_at":"2022-11-17T11:50:15.230934+00:00",
-    "user":{
-      "email":"ashwin.t@fyle.in",
-      "full_name":"Ashwin",
-      "id":"usqywo0f3nBY"
-    },
-    "user_id":"usqywo0f3nBY"
+    "policy_checks": [],
+    "report_last_approved_at": null,
+    "report_last_paid_at": null,
+    "split_group_amount": null,
+    "tax_group": null,
+    "verifications": [],
+    "verifier_comments": []
   },
   "attach_receipt": {
     "activity_details":"None",
