@@ -127,10 +127,7 @@
     "ZWL"
   ],
   "exchange_rate": {
-    "from_currency": "INR",
-    "to_currency": "USD",
-    "date": "2021-11-18",
-    "exchange_rate": 75.0
+    "exchange_rate": 0.013482
   },
   "places_autocomplete": [
     {

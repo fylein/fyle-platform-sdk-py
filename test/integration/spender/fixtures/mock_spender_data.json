@@ -180,7 +180,8 @@
     "split_group_amount": null,
     "tax_group": null,
     "verifications": [],
-    "verifier_comments": []
+    "verifier_comments": [],
+    "policy_checks": []
   },
   "attach_receipt": {
     "id": "tx3jRfk0N2lX",
@@ -326,6 +327,7 @@
     "split_group_amount": null,
     "tax_group": null,
     "verifications": [],
-    "verifier_comments": []
+    "verifier_comments": [],
+    "policy_checks": []
   }
 }

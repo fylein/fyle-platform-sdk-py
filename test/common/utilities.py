@@ -41,16 +41,15 @@ def fyle_connect():
     FYLE connector
     :param: db connection
   """
-  client_id = os.environ.get('CLIENT_ID')
-  
+
   connection = Platform(
     server_url=os.environ.get('SERVER_URL'),
     token_url=os.environ.get('TOKEN_URL'),
     refresh_token=os.environ.get('REFRESH_TOKEN'),
-    client_id=client_id,
+    client_id=os.environ.get('CLIENT_ID'),
     client_secret=os.environ.get('CLIENT_SECRET')
   )
-  logger.info(str(client_id))
+
   return connection
 
 
