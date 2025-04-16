@@ -42,7 +42,6 @@ def fyle_connect():
     :param: db connection
   """
   client_id = os.environ.get('CLIENT_ID')
-  logger.info("Connecting to Fyle with CLIENT_ID: %s", client_id)
   
   connection = Platform(
     server_url=os.environ.get('SERVER_URL'),
@@ -51,6 +50,7 @@ def fyle_connect():
     client_id=client_id,
     client_secret=os.environ.get('CLIENT_SECRET')
   )
+  print(str(client_id))
   return connection
 
 
