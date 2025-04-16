@@ -50,7 +50,7 @@ def fyle_connect():
     client_id=client_id,
     client_secret=os.environ.get('CLIENT_SECRET')
   )
-  print(str(client_id))
+  logger.info(str(client_id))
   return connection
 
 
