@@ -17,7 +17,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'enum34==1.1.10',
-        'requests==2.32.3'
+        'requests==2.32.4'
     ],
     classifiers=[
         'Topic :: Internet :: WWW/HTTP',
