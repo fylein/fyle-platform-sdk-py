@@ -16,8 +16,8 @@ setuptools.setup(
     url='https://github.com/fylein/fyle-platform-sdk-py',
     packages=setuptools.find_packages(),
     install_requires=[
-        'enum34==1.1.10',
-        'requests==2.32.3'
+        'enum34>=1.1.10',
+        'requests>=2.32.3'
     ],
     classifiers=[
         'Topic :: Internet :: WWW/HTTP',
