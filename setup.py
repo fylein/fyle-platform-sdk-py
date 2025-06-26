@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='fyle',
-    version='1.0.1',
+    version='1.0.2',
     author='Siva Narayanan',
     author_email='siva@fyle.in',
     description='Python SDK for accessing Fyle Platform APIs',
@@ -16,8 +16,8 @@ setuptools.setup(
     url='https://github.com/fylein/fyle-platform-sdk-py',
     packages=setuptools.find_packages(),
     install_requires=[
-        'enum34==1.1.10',
-        'requests==2.32.3'
+        'enum34>=1.1.10',
+        'requests>=2.32.3'
     ],
     classifiers=[
         'Topic :: Internet :: WWW/HTTP',
