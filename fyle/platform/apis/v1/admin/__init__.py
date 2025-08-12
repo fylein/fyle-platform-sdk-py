@@ -19,6 +19,7 @@ from .corporate_card_transactions import CorporateCardTransactions
 from .departments import Departments
 from .subscriptions import Subscriptions
 from .scheduled_callbacks import ScheduledCallbacks
+from .org_settings import OrgSettings
 from ..version import version
 
 role = 'admin'
@@ -41,3 +42,4 @@ departments = Departments(version, role)
 subscriptions = Subscriptions(version, role)
 scheduled_callbacks = ScheduledCallbacks(version, role)
 reports = Reports(version, role)
+org_settings = OrgSettings(version, role)
