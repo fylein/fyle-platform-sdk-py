@@ -42,7 +42,7 @@ class Auth(Network):
                 'Wrong client secret or/and refresh token', response.text)
         elif response.status_code == 404:
             raise exceptions.NotFoundItemError('Client ID doesn\'t exist', response.text)
-        elif response.status_code == 500:
+        elif response.status_code >= 500:
             raise exceptions.InternalServerError('Internal server error', response.text)
         else:
             raise exceptions.PlatformError(

@@ -116,7 +116,7 @@ class ApiBase(Network):
         if response.status_code == 498:
             raise exceptions.ExpiredTokenError(
                 'Expired token, try to refresh it', response.text)
-        if response.status_code == 500:
+        if response.status_code >= 500:
             raise exceptions.InternalServerError(
                 'Internal server error', response.text)
         raise exceptions.PlatformError(
