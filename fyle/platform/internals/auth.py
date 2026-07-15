@@ -18,7 +18,6 @@ class Auth(Network):
         super().__init__()
 
     @staticmethod
-    @retry(n=3, backoff=0.5, exceptions=exceptions.InternalServerError, log_exceptions=True)
     def __get_access_token():
         """
         Get the access token using a HTTP post.
