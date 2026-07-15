@@ -17,7 +17,15 @@ class Platform(Auth):
         refresh_token (str): Refresh token for Fyle API.
     """
 
-    def __init__(self, server_url, token_url, client_id, client_secret, refresh_token):
+    def __init__(
+        self,
+        server_url: str,
+        token_url: str,
+        client_id: str,
+        client_secret: str,
+        refresh_token: str,
+        access_token: str = None
+    ):
         super().__init__()
 
         # store the credentials
@@ -26,6 +34,7 @@ class Platform(Auth):
         self.__client_id = client_id
         self.__client_secret = client_secret
         self.__refresh_token = refresh_token
+        self.__access_token = access_token
 
         self.v1 = v1
 
@@ -35,7 +44,10 @@ class Platform(Auth):
         self.set_client_id()
         self.set_client_secret()
         self.set_refresh_token()
-        self.update_access_token()
+        if self.__access_token:
+            self.set_access_token(access_token=self.__access_token)
+        else:
+            self.update_access_token()
 
     def set_server_url(self):
         """Set the Server URL in all API objects."""

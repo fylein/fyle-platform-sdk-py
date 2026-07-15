@@ -51,7 +51,22 @@ class Auth(Network):
                 'Error: {0}'.format(response.status_code), response.text)
 
     def update_access_token(self):
-        """Update the access token."""
-
+        """
+        Update the access token.
+        """
         self.__access_token = self.__get_access_token()
         config.set('AUTH', 'ACCESS_TOKEN', self.__access_token)
+        return self.__access_token
+
+    def set_access_token(self, access_token: str):
+        """
+        Set the access token.
+        """
+        self.__access_token = access_token
+        config.set('AUTH', 'ACCESS_TOKEN', self.__access_token)
+
+    def get_access_token(self):
+        """
+        Get the access token.
+        """
+        return config.get('AUTH', 'ACCESS_TOKEN')

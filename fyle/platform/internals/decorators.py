@@ -29,9 +29,6 @@ def retry(n, backoff, exceptions, log_exceptions=False):
                 try:
                     return func(*args, **kwargs)
                 except exceptions as e:
-                    if isinstance(e, exc.InvalidTokenError):
-                        from .auth import Auth
-                        Auth().update_access_token()
                     time.sleep(backoff)
                     attempt += 1
                     if log_exceptions:
