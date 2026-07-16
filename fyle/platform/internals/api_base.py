@@ -29,7 +29,10 @@ class ApiBase(Network):
             endpoint=endpoint
         )
 
-    @retry(n=3, backoff=5, exceptions=(exceptions.InvalidTokenError, exceptions.InternalServerError))
+    # Retry only transient server errors here. Token errors must bubble up to
+    # PlatformConnectionProxy so it can refresh through Platform/Auth and persist the
+    # new access token in FyleCredential before retrying the original API call.
+    @retry(n=3, backoff=5, exceptions=exceptions.InternalServerError)
     def make_get_request(self, api_url, query_params=None):
         """Create a HTTP GET request.
         Parameters:
@@ -67,7 +70,10 @@ class ApiBase(Network):
         logger.info('Response for get request for url: %s, %s', api_url, response.text)
         ApiBase._assert_response(response)
 
-    @retry(n=3, backoff=5, exceptions=exceptions.InvalidTokenError)
+    # Retry only transient server errors here. Token errors must bubble up to
+    # PlatformConnectionProxy so it can refresh through Platform/Auth and persist the
+    # new access token in FyleCredential before retrying the original API call.
+    @retry(n=3, backoff=5, exceptions=exceptions.InternalServerError)
     def make_post_request(self, api_url, payload):
         """Create a HTTP post request.
 
