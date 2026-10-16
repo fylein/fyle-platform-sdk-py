@@ -11,6 +11,14 @@ class Projects(ListResources, ListAllResources, PostResources, PostBulkResources
     """Class for Projects APIs."""
 
     PROJECTS = '/projects'
+    PROJECTS_DELETE_BULK = '/projects/delete/bulk'
+    PROJECTS_DELETE_SUMMARY_BULK = '/projects/delete_summary/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, Projects.PROJECTS)
+
+    def delete_summary_bulk(self, data):
+        return self.post(Projects.PROJECTS_DELETE_SUMMARY_BULK, data)
+
+    def delete_bulk(self, data):
+        return self.post(Projects.PROJECTS_DELETE_BULK, data)

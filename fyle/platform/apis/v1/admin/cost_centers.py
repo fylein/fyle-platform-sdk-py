@@ -10,6 +10,14 @@ class CostCenters(ListResources, ListAllResources, PostResources, PostBulkResour
     """Class for Cost Center APIs."""
 
     COST_CENTERS = '/cost_centers'
+    COST_CENTERS_DELETE_BULK = '/cost_centers/delete/bulk'
+    COST_CENTERS_DELETE_SUMMARY_BULK = '/cost_centers/delete_summary/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, CostCenters.COST_CENTERS)
+
+    def delete_summary_bulk(self, data):
+        return self.post(CostCenters.COST_CENTERS_DELETE_SUMMARY_BULK, data)
+
+    def delete_bulk(self, data):
+        return self.post(CostCenters.COST_CENTERS_DELETE_BULK, data)
