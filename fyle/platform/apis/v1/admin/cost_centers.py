@@ -17,7 +17,13 @@ class CostCenters(ListResources, ListAllResources, PostResources, PostBulkResour
         super().__init__(version, role, CostCenters.COST_CENTERS)
 
     def delete_summary_bulk(self, data):
-        return self.post(CostCenters.COST_CENTERS_DELETE_SUMMARY_BULK, data)
+        return self.api.make_post_request(
+            api_url=CostCenters.COST_CENTERS_DELETE_SUMMARY_BULK,
+            payload=data
+        )
 
     def delete_bulk(self, data):
-        return self.post(CostCenters.COST_CENTERS_DELETE_BULK, data)
+        return self.api.make_post_request(
+            api_url=CostCenters.COST_CENTERS_DELETE_BULK,
+            payload=data
+        )

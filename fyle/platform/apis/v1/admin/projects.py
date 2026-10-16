@@ -18,7 +18,13 @@ class Projects(ListResources, ListAllResources, PostResources, PostBulkResources
         super().__init__(version, role, Projects.PROJECTS)
 
     def delete_summary_bulk(self, data):
-        return self.post(Projects.PROJECTS_DELETE_SUMMARY_BULK, data)
+        return self.api.make_post_request(
+            api_url=Projects.PROJECTS_DELETE_SUMMARY_BULK,
+            payload=data
+        )
 
     def delete_bulk(self, data):
-        return self.post(Projects.PROJECTS_DELETE_BULK, data)
+        return self.api.make_post_request(
+            api_url=Projects.PROJECTS_DELETE_BULK,
+            payload=data
+        )
