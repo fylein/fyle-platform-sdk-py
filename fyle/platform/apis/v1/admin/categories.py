@@ -11,6 +11,20 @@ class Categories(ListResources, ListAllResources, PostResources, PostBulkResourc
     """Class for Categories APIs."""
 
     CATEGORIES = '/categories'
+    CATEGORIES_DELETE_BULK = '/categories/delete/bulk'
+    CATEGORIES_DELETE_SUMMARY_BULK = '/categories/delete_summary/bulk'
 
     def __init__(self, version, role):
         super().__init__(version, role, Categories.CATEGORIES)
+
+    def delete_summary_bulk(self, data):
+        return self.api.make_post_request(
+            api_url=Categories.CATEGORIES_DELETE_SUMMARY_BULK,
+            payload=data
+        )
+
+    def delete_bulk(self, data):
+        return self.api.make_post_request(
+            api_url=Categories.CATEGORIES_DELETE_BULK,
+            payload=data
+        )
